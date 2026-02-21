@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romanian Radio App - Innovation Hub Studio</title>
+    <meta name="description" content="Stream your favorite Romanian radio stations with our beautiful mobile app.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght:700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-surface: #141420;
+            --color-accent: #6366f1;
+            --color-accent-bright: #818cf8;
+            --color-text: #e5e7eb;
+            --color-text-dim: #9ca3af;
+            --color-border: #1f1f2e;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(129, 140, 248, 0.08) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 5%;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero-app {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-app-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-app h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-app .gradient-text {
+            background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-app p {
+            font-size: 1.25rem;
+            color: var(--color-text-dim);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .download-section {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .store-badge {
+            padding: 1rem 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            color: var(--color-text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .store-badge:hover {
+            border-color: var(--color-accent);
+            color: var(--color-text);
+            transform: translateY(-2px);
+        }
+
+        .coming-soon {
+            color: var(--color-accent-bright);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+
+        .screenshots-section {
+            padding: 6rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .screenshots-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-placeholder {
+            aspect-ratio: 9/16;
+            background: linear-gradient(135deg, var(--color-surface), rgba(99, 102, 241, 0.1));
+            border-radius: 24px;
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-dim);
+            font-size: 0.875rem;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-placeholder:hover {
+            transform: translateY(-5px);
+        }
+
+        .features-section {
+            padding: 6rem 5%;
+            background: var(--color-surface);
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--color-text-dim);
+            line-height: 1.8;
+        }
+
+        footer {
+            padding: 4rem 5%;
+            border-top: 1px solid var(--color-border);
+            background: var(--color-bg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            color: var(--color-text-dim);
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            color: var(--color-text);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--color-text-dim);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent-bright);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            color: var(--color-text-dim);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Innovation Hub</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="radio-app.html">Radio App</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-app">
+        <div class="hero-app-content">
+            <h1>
+                <span class="gradient-text">Romanian Radio</span><br>
+                In Your Pocket
+            </h1>
+            <p>
+                Stream your favorite radio stations from Romania with crystal-clear 
+                audio quality. All the stations you love, in one beautiful app.
+            </p>
+            <div class="download-section">
+                <div class="store-badge">
+                    <div>📱 Available on Google Play</div>
+                    <div class="coming-soon">Coming Soon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots-section">
+        <div class="screenshots-content">
+            <h2 class="section-title">App Preview</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot-placeholder">Screenshot 1</div>
+                <div class="screenshot-placeholder">Screenshot 2</div>
+                <div class="screenshot-placeholder">Screenshot 3</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-content">
+            <h2 class="section-title">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📻</div>
+                    <h3>Top Romanian Stations</h3>
+                    <p>
+                        Access all major radio stations from Romania in one place. 
+                        From music to news, talk shows to sports.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>High-Quality Streaming</h3>
+                    <p>
+                        Crystal-clear audio streaming with adaptive quality 
+                        based on your connection.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Lightweight</h3>
+                    <p>
+                        Optimized for performance with minimal battery 
+                        and data usage.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Interface</h3>
+                    <p>
+                        Clean, modern design that makes listening to 
+                        radio a delightful experience.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💫</div>
+                    <h3>Easy to Use</h3>
+                    <p>
+                        Intuitive interface with quick access to your 
+                        favorite stations.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>
+                        We respect your privacy. No unnecessary data 
+                        collection or tracking.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">Innovation Hub Studio</div>
+                <p class="footer-desc">
+                    Creating innovative mobile applications that bring value 
+                    to users worldwide. Based in the UK.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="radio-app.html">Radio App</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:contact@innovationhubstudio.co.uk">contact@innovationhubstudio.co.uk</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Innovation Hub Studio Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
