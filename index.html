@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,14 @@
     <meta name="description" content="Innovation Hub Studio creates innovative mobile applications that bring value to users worldwide.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        [data-theme="dark"] {
             --color-bg: #0a0a0f;
             --color-surface: #141420;
             --color-accent: #6366f1;
@@ -17,8 +22,16 @@
             --color-text: #e5e7eb;
             --color-text-dim: #9ca3af;
             --color-border: #1f1f2e;
-            --font-display: 'Playfair Display', serif;
-            --font-body: 'DM Sans', sans-serif;
+        }
+
+        [data-theme="light"] {
+            --color-bg: #f5f1e8;
+            --color-surface: #faf7f0;
+            --color-accent: #5558d9;
+            --color-accent-bright: #6366f1;
+            --color-text: #1a1a1a;
+            --color-text-dim: #4a4a4a;
+            --color-border: #e8e4da;
         }
 
         * {
@@ -33,9 +46,9 @@
             color: var(--color-text);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* Animated background gradient */
         body::before {
             content: '';
             position: fixed;
@@ -48,6 +61,12 @@
             animation: rotate 30s linear infinite;
             pointer-events: none;
             z-index: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        [data-theme="light"] body::before {
+            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(129, 140, 248, 0.04) 0%, transparent 50%);
         }
 
         @keyframes rotate {
@@ -55,7 +74,34 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Navigation */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -67,6 +113,11 @@
             border-bottom: 1px solid var(--color-border);
             z-index: 1000;
             animation: slideDown 0.6s ease-out;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        [data-theme="light"] nav {
+            background: rgba(250, 247, 240, 0.9);
         }
 
         @keyframes slideDown {
@@ -89,7 +140,7 @@
         }
 
         .logo {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: var(--font-mono);
             font-size: 1.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
@@ -132,7 +183,6 @@
             width: 100%;
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -174,7 +224,7 @@
         }
 
         .hero h1 {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: var(--font-mono);
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 700;
             line-height: 1.2;
@@ -219,7 +269,6 @@
             background: var(--color-accent-bright);
         }
 
-        /* Featured App Section */
         .featured-app {
             padding: 8rem 5%;
             position: relative;
@@ -236,7 +285,7 @@
         }
 
         .app-info h2 {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: var(--font-mono);
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             margin-bottom: 1.5rem;
@@ -272,6 +321,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            transition: border-color 0.3s ease;
         }
 
         .app-features li::before {
@@ -307,6 +357,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .mockup-placeholder::before {
@@ -334,13 +385,13 @@
             padding: 2rem;
         }
 
-        /* Footer */
         footer {
             padding: 4rem 5%;
             border-top: 1px solid var(--color-border);
             background: var(--color-surface);
             position: relative;
             z-index: 1;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .footer-content {
@@ -352,7 +403,7 @@
         }
 
         .footer-brand {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: var(--font-mono);
             font-size: 1.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
@@ -397,9 +448,9 @@
             text-align: center;
             color: var(--color-text-dim);
             font-size: 0.875rem;
+            transition: border-color 0.3s ease;
         }
 
-        /* Responsive */
         @media (max-width: 968px) {
             .nav-links {
                 gap: 1.5rem;
@@ -436,11 +487,18 @@
             .featured-app {
                 padding: 4rem 5%;
             }
+
+            .theme-toggle {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">Innovation Hub</div>
@@ -453,7 +511,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-tag">Mobile App Development</div>
@@ -471,19 +528,18 @@
         </div>
     </section>
 
-    <!-- Featured App -->
     <section class="featured-app">
         <div class="featured-content">
             <div class="app-info">
                 <div class="subtitle">Our Latest Release</div>
-                <h2>Radio Live App</h2>
+                <h2>Romanian Radio Stations</h2>
                 <p>
-                    Listen to your favorite radio stations from various countries, 
+                    Listen to your favorite radio stations from Romania, 
                     all in one beautiful, easy-to-use mobile application. 
-                    Stream high-quality audio from the most popular radio stations.
+                    Stream high-quality audio from the most popular Romanian stations.
                 </p>
                 <ul class="app-features">
-                    <li>Access to top radio stations</li>
+                    <li>Access to top Romanian radio stations</li>
                     <li>High-quality audio streaming</li>
                     <li>Clean, intuitive interface</li>
                     <li>Lightweight and fast</li>
@@ -500,7 +556,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
             <div>
@@ -529,5 +584,28 @@
             <p>&copy; 2025 Innovation Hub Studio Ltd. All rights reserved.</p>
         </div>
     </footer>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <span id="themeIcon">🌙</span>
+    </button>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        });
+    </script>
 </body>
 </html>
