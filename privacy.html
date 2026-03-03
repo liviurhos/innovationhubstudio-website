@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Innovation Hub Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        [data-theme="dark"] {
             --color-bg: #0a0a0f;
             --color-surface: #141420;
             --color-accent: #6366f1;
@@ -16,8 +21,16 @@
             --color-text: #e5e7eb;
             --color-text-dim: #9ca3af;
             --color-border: #1f1f2e;
-            --font-display: 'Playfair Display', serif;
-            --font-body: 'DM Sans', sans-serif;
+        }
+
+        [data-theme="light"] {
+            --color-bg: #f5f1e8;
+            --color-surface: #faf7f0;
+            --color-accent: #5558d9;
+            --color-accent-bright: #6366f1;
+            --color-text: #1a1a1a;
+            --color-text-dim: #4a4a4a;
+            --color-border: #e8e4da;
         }
 
         * {
@@ -31,6 +44,31 @@
             background: var(--color-bg);
             color: var(--color-text);
             line-height: 1.6;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
         }
 
         nav {
@@ -43,6 +81,11 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--color-border);
             z-index: 1000;
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="light"] nav {
+            background: rgba(250, 247, 240, 0.9);
         }
 
         .nav-container {
@@ -54,7 +97,7 @@
         }
 
         .logo {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: var(--font-mono);
             font-size: 1.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
@@ -89,7 +132,7 @@
         }
 
         h1 {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: var(--font-mono);
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             margin-bottom: 1.5rem;
@@ -115,10 +158,11 @@
             background: rgba(99, 102, 241, 0.05);
             border: 1px solid var(--color-border);
             border-radius: 12px;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         h2 {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: var(--font-mono);
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -148,6 +192,7 @@
             border: 1px solid var(--color-border);
             border-radius: 12px;
             margin-top: 3rem;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .contact-info a {
@@ -163,6 +208,7 @@
             padding: 4rem 5%;
             border-top: 1px solid var(--color-border);
             background: var(--color-surface);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .footer-content {
@@ -184,6 +230,14 @@
 
             .privacy-content {
                 padding: 8rem 5% 4rem;
+            }
+
+            .theme-toggle {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
             }
         }
     </style>
@@ -210,7 +264,7 @@
             <p>
                 Innovation Hub Studio Ltd ("we", "our", or "us") is committed to protecting your privacy. 
                 This Privacy Policy explains how we collect, use, and safeguard your information when you 
-                use our Radio mobile application.
+                use our Romanian Radio Stations mobile application.
             </p>
         </div>
 
@@ -226,7 +280,8 @@
                 <li><strong>Network Information:</strong> To ensure optimal streaming quality</li>
             </ul>
             <p>
-                <em>Note: This is a placeholder. The final privacy policy will be customized later on</em>
+                <em>Note: This is a placeholder. The final privacy policy will be customized based on 
+                the specific data your app actually collects.</em>
             </p>
         </div>
 
@@ -307,5 +362,28 @@
             <p>&copy; 2025 Innovation Hub Studio Ltd. All rights reserved.</p>
         </div>
     </footer>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <span id="themeIcon">🌙</span>
+    </button>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        });
+    </script>
 </body>
 </html>
