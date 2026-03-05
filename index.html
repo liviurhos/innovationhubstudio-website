@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         :root {
             --font-mono: 'JetBrains Mono', monospace;
@@ -52,6 +54,7 @@
             transition: background 0.4s ease;
         }
 
+        /* Background FX */
         .bg-glow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1), transparent 40%),
@@ -59,6 +62,7 @@
             pointer-events: none; z-index: 0;
         }
 
+        /* Reveal Animation */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -86,22 +90,38 @@
         .mobile-toggle span { width: 22px; height: 2px; background: var(--color-text); transition: 0.3s; }
 
         /* Hero */
-        .hero { min-height: 95vh; display: flex; align-items: center; padding: 140px 5% 60px; }
+        .hero { min-height: 90vh; display: flex; align-items: center; padding: 140px 5% 60px; }
         .hero-content { max-width: 1200px; margin: 0 auto; z-index: 1; }
         h1 { font-family: var(--font-mono); font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 2rem; font-weight: 800; }
         .gradient-text { background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent), var(--color-accent-vibrant)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Features */
+        /* Features Section */
         .features { padding: 4rem 5%; position: relative; z-index: 1; }
         .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .feature-card { background: var(--color-surface); padding: 2.5rem; border-radius: 20px; border: 1px solid var(--color-border); transition: 0.4s; }
-        .feature-card:hover { transform: translateY(-8px); border-color: var(--color-accent); }
+        
+        .feature-card { 
+            background: var(--color-surface); padding: 2.5rem; border-radius: 20px; 
+            border: 1px solid var(--color-border); transition: 0.4s; 
+        }
+        .feature-card:hover { transform: translateY(-8px); border-color: var(--color-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        .icon-wrapper {
+            width: 48px; height: 48px; background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.5rem; transition: 0.3s;
+        }
+        .icon-feature { width: 24px; height: 24px; color: var(--color-accent-bright); stroke-width: 2px; }
+        
+        .feature-card:hover .icon-wrapper { background: var(--color-accent); }
+        .feature-card:hover .icon-feature { color: white; }
+        .feature-card h3 { font-family: var(--font-mono); font-size: 1.25rem; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
 
         /* App Showcase */
         .app-showcase { padding: 6rem 5%; position: relative; z-index: 1; }
         .app-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
         .download-badges { display: flex; gap: 1rem; margin-top: 2.5rem; }
         .download-badges img { height: 42px; transition: 0.3s; }
+        .download-badges img:hover { transform: scale(1.05); }
 
         /* iPhone Mockup */
         .mockup {
@@ -112,25 +132,27 @@
         .mockup img { width: 100%; height: 100%; object-fit: cover; }
         .mockup::before { content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 70px; height: 20px; background: #1f1f2e; border-radius: 12px; z-index: 10; }
 
-        /* Contact Box */
+        /* Contact Section */
         .contact { padding: 6rem 5%; position: relative; z-index: 1; }
         .contact-box { max-width: 700px; margin: 0 auto; background: var(--color-surface); padding: 3rem; border-radius: 30px; border: 1px solid var(--color-border); }
         .form-group { margin-bottom: 1.2rem; }
         .form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.8rem; font-weight: 700; color: var(--color-text-dim); }
         .form-group input, .form-group textarea { width: 100%; padding: 0.9rem; background: var(--color-input); border: 1px solid var(--color-border); border-radius: 12px; color: var(--color-text); font-family: inherit; }
         .btn-send { width: 100%; padding: 1rem; background: var(--color-accent); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-send:hover { background: var(--color-accent-bright); transform: translateY(-2px); }
 
         /* Footer */
         footer { background: var(--color-surface); padding: 5rem 5% 2rem; border-top: 1px solid var(--color-border); position: relative; z-index: 1; }
         .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
         .footer-logo { font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; margin-bottom: 1rem; display: block; text-decoration: none; color: var(--color-text); }
-        .footer-links h4 { margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links h4 { margin-bottom: 1.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-accent-bright); }
         .footer-links ul { list-style: none; }
-        .footer-links a { color: var(--color-text-dim); text-decoration: none; display: block; padding: 0.4rem 0; transition: 0.3s; }
-        .footer-links a:hover { color: var(--color-accent-bright); }
+        .footer-links a { color: var(--color-text-dim); text-decoration: none; display: block; padding: 0.4rem 0; transition: 0.3s; font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--color-text); }
         .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-dim); font-size: 0.85rem; }
 
-        .theme-btn { position: fixed; bottom: 2rem; right: 2rem; width: 54px; height: 54px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 50%; cursor: pointer; z-index: 1100; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+        /* Utilities */
+        .theme-btn { position: fixed; bottom: 2rem; right: 2rem; width: 54px; height: 54px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 50%; cursor: pointer; z-index: 1100; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 
         @media (max-width: 968px) {
             .app-grid, .footer-grid { grid-template-columns: 1fr; text-align: center; }
@@ -164,46 +186,58 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1 class="reveal">Next Gen <br><span class="gradient-text">App Studio</span></h1>
+            <h1 class="reveal">Built for the <br><span class="gradient-text">Mobile Era</span></h1>
             <p class="reveal" style="max-width: 550px; font-size: 1.2rem; color: var(--color-text-dim); transition-delay: 0.1s;">
-                Innovation Hub Studio creează soluții mobile care redefinesc interacțiunea digitală.
+                Innovation Hub Studio transformă viziunile în aplicații mobile premium. Design curat, performanță nativă.
             </p>
         </div>
     </section>
 
     <section class="features" id="features">
         <div class="features-grid">
-            <div class="feature-card reveal"><h3>Modern UI</h3><p>Design intuitiv bazat pe experiența utilizatorului.</p></div>
-            <div class="feature-card reveal" style="transition-delay: 0.1s;"><h3>Fast Native</h3><p>Performanță brută pe iOS și Android.</p></div>
-            <div class="feature-card reveal" style="transition-delay: 0.2s;"><h3>Reliable</h3><p>Sisteme robuste și mentenanță continuă.</p></div>
+            <div class="feature-card reveal">
+                <div class="icon-wrapper"><i data-lucide="zap" class="icon-feature"></i></div>
+                <h3>Speed First</h3>
+                <p>Cod optimizat pentru un răspuns instantaneu și experiență fluidă.</p>
+            </div>
+            <div class="feature-card reveal" style="transition-delay: 0.1s;">
+                <div class="icon-wrapper"><i data-lucide="layout" class="icon-feature"></i></div>
+                <h3>Modern UI</h3>
+                <p>Interfețe intuitive care respectă standardele de design actuale.</p>
+            </div>
+            <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                <div class="icon-wrapper"><i data-lucide="trending-up" class="icon-feature"></i></div>
+                <h3>Scalability</h3>
+                <p>Arhitecturi solide, pregătite pentru creșterea bazei de utilizatori.</p>
+            </div>
         </div>
     </section>
 
     <section class="app-showcase" id="app">
         <div class="app-grid">
             <div class="app-info reveal">
-                <div style="color:var(--color-accent-vibrant); font-weight:700; margin-bottom:1rem;">LATEST RELEASE</div>
+                <div style="color:var(--color-accent-vibrant); font-weight:700; margin-bottom:1rem; letter-spacing: 1px;">FEATURED PROJECT</div>
                 <h2 style="font-family: var(--font-mono); font-size: 2.5rem; margin-bottom: 1rem;">RadioLive App</h2>
-                <p style="color: var(--color-text-dim); margin-bottom: 2rem;">Ascultă radiourile din România la cea mai înaltă calitate, oriunde te-ai afla.</p>
+                <p style="color: var(--color-text-dim); margin-bottom: 2rem;">Accesează cele mai populare posturi de radio din România într-o singură aplicație elegantă.</p>
                 <div class="download-badges">
                     <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store"></a>
                     <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store"></a>
                 </div>
             </div>
             <div class="mockup reveal" style="transition-delay: 0.2s;">
-                <img src="images/radio4.png" alt="RadioLive App Preview" onerror="this.style.display='none'">
-                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:10px; text-align:center; z-index:-1;">RadioLive UI</div>
+                <img src="images/radio4.png" alt="RadioLive App Preview" onerror="this.parentElement.style.background='#111';">
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#333; font-size:12px; z-index:-1;">RadioLive UI</div>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
         <div class="contact-box reveal">
-            <h2 style="text-align: center; margin-bottom: 2rem; font-family: var(--font-mono);">Contact Us</h2>
-            <form>
+            <h2 style="text-align: center; margin-bottom: 2rem; font-family: var(--font-mono);">Get in Touch</h2>
+            <form id="contactForm">
                 <div class="form-group"><label>EMAIL</label><input type="email" placeholder="nume@exemplu.com" required></div>
                 <div class="form-group"><label>MESAJ</label><textarea rows="4" placeholder="Cum te putem ajuta?" required></textarea></div>
-                <button type="submit" class="btn-send">TRIMITE</button>
+                <button type="submit" class="btn-send">TRIMITE MESAJ</button>
             </form>
         </div>
     </section>
@@ -212,10 +246,10 @@
         <div class="footer-grid">
             <div>
                 <a href="index.html" class="footer-logo">Innovation Hub Studio</a>
-                <p style="color:var(--color-text-dim); font-size:0.9rem;">Building innovative mobile applications that bring value to users worldwide. Based in the UK.</p>
+                <p style="color:var(--color-text-dim); font-size:0.9rem;">Dezvoltăm aplicații mobile inovatoare care aduc valoare utilizatorilor la nivel global. Sediu în Marea Britanie.</p>
             </div>
             <div class="footer-links">
-                <h4>Navigație</h4>
+                <h4>Navigation</h4>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="radio-app.html">Radio App</a></li>
@@ -225,7 +259,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="mailto:contact@innovationhubstudio.co.uk">Email Us</a></li>
+                    <li><a href="mailto:contact@innovationhubstudio.co.uk">contact@innovationhubstudio.co.uk</a></li>
                 </ul>
             </div>
         </div>
@@ -237,21 +271,34 @@
     <button class="theme-btn" id="themeBtn">🌙</button>
 
     <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Reveal Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Theme Toggle
         const themeBtn = document.getElementById('themeBtn');
         themeBtn.addEventListener('click', () => {
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
             themeBtn.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', newTheme);
         });
 
+        // Mobile Menu
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
         menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+        // Local Storage Theme Load
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
     </script>
 </body>
 </html>
