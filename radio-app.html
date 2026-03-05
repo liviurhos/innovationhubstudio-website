@@ -260,14 +260,17 @@
         }
 
         .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
             margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .screenshot-placeholder {
-            aspect-ratio: 9/16;
+            aspect-ratio: 10/3;
             background: linear-gradient(135deg, var(--color-surface), rgba(99, 102, 241, 0.1));
             border-radius: 24px;
             border: 1px solid var(--color-border);
@@ -472,7 +475,7 @@
                 In Your Pocket
             </h1>
             <p>
-                Stream your favorite radio stations from various countries with crystal-clear 
+                Stream your favorite radio stations from Romania with crystal-clear 
                 audio quality. All the stations you love, in one beautiful app.
             </p>
             <div class="download-section">
@@ -489,10 +492,17 @@
             <h2 class="section-title">App Preview</h2>
             <div class="screenshots-grid">
                 <div class="screenshot-placeholder">
-                    <img src="images/radio4.png" alt="Radio app main screen">
+                    <img src="images/radio1.png" alt="Radio app main screen">
                     Screenshot 1
                 </div>
-                
+                <div class="screenshot-placeholder">
+                    <img src="images/radio2.png" alt="Radio app station list">
+                    Screenshot 2
+                </div>
+                <div class="screenshot-placeholder">
+                    <img src="images/radio3.png" alt="Radio app now playing">
+                    Screenshot 3
+                </div>
             </div>
         </div>
     </section>
@@ -605,4 +615,4 @@
         });
     </script>
 </body>
-</html>        
+</html>
