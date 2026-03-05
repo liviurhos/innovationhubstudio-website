@@ -103,7 +103,7 @@
         }
 
         nav {
-            
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -347,7 +347,7 @@
         .mockup-placeholder {
             width: 100%;
             max-width: 400px;
-            aspect-ratio: 9/16;
+            aspect-ratio: 7/16;
             background: linear-gradient(135deg, var(--color-surface), rgba(99, 102, 241, 0.1));
             border-radius: 40px;
             border: 1px solid var(--color-border);
@@ -357,7 +357,29 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            transition: background 0.3s ease, border-color 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mockup-placeholder:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 100px rgba(99, 102, 241, 0.3);
+        }
+
+        .mockup-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .mockup-placeholder:has(img)::before {
+            display: none;
+        }
+
+        .mockup-placeholder:has(img) .mockup-text {
+            display: none;
         }
 
         .mockup-placeholder::before {
@@ -532,14 +554,14 @@
         <div class="featured-content">
             <div class="app-info">
                 <div class="subtitle">Our Latest Release</div>
-                <h2>RadioLive App</h2>
+                <h2>Romanian Radio Stations</h2>
                 <p>
-                    Listen to your favorite radio stations from various countries, 
+                    Listen to your favorite radio stations from Romania, 
                     all in one beautiful, easy-to-use mobile application. 
-                    Stream high-quality audio from the most popular radio stations.
+                    Stream high-quality audio from the most popular Romanian stations.
                 </p>
                 <ul class="app-features">
-                    <li>Access to top radio stations</li>
+                    <li>Access to top Romanian radio stations</li>
                     <li>High-quality audio streaming</li>
                     <li>Clean, intuitive interface</li>
                     <li>Lightweight and fast</li>
@@ -548,8 +570,9 @@
             </div>
             <div class="app-mockup">
                 <div class="mockup-placeholder">
+                    <img src="images/radio4.png" alt="Radio Live app preview">
                     <div class="mockup-text">
-                        <img src="images/radio4.png" alt="Radio app main screen">
+                        App screenshots<br>coming soon
                     </div>
                 </div>
             </div>
