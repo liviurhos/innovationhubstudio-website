@@ -79,13 +79,24 @@
         .logo-link {
             display: flex;
             align-items: center;
+            gap: 0.75rem;
             text-decoration: none;
         }
 
         .logo-img {
-            height: 40px;
+            height: 50px;
             width: auto;
             transition: transform 0.3s ease;
+        }
+
+        .logo-text {
+            font-family: var(--font-mono); 
+            font-size: 1.4rem; 
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent), var(--color-accent-vibrant));
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.05em;
         }
 
         .logo-link:hover .logo-img {
@@ -166,7 +177,8 @@
             .mobile-toggle { display: flex; }
             .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: var(--color-surface); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s; }
             .nav-links.active { right: 0; }
-            .logo-img { height: 32px; }
+            .logo-img { height: 38px; }
+            .logo-text { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -178,6 +190,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo-link">
                 <img src="images/logo3.png" alt="Innovation Hub Studio" class="logo-img">
+                <span class="logo-text">Innovation Hub</span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
