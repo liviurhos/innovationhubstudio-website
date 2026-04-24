@@ -11,14 +11,14 @@
     <style>
         :root {
             --bg:       #050910;
-            --surface:  #0a1020;
-            --surface2: #0e1628;
+            --surface:  #0c1322;
+            --surface2: #111d30;
             --mint:     #4dffc3;
             --mint-dim: #1aaa7a;
             --violet:   #8b5cf6;
             --rose:     #f472b6;
             --text:     #e8f0fe;
-            --text-dim: #7a90b8;
+            --text-dim: #8fa8cc;
             --border:   rgba(77,255,195,0.10);
             --border2:  rgba(77,255,195,0.22);
             --display:  'Bebas Neue', sans-serif;
@@ -120,12 +120,12 @@
         .card:hover { background:var(--surface2); }
         .card:hover::before { opacity:1; }
         .card-n {
-            font-family:var(--display); font-size:4rem; color:var(--border2);
+            font-family:var(--display); font-size:4rem; color:rgba(77,255,195,0.18);
             line-height:1; margin-bottom:1.5rem; transition:color 0.3s;
         }
-        .card:hover .card-n { color:rgba(77,255,195,0.18); }
-        .card h3 { font-size:1.1rem; font-weight:800; margin-bottom:0.75rem; letter-spacing:-0.01em; }
-        .card p { font-size:0.9rem; color:var(--text-dim); line-height:1.75; }
+        .card:hover .card-n { color:rgba(77,255,195,0.28); }
+        .card h3 { font-size:1.1rem; font-weight:800; margin-bottom:0.75rem; letter-spacing:-0.01em; color:#e8f0fe; }
+        .card p { font-size:0.9rem; color:#8fa8cc; line-height:1.75; }
 
         /* SHOWCASE */
         .showcase-grid { display:grid; grid-template-columns:1fr 420px; gap:6rem; align-items:center; }
@@ -191,7 +191,7 @@
             border:1px solid var(--border); border-radius:10px; color:var(--text);
             font-family:var(--body); font-size:0.95rem; transition:border-color 0.25s,box-shadow 0.25s; resize:none;
         }
-        .f-row input::placeholder, .f-row textarea::placeholder { color:rgba(122,144,184,0.4); }
+        .f-row input::placeholder, .f-row textarea::placeholder { color:rgba(143,168,204,0.6); }
         .f-row input:focus, .f-row textarea:focus {
             outline:none; border-color:var(--mint-dim); box-shadow:0 0 0 3px rgba(77,255,195,0.07);
         }
@@ -266,7 +266,7 @@
 
 <section class="hero">
     <div class="hero-inner">
-        <div class="eyebrow">Mobile Studio · UK</div>
+        <div class="eyebrow">Studio</div>
         <h1>Built for the<em>Mobile Era</em></h1>
         <p class="hero-sub">Innovation Hub Studio crafts premium native applications — where clean architecture meets experiences people actually love.</p>
     </div>
