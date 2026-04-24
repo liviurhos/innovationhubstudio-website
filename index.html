@@ -29,18 +29,32 @@
             --color-text-dim: #94a3b8;
             --color-border: rgba(255, 255, 255, 0.08);
             --color-input: #11111e;
+            --gradient-text-start: #a5b4fc;
+            --gradient-text-mid: #6366f1;
+            --gradient-text-end: #22d3ee;
+            --glow-1: rgba(99, 102, 241, 0.1);
+            --glow-2: rgba(34, 211, 238, 0.08);
         }
 
+        /* =============================================
+           PAPER / KINDLE LIGHT THEME
+           Warm cream, ink browns, botanical greens
+           ============================================= */
         [data-theme="light"] {
-            --color-bg: #f8f9fa;
-            --color-surface: #ffffff;
-            --color-accent: #4f46e5;
-            --color-accent-bright: #6366f1;
-            --color-accent-vibrant: #0891b2;
-            --color-text: #111827;
-            --color-text-dim: #4b5563;
-            --color-border: #e5e7eb;
-            --color-input: #f3f4f6;
+            --color-bg: #f2ede3;
+            --color-surface: #faf7f0;
+            --color-accent: #5c4a2a;
+            --color-accent-bright: #7a5c35;
+            --color-accent-vibrant: #3d6b58;
+            --color-text: #1a1208;
+            --color-text-dim: #6b5744;
+            --color-border: #d4c5a9;
+            --color-input: #ede8de;
+            --gradient-text-start: #7a5c35;
+            --gradient-text-mid: #5c4a2a;
+            --gradient-text-end: #3d6b58;
+            --glow-1: rgba(92, 74, 42, 0.07);
+            --glow-2: rgba(61, 107, 88, 0.06);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,14 +65,26 @@
             color: var(--color-text);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: background 0.4s ease;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* Paper texture overlay — only in light mode */
+        [data-theme="light"] body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
         }
 
         .bg-glow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1), transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.08), transparent 40%);
+            background: radial-gradient(circle at 10% 20%, var(--glow-1), transparent 40%),
+                        radial-gradient(circle at 90% 80%, var(--glow-2), transparent 40%);
             pointer-events: none; z-index: 0;
+            transition: background 0.4s ease;
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -68,15 +94,25 @@
             position: fixed; top: 0; width: 100%; padding: 1.25rem 5%;
             background: rgba(5, 5, 8, 0.7); backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--color-border); z-index: 1000;
+            transition: background 0.4s ease, border-color 0.4s ease;
         }
 
-        [data-theme="light"] nav { background: rgba(248, 249, 250, 0.9); }
+        [data-theme="light"] nav {
+            background: rgba(242, 237, 227, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #c8b99a;
+        }
 
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 
         .logo-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
         .logo-img { height: 50px; width: auto; transition: transform 0.3s ease; }
-        .logo-text { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent), var(--color-accent-vibrant)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.05em; }
+        .logo-text {
+            font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-text-start), var(--gradient-text-mid), var(--gradient-text-end));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: -0.05em;
+        }
         .logo-link:hover .logo-img { transform: scale(1.05); }
 
         .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -89,7 +125,11 @@
         .hero { min-height: 90vh; display: flex; align-items: center; padding: 140px 5% 60px; }
         .hero-content { max-width: 1200px; margin: 0 auto; z-index: 1; }
         h1 { font-family: var(--font-mono); font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 2rem; font-weight: 800; }
-        .gradient-text { background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent), var(--color-accent-vibrant)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-text-start), var(--gradient-text-mid), var(--gradient-text-end));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
         .features { padding: 4rem 5%; position: relative; z-index: 1; }
         .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
@@ -98,17 +138,35 @@
             background: var(--color-surface); padding: 2.5rem; border-radius: 20px; 
             border: 1px solid var(--color-border); transition: 0.4s; 
         }
+
+        /* Paper light mode — cards get a subtle ruled-line bottom feel */
+        [data-theme="light"] .feature-card {
+            box-shadow: 0 2px 8px rgba(92, 74, 42, 0.06), inset 0 -1px 0 rgba(92, 74, 42, 0.05);
+        }
+
         .feature-card:hover { transform: translateY(-8px); border-color: var(--color-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        [data-theme="light"] .feature-card:hover {
+            box-shadow: 0 20px 40px rgba(92, 74, 42, 0.15);
+        }
 
         .icon-wrapper {
             width: 48px; height: 48px; background: rgba(99, 102, 241, 0.1);
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
             margin-bottom: 1.5rem; transition: 0.3s;
         }
+
+        [data-theme="light"] .icon-wrapper {
+            background: rgba(92, 74, 42, 0.08);
+        }
+
         .icon-feature { width: 24px; height: 24px; color: var(--color-accent-bright); stroke-width: 2px; }
         
         .feature-card:hover .icon-wrapper { background: var(--color-accent); }
         .feature-card:hover .icon-feature { color: white; }
+
+        [data-theme="light"] .feature-card:hover .icon-wrapper { background: var(--color-accent); }
+
         .feature-card h3 { font-family: var(--font-mono); font-size: 1.25rem; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
 
         .app-showcase { padding: 6rem 5%; position: relative; z-index: 1; }
@@ -122,22 +180,48 @@
             border-radius: 44px; position: relative; margin: 0 auto;
             box-shadow: 0 40px 80px rgba(0,0,0,0.5); overflow: hidden;
         }
+
+        [data-theme="light"] .mockup {
+            border-color: #2e2618;
+            box-shadow: 0 40px 80px rgba(92, 74, 42, 0.25), 0 8px 20px rgba(92, 74, 42, 0.12);
+        }
+
         .mockup img { width: 100%; height: 100%; object-fit: cover; }
         .mockup::before { content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 70px; height: 20px; background: #1f1f2e; border-radius: 12px; z-index: 10; }
 
+        [data-theme="light"] .mockup::before { background: #2e2618; }
+
         .contact { padding: 6rem 5%; position: relative; z-index: 1; }
         .contact-box { max-width: 700px; margin: 0 auto; background: var(--color-surface); padding: 3rem; border-radius: 30px; border: 1px solid var(--color-border); }
+
+        [data-theme="light"] .contact-box {
+            box-shadow: 0 4px 16px rgba(92, 74, 42, 0.08);
+        }
+
         .form-group { margin-bottom: 1.5rem; }
         .form-group label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; font-weight: 700; color: var(--color-accent-bright); text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group textarea { width: 100%; padding: 1rem; background: var(--color-input); border: 1px solid var(--color-border); border-radius: 12px; color: var(--color-text); font-family: inherit; font-size: 0.95rem; transition: 0.3s; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(92, 74, 42, 0.08); }
+
+        [data-theme="dark"] .form-group input:focus,
+        [data-theme="dark"] .form-group textarea:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
         .btn-send { width: 100%; padding: 1.1rem; background: var(--color-accent); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .btn-send:hover { background: var(--color-accent-bright); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3); }
+        .btn-send:hover { background: var(--color-accent-bright); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(92, 74, 42, 0.25); }
         .btn-send:active { transform: translateY(0); }
         .btn-send:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        [data-theme="dark"] .btn-send:hover {
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
         .form-status { margin-top: 1rem; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 500; }
-        .form-status.success { background: rgba(34, 211, 238, 0.1); color: var(--color-accent-vibrant); }
+        .form-status.success { background: rgba(61, 107, 88, 0.1); color: var(--color-accent-vibrant); }
         .form-status.error { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+        [data-theme="dark"] .form-status.success { background: rgba(34, 211, 238, 0.1); }
 
         footer { background: var(--color-surface); padding: 5rem 5% 2rem; border-top: 1px solid var(--color-border); position: relative; z-index: 1; }
         .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
@@ -148,8 +232,13 @@
         .footer-links a:hover { color: var(--color-text); }
         .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-dim); font-size: 0.85rem; }
 
+        /* Theme button — shows 📖 in dark, 🌙 in light */
         .theme-btn { position: fixed; bottom: 2rem; right: 2rem; width: 54px; height: 54px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 50%; cursor: pointer; z-index: 1100; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: 0.3s; }
         .theme-btn:hover { transform: scale(1.1) rotate(10deg); }
+
+        [data-theme="light"] .theme-btn {
+            box-shadow: 0 4px 16px rgba(92, 74, 42, 0.15);
+        }
 
         @media (max-width: 968px) {
             .app-grid, .footer-grid { grid-template-columns: 1fr; text-align: center; }
@@ -278,7 +367,7 @@
         </div>
     </footer>
 
-    <button class="theme-btn" id="themeBtn">🌙</button>
+    <button class="theme-btn" id="themeBtn" title="Toggle theme">📖</button>
 
     <script>
         lucide.createIcons();
@@ -289,11 +378,19 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         const themeBtn = document.getElementById('themeBtn');
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            // dark = show book icon (to switch to paper mode)
+            // light = show moon icon (to switch back to dark)
+            themeBtn.textContent = theme === 'dark' ? '📖' : '🌙';
+            themeBtn.title = theme === 'dark' ? 'Switch to Paper mode' : 'Switch to Dark mode';
+        }
+
         themeBtn.addEventListener('click', () => {
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             const newTheme = isDark ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            themeBtn.textContent = isDark ? '☀️' : '🌙';
+            applyTheme(newTheme);
             localStorage.setItem('theme', newTheme);
         });
 
@@ -302,8 +399,7 @@
         menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
 
         const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        themeBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+        applyTheme(savedTheme);
 
         // Contact Form Handler
         const contactForm = document.getElementById('contactForm');
@@ -320,11 +416,7 @@
             const formData = new FormData(contactForm);
             const email = formData.get('email');
             const message = formData.get('message');
-            
-            
-            
-            // REPLACE ABOVE WITH ACTUAL API CALL:
-            
+
             try {
                 const response = await fetch('https://formspree.io/f/mjgavyqr', {
                     method: 'POST',
@@ -348,7 +440,6 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Send Message';
             }
-            
         });
     </script>
 </body>
