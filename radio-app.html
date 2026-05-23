@@ -183,13 +183,13 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
 
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Innovation Hub Studio<span class="dot"></span></a>
+    <a href="index.html" class="nav-logo">Innovation Hub<span class="dot">.</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="radio-app.html" class="active">Radio App</a></li>
       <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
       <li><a href="eula.html">EULA</a></li>
-      <li><a href="terms.html">Terms & Conditions</a></li>
     </ul>
     <div class="nav-right">
       <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
@@ -202,21 +202,23 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
   </div>
 </nav>
 
-<div class="nav-mobile" id="navMobile">
+<div class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
   <a href="index.html"     onclick="closeMob()">Home</a>
   <a href="radio-app.html" onclick="closeMob()">Radio App</a>
   <a href="privacy.html"   onclick="closeMob()">Privacy</a>
-  <a href="eula.html" onclick="closeMob()">EULA</a>
-  <a href="terms.html" onclick="closeMob()">T&C</a>
+  <a href="terms.html"     onclick="closeMob()">Terms</a>
+  <a href="eula.html"      onclick="closeMob()">EULA</a>
   <a href="index.html#contact" onclick="closeMob()" class="m-cta">Contact</a>
 </div>
 
+<main>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-label="RadioLive App introduction">
   <div class="hero-main">
     <div class="hero-kicker">Featured project</div>
     <h1 class="hero-title">Radio<br><span class="hl">Live App</span></h1>
-    <p class="hero-desc">Over 2500 radio stations from across the globe, streamed through one refined application. Native on Android and iOS.</p>
+    <p class="hero-desc">Over 2000 radio stations from across the globe, streamed through one refined application. Native on Android and iOS.</p>
     <div class="hero-badges">
       <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
       <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
@@ -225,14 +227,14 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
 </section>
 
 <!-- FEATURES -->
-<section class="section" id="features">
+<section class="section" id="features" aria-label="App features">
   <div class="container">
     <div class="sec-kicker r">What it does</div>
     <h2 class="sec-title r">Built for <span class="hl">listeners.</span></h2>
     <ul class="feat-list">
       <li class="feat-item r">
         <span class="feat-num">01</span>
-        <span class="feat-name">2500+ Stations</span>
+        <span class="feat-name">2000+ Stations</span>
         <span class="feat-desc">Music, news, talk, sport — every genre, from every corner of the world.</span>
       </li>
       <li class="feat-item r r-d1">
@@ -260,7 +262,7 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
 </section>
 
 <!-- SCREENSHOTS -->
-<section class="screenshots-section" id="screenshots">
+<section class="screenshots-section" id="screenshots" aria-label="App screenshots">
   <div class="screenshots-inner">
     <div class="sec-kicker r">App preview</div>
     <h2 class="sec-title r">See it in <span class="hl">action.</span></h2>
@@ -284,6 +286,8 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="footer-inner">
     <span class="footer-brand">Innovation Hub Studio Ltd</span>
@@ -291,8 +295,6 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
       <li><a href="index.html">Home</a></li>
       <li><a href="radio-app.html">Radio App</a></li>
       <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="eula.html">EULA</a></li>
-      <li><a href="terms.html">Terms & Conditions</a></li>
     </ul>
     <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
   </div>
