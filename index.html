@@ -26,8 +26,8 @@
   --line:     rgba(255,255,255,0.07);
   --line-hi:  rgba(255,255,255,0.16);
   --fg:       #f0f0eb;
-  --fg-2:     #aaaaaa;
-  --fg-3:     #555555;
+  --fg-2:     #b8b8b8;
+  --fg-3:     #767676;
   --nav-bg:   rgba(10,10,10,0.92);
 }
 
@@ -38,8 +38,8 @@
   --line:     rgba(0,0,0,0.09);
   --line-hi:  rgba(0,0,0,0.2);
   --fg:       #111111;
-  --fg-2:     #555555;
-  --fg-3:     #aaaaaa;
+  --fg-2:     #444444;
+  --fg-3:     #626262;
   --nav-bg:   rgba(244,244,240,0.92);
   --accent:   #111111;
 }
@@ -519,12 +519,12 @@ footer {
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Innovation Hub Studio<span class="dot"></span></a>
+    <a href="index.html" class="nav-logo">Innovation Hub<span class="dot">.</span></a>
     <ul class="nav-links">
       <li><a href="radio-app.html">Radio App</a></li>
       <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
       <li><a href="eula.html">EULA</a></li>
-      <li><a href="terms.html">Terms & Conditions</a></li>
     </ul>
     <div class="nav-right">
       <!-- Theme toggle -->
@@ -542,18 +542,20 @@ footer {
 </nav>
 
 <!-- Mobile overlay -->
-<div class="nav-mobile" id="navMobile">
+<div class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
   <a href="radio-app.html" onclick="closeMob()">Radio App</a>
   <a href="privacy.html"   onclick="closeMob()">Privacy</a>
+  <a href="terms.html"     onclick="closeMob()">Terms</a>
   <a href="eula.html"      onclick="closeMob()">EULA</a>
-  <a href="terms.html"     onclick="closeMob()">T&C</a>
   <a href="#contact"       onclick="closeMob()" class="m-cta">Contact</a>
 </div>
 
+<main>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-label="Introduction">
   <div class="hero-main">
-    <div class="hero-kicker">Based In UK</div>
+    <div class="hero-kicker">Studio · UK</div>
     <h1 class="hero-headline">
       We build apps<br>that <span class="hl">matter.</span>
     </h1>
@@ -562,12 +564,12 @@ footer {
         Innovation Hub Studio crafts premium native mobile applications —
         precise engineering, considered design, zero compromise.
       </p>
-      <span class="hero-scroll">Scroll</span>
+      <span class="hero-scroll" aria-hidden="true">Scroll</span>
     </div>
   </div>
-  <div class="hero-meta">
+  <div class="hero-meta" aria-label="Key statistics">
     <div class="hero-stat">
-      <div class="hero-stat-n">2500+</div>
+      <div class="hero-stat-n">1000+</div>
       <div class="hero-stat-l">Radio stations</div>
     </div>
     <div class="hero-stat">
@@ -582,7 +584,7 @@ footer {
 </section>
 
 <!-- CAPABILITIES -->
-<section class="section" id="features">
+<section class="section" id="features" aria-label="Our capabilities">
   <div class="container">
     <div class="sec-header r">
       <span class="sec-kicker">What we build on</span>
@@ -609,14 +611,14 @@ footer {
 </section>
 
 <!-- APP SHOWCASE -->
-<section class="section" id="app">
+<section class="section" id="app" aria-label="RadioLive App">
   <div class="container">
     <div class="showcase">
       <div class="r">
         <p class="app-label">Featured project</p>
         <h2 class="app-name">Radio<br><span class="hl">Live App</span></h2>
         <p class="app-desc">
-          Over 2500 radio stations from across the globe, streamed through
+          Over 1000 radio stations from across the globe, streamed through
           one refined application. Native on Android and iOS.
         </p>
         <div class="app-badges">
@@ -627,10 +629,10 @@ footer {
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <img src="" alt="RadioLive App screenshot"
+          <img src="images/radio4.png" alt="RadioLive App screenshot"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="phone-fallback">
-            <span class="phone-fallback-name">RadioLive App</span>
+            <span class="phone-fallback-name">Radio Live</span>
             <div class="waveform">
               <span style="height:6px"></span><span style="height:18px"></span>
               <span style="height:10px"></span><span style="height:28px"></span>
@@ -645,7 +647,7 @@ footer {
 </section>
 
 <!-- CONTACT -->
-<section class="section" id="contact">
+<section class="section" id="contact" aria-label="Contact us">
   <div class="container">
     <div class="contact-grid">
       <div class="r">
@@ -677,6 +679,8 @@ footer {
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -685,8 +689,6 @@ footer {
       <li><a href="index.html">Home</a></li>
       <li><a href="radio-app.html">Radio App</a></li>
       <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="eula.html">EULA</a></li>
-      <li><a href="terms.html">Terms & Conditions</a></li>
     </ul>
     <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
   </div>
