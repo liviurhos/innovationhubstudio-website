@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EULA — Innovation Hub Studio</title>
+<meta name="description" content="End User Licence Agreement for RadioLive — Innovation Hub Studio Ltd.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root { --accent:#c8f135; --ease:cubic-bezier(0.16,1,0.3,1); --mono:'JetBrains Mono','Fira Code',monospace; --sans:'Inter',system-ui,sans-serif; }
+[data-theme="dark"]  { --bg:#0a0a0a; --bg-2:#111111; --bg-3:#1a1a1a; --line:rgba(255,255,255,0.07); --line-hi:rgba(255,255,255,0.16); --fg:#f0f0eb; --fg-2:#aaaaaa; --fg-3:#555555; --nav-bg:rgba(10,10,10,0.92); }
+[data-theme="light"] { --bg:#f4f4f0; --bg-2:#ebebeb; --bg-3:#e0e0e0; --line:rgba(0,0,0,0.09); --line-hi:rgba(0,0,0,0.2); --fg:#111111; --fg-2:#555555; --fg-3:#aaaaaa; --nav-bg:rgba(244,244,240,0.92); --accent:#111111; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--fg);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background 0.3s,color 0.3s;}
+a{color:inherit;text-decoration:none;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;height:64px;display:flex;align-items:center;padding:0 5%;border-bottom:1px solid transparent;transition:transform 0.38s var(--ease),border-color 0.3s,background 0.3s;}
+nav.scrolled{background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line);}
+nav.hide{transform:translateY(-100%);}
+.nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.nav-logo{font-family:var(--mono);font-weight:800;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--fg);white-space:nowrap;}
+.nav-logo .dot{color:var(--accent);}
+.nav-links{list-style:none;display:flex;align-items:center;gap:2rem;}
+.nav-links a{font-family:var(--mono);font-size:0.72rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-2);transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--fg);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.theme-toggle{width:34px;height:34px;border:1px solid var(--line-hi);border-radius:3px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s;flex-shrink:0;}
+.theme-toggle:hover{border-color:var(--fg-2);}
+.theme-toggle svg{width:16px;height:16px;stroke:var(--fg-2);fill:none;stroke-width:1.5;}
+.nav-cta{font-family:var(--mono);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:0.5rem 1.1rem;border-radius:2px;white-space:nowrap;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+.mob-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.mob-btn span{display:block;width:20px;height:1.5px;background:var(--fg);transition:0.3s;}
+.nav-mobile{display:none;position:fixed;inset:0;z-index:800;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.nav-mobile.open{display:flex;}
+.nav-mobile a{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-2);transition:color 0.2s;}
+.nav-mobile a:hover{color:var(--fg);}
+.nav-mobile .m-cta{color:var(--bg);background:var(--accent);padding:0.6rem 1.5rem;border-radius:2px;}
+.page-header{position:relative;z-index:1;padding:120px 5% 5rem;border-bottom:1px solid var(--line);}
+.page-header-inner{max-width:1280px;margin:0 auto;}
+.page-kicker{display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:0.68rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--fg-3);margin-bottom:1.5rem;}
+.page-kicker::before{content:'';display:block;width:20px;height:1px;background:var(--accent);}
+.page-title{font-family:var(--mono);font-size:clamp(2.5rem,6vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:var(--fg);}
+.page-title .hl{color:var(--accent);}
+.page-meta{margin-top:1.5rem;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-3);}
+.content{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:5rem 5%;}
+.policy-block{padding:2.5rem 0;border-bottom:1px solid var(--line);}
+.policy-block:first-child{padding-top:0;}
+.policy-block:last-child{border-bottom:none;}
+.policy-num{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.policy-block h2{font-family:var(--mono);font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;color:var(--fg);margin-bottom:1.25rem;}
+.policy-block p{font-size:0.92rem;line-height:1.85;color:var(--fg-2);font-weight:300;margin-bottom:0.875rem;}
+.policy-block p:last-child{margin-bottom:0;}
+.policy-block ul{list-style:none;margin:0.5rem 0 0.875rem;}
+.policy-block ul li{font-size:0.92rem;line-height:1.85;color:var(--fg-2);font-weight:300;padding:0.3rem 0;display:flex;align-items:flex-start;gap:0.75rem;}
+.policy-block ul li::before{content:'—';color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:0.8rem;margin-top:0.05rem;}
+.policy-block strong{color:var(--fg);font-weight:600;}
+.contact-box{margin-top:4rem;padding:3rem;border:1px solid var(--line-hi);border-radius:4px;background:var(--bg-2);}
+.contact-box-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.contact-box h2{font-family:var(--mono);font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;color:var(--fg);margin-bottom:1rem;}
+.contact-box p{font-size:0.92rem;line-height:1.85;color:var(--fg-2);font-weight:300;}
+.contact-box a{color:var(--fg);border-bottom:1px solid var(--line-hi);padding-bottom:1px;transition:border-color 0.2s;}
+.contact-box a:hover{border-color:var(--fg);}
+footer{position:relative;z-index:1;padding:2.5rem 5%;border-top:1px solid var(--line);}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{font-family:var(--mono);font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-2);}
+.footer-links{list-style:none;display:flex;gap:2rem;}
+.footer-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-3);transition:color 0.2s;}
+.footer-links a:hover{color:var(--fg);}
+.footer-copy{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.05em;color:var(--fg-3);}
+.r{opacity:0;transform:translateY(16px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease);}
+.r.on{opacity:1;transform:none;}
+.r-d1{transition-delay:0.07s;}
+@media(max-width:640px){.nav-links,.nav-cta{display:none;}.mob-btn{display:flex;}.footer-inner{flex-direction:column;gap:1.25rem;text-align:center;}.footer-links{justify-content:center;}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Innovation Hub<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+        <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+      <button class="mob-btn" id="mobBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="radio-app.html" onclick="closeMob()">Radio App</a>
+  <a href="privacy.html"   onclick="closeMob()">Privacy</a>
+  <a href="index.html#contact" onclick="closeMob()" class="m-cta">Contact</a>
+</div>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-kicker">Legal</div>
+    <h1 class="page-title">End User Licence <span class="hl">Agreement</span></h1>
+    <p class="page-meta">Effective date — 1 January 2025 &nbsp;·&nbsp; Last updated — May 2026</p>
+  </div>
+</header>
+
+<main class="content">
+
+  <div class="policy-block r">
+    <div class="policy-num">01</div>
+    <h2>Important Notice</h2>
+    <p>This End User Licence Agreement ("EULA") is a legal agreement between you ("End User") and <strong>Innovation Hub Studio Ltd</strong>, a company registered in England and Wales ("Licensor"). It governs your use of the RadioLive mobile application ("the App").</p>
+    <p>This EULA is entered into between you and Innovation Hub Studio Ltd only. Apple Inc. and Google LLC are not parties to this EULA and have no obligation whatsoever to furnish any maintenance or support services with respect to the App. By downloading or using the App, you acknowledge and agree to this EULA. If you do not agree, do not download or use the App.</p>
+  </div>
+
+  <div class="policy-block r r-d1">
+    <div class="policy-num">02</div>
+    <h2>Licence Grant</h2>
+    <p>Subject to your compliance with this EULA and payment of any applicable fees, Innovation Hub Studio Ltd grants you a limited, non-exclusive, non-transferable, revocable licence to download and use the App on any Apple-branded or Android device that you own or control, as permitted by the applicable platform's usage rules.</p>
+    <p>This licence does not include the right to:</p>
+    <ul>
+      <li>Use the App for any commercial purpose or for any public display.</li>
+      <li>Sublicense, sell, resell, transfer, assign, or otherwise dispose of the App or this licence.</li>
+      <li>Modify, translate, adapt, or create derivative works based on the App.</li>
+      <li>Remove or alter any proprietary notices, labels, or marks on the App.</li>
+    </ul>
+  </div>
+
+  <div class="policy-block r">
+    <div class="policy-num">03</div>
+    <h2>Scope of Licence — Apple App Store</h2>
+    <p>If you downloaded the App from the Apple App Store, the following additional terms apply in accordance with Apple's standard EULA terms:</p>
+    <ul>
+      <li>The licence granted to you is limited to a non-transferable licence to use the App on any Apple-branded products that you own or control and as permitted by the Usage Rules set forth in the App Store Terms of Service.</li>
+      <li>Innovation Hub Studio Ltd, not Apple, is solely responsible for the App and its content.</li>
+      <li>Apple has no obligation to furnish any maintenance and support services with respect to the App.</li>
+      <li>In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the App to you. To the maximum extent permitted by applicable law, Apple will have no other warranty obligation whatsoever with respect to the App.</li>
+      <li>Innovation Hub Studio Ltd, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App.</li>
+      <li>In the event of any third-party claim that the App or your possession and use of the App infringes that third party's intellectual property rights, Innovation Hub Studio Ltd, not Apple, will be solely responsible for the investigation, defence, settlement, and discharge of any such claim.</li>
+      <li>Apple and its subsidiaries are third-party beneficiaries of this EULA, and upon your acceptance of its terms, Apple will have the right (and will be deemed to have accepted the right) to enforce this EULA against you as a third-party beneficiary thereof.</li>
+    </ul>
+  </div>
+
+  <div class="policy-block r r-d1">
+    <div class="policy-num">04</div>
+    <h2>In-App Purchases</h2>
+    <p>The App offers optional in-app purchases as described in our Terms and Conditions. All purchases are processed by Apple Inc. or Google LLC. The Licensor is solely responsible for providing the licensed content and features associated with purchases; Apple and Google are not responsible for any aspect of purchase fulfilment beyond payment processing.</p>
+  </div>
+
+  <div class="policy-block r">
+    <div class="policy-num">05</div>
+    <h2>Maintenance and Support</h2>
+    <p>Innovation Hub Studio Ltd is solely responsible for providing maintenance and support services for the App, as required by applicable law. Apple and Google have no obligation to provide any maintenance or support services with respect to the App.</p>
+    <p>For support enquiries, contact us at <a href="mailto:contact@innovationhubstudio.co.uk" style="color:var(--fg);border-bottom:1px solid var(--line-hi);padding-bottom:1px;">contact@innovationhubstudio.co.uk</a>.</p>
+  </div>
+
+  <div class="policy-block r r-d1">
+    <div class="policy-num">06</div>
+    <h2>Warranty</h2>
+    <p>Innovation Hub Studio Ltd warrants that, to the best of its knowledge, the App does not infringe any third-party intellectual property rights. In the event of any warranty claim, Innovation Hub Studio Ltd — not Apple or Google — is solely responsible.</p>
+    <p>To the maximum extent permitted by applicable law and except as required by statute, the App is provided "as is" without further warranty of any kind. Your statutory rights as a consumer are not affected.</p>
+  </div>
+
+  <div class="policy-block r">
+    <div class="policy-num">07</div>
+    <h2>Product Claims</h2>
+    <p>Innovation Hub Studio Ltd, not Apple or Google, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App, including but not limited to: (i) product liability claims; (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</p>
+  </div>
+
+  <div class="policy-block r r-d1">
+    <div class="policy-num">08</div>
+    <h2>Intellectual Property</h2>
+    <p>In the event of any third-party claim that the App or your possession and use of the App infringes that third party's intellectual property rights, Innovation Hub Studio Ltd — not Apple or Google — will be solely responsible for the investigation, defence, settlement, and discharge of any such intellectual property infringement claim.</p>
+  </div>
+
+  <div class="policy-block r">
+    <div class="policy-num">09</div>
+    <h2>Legal Compliance</h2>
+    <p>You represent and warrant that (i) you are not located in a country that is subject to a UK, EU, or US Government embargo, or that has been designated by the UK, EU, or US Government as a "terrorist supporting" country; and (ii) you are not listed on any UK, EU, or US Government list of prohibited or restricted parties.</p>
+  </div>
+
+  <div class="policy-block r r-d1">
+    <div class="policy-num">10</div>
+    <h2>Termination</h2>
+    <p>This EULA is effective until terminated. Your rights under this EULA will terminate automatically without notice from Innovation Hub Studio Ltd if you fail to comply with any of its terms. Upon termination, you must cease all use of the App and delete all copies from your devices.</p>
+  </div>
+
+  <div class="policy-block r">
+    <div class="policy-num">11</div>
+    <h2>Governing Law</h2>
+    <p>This EULA is governed by the laws of England and Wales. Any dispute arising under or in connection with this EULA shall be subject to the exclusive jurisdiction of the courts of England and Wales, except where mandatory consumer protection laws in your country of residence provide otherwise.</p>
+  </div>
+
+  <div class="contact-box r">
+    <div class="contact-box-label">Licensor</div>
+    <h2>Innovation Hub Studio Ltd</h2>
+    <p>[REGISTERED ADDRESS]<br>United Kingdom</p>
+    <p style="margin-top:1rem;">Email: <a href="mailto:contact@innovationhubstudio.co.uk">contact@innovationhubstudio.co.uk</a></p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Innovation Hub Studio Ltd</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="eula.html">EULA</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
+  </div>
+</footer>
+
+<script>
+(function(){const nav=document.getElementById('nav');let last=0;window.addEventListener('scroll',()=>{const y=window.scrollY;nav.classList.toggle('scrolled',y>40);nav.classList.toggle('hide',y>last&&y>100);last=y;},{passive:true});})();
+function closeMob(){document.getElementById('navMobile').classList.remove('open');}
+document.getElementById('mobBtn').addEventListener('click',()=>{document.getElementById('navMobile').classList.toggle('open');});
+(function(){const html=document.documentElement,btn=document.getElementById('themeBtn'),sun=document.getElementById('icon-sun'),moon=document.getElementById('icon-moon');function apply(t){html.setAttribute('data-theme',t);sun.style.display=t==='dark'?'block':'none';moon.style.display=t==='light'?'block':'none';localStorage.setItem('theme',t);}apply(localStorage.getItem('theme')||'dark');btn.addEventListener('click',()=>apply(html.getAttribute('data-theme')==='dark'?'light':'dark'));})();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:0.1});document.querySelectorAll('.r').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
