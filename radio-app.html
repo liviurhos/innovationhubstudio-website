@@ -3,82 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RadioLive App — Innovation Hub Studio</title>
-<meta name="description" content="Access 2000+ radio stations from around the world in one elegant application.">
+<title>Innovation Hub Studio</title>
+<meta name="description" content="Innovation Hub Studio — premium mobile applications for Android and iOS.">
 <style>
+/* ─────────────────────────────────────────
+   TOKENS — dark (default)
+───────────────────────────────────────── */
 :root {
   --accent: #c8f135;
   --ease:   cubic-bezier(0.16, 1, 0.3, 1);
   --mono:   Arial, Helvetica, sans-serif;
   --sans:   Arial, Helvetica, sans-serif;
 }
+
 [data-theme="dark"] {
-  --bg:      #0a0a0a;
-  --bg-2:    #111111;
-  --bg-3:    #1a1a1a;
-  --line:    rgba(255,255,255,0.07);
-  --line-hi: rgba(255,255,255,0.16);
-  --fg:      #f0f0eb;
-  --fg-2:    #aaaaaa;
-  --fg-3:    #555555;
-  --nav-bg:  rgba(10,10,10,0.92);
+  --bg:       #0a0a0a;
+  --bg-2:     #111111;
+  --bg-3:     #1a1a1a;
+  --line:     rgba(255,255,255,0.07);
+  --line-hi:  rgba(255,255,255,0.16);
+  --fg:       #f0f0eb;
+  --fg-2:     #b8b8b8;
+  --fg-3:     #767676;
+  --nav-bg:   rgba(10,10,10,0.92);
 }
+
 [data-theme="light"] {
-  --bg:      #f4f4f0;
-  --bg-2:    #ebebeb;
-  --bg-3:    #e0e0e0;
-  --line:    rgba(0,0,0,0.09);
-  --line-hi: rgba(0,0,0,0.2);
-  --fg:      #111111;
-  --fg-2:    #555555;
-  --fg-3:    #aaaaaa;
-  --nav-bg:  rgba(244,244,240,0.92);
-  --accent:  #111111;
+  --bg:       #f4f4f0;
+  --bg-2:     #ebebeb;
+  --bg-3:     #e0e0e0;
+  --line:     rgba(0,0,0,0.09);
+  --line-hi:  rgba(0,0,0,0.2);
+  --fg:       #111111;
+  --fg-2:     #444444;
+  --fg-3:     #626262;
+  --nav-bg:   rgba(244,244,240,0.92);
+  --accent:   #111111;
 }
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
-  font-family:var(--sans); background:var(--bg); color:var(--fg);
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
-  transition:background 0.3s, color 0.3s;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
 }
 a { color:inherit; text-decoration:none; }
 img { display:block; max-width:100%; }
+
+/* noise */
 body::before {
   content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
 }
 
-/* NAV — identical to index/privacy */
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:900;
-  height:64px; display:flex; align-items:center; padding:0 5%;
+  height:64px;
+  display:flex; align-items:center;
+  padding:0 5%;
   border-bottom:1px solid transparent;
-  transition:transform 0.38s var(--ease), border-color 0.3s, background 0.3s;
+  transition: transform 0.38s var(--ease), border-color 0.3s, background 0.3s;
 }
-nav.scrolled { background:var(--nav-bg); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-color:var(--line); }
+nav.scrolled {
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: var(--line);
+}
 nav.hide { transform:translateY(-100%); }
-.nav-inner { max-width:1280px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
-.nav-logo { font-family:var(--mono); font-weight:400; font-size:0.9rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--fg); white-space:nowrap; }
-.nav-logo .dot { color:var(--accent); }
-.nav-links { list-style:none; display:flex; align-items:center; gap:2rem; }
-.nav-links a { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--fg-2); transition:color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color:var(--fg); }
-.nav-right { display:flex; align-items:center; gap:1rem; }
-.theme-toggle { width:34px; height:34px; border:1px solid var(--line-hi); border-radius:3px; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color 0.2s; flex-shrink:0; }
-.theme-toggle:hover { border-color:var(--fg-2); }
-.theme-toggle svg { width:16px; height:16px; stroke:var(--fg-2); fill:none; stroke-width:1.5; }
-.nav-cta { font-family:var(--mono); font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--bg); background:var(--accent); padding:0.5rem 1.1rem; border-radius:2px; white-space:nowrap; transition:opacity 0.2s; }
-.nav-cta:hover { opacity:0.85; }
-.mob-btn { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-.mob-btn span { display:block; width:20px; height:1.5px; background:var(--fg); transition:0.3s; }
-.nav-mobile { display:none; position:fixed; inset:0; z-index:800; background:var(--bg); flex-direction:column; align-items:center; justify-content:center; gap:2rem; }
-.nav-mobile.open { display:flex; }
-.nav-mobile a { font-family:var(--mono); font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--fg-2); transition:color 0.2s; }
-.nav-mobile a:hover { color:var(--fg); }
-.nav-mobile .m-cta { color:var(--bg); background:var(--accent); padding:0.6rem 1.5rem; border-radius:2px; }
 
-/* HERO */
+.nav-inner {
+  max-width:1280px; margin:0 auto; width:100%;
+  display:flex; align-items:center; justify-content:space-between; gap:2rem;
+}
+
+/* logo */
+.nav-logo {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+  white-space: nowrap;
+}
+.nav-logo .dot { color: var(--accent); }
+.nav-logo img { display:block; height:40px; width:auto; }
+
+/* links — single set, no duplication */
+.nav-links {
+  list-style:none;
+  display:flex; align-items:center; gap:2rem;
+}
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--fg); }
+
+/* right side: theme toggle + cta */
+.nav-right {
+  display:flex; align-items:center; gap:1rem;
+}
+
+.theme-toggle {
+  width:34px; height:34px;
+  border:1px solid var(--line-hi);
+  border-radius:3px;
+  background: transparent;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition: border-color 0.2s, background 0.2s;
+  flex-shrink:0;
+}
+.theme-toggle:hover { border-color: var(--fg-2); }
+.theme-toggle svg { width:16px; height:16px; stroke:var(--fg-2); fill:none; stroke-width:1.5; }
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 0.5rem 1.1rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity:0.85; }
+
+/* mobile */
+.mob-btn {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:pointer; padding:4px;
+}
+.mob-btn span { display:block; width:20px; height:1.5px; background:var(--fg); transition:0.3s; }
+
+.nav-mobile {
+  display:none;
+  position:fixed; inset:0; z-index:800;
+  background:var(--bg);
+  flex-direction:column; align-items:center; justify-content:center; gap:2rem;
+}
+.nav-mobile.open { display:flex; }
+.nav-mobile a {
+  font-family:var(--mono); font-size:0.85rem;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--fg-2); transition:color 0.2s;
+}
+.nav-mobile a:hover { color:var(--fg); }
+.nav-mobile .m-cta {
+  color:var(--bg); background:var(--accent);
+  padding:0.6rem 1.5rem; border-radius:2px;
+}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
 .hero {
   position:relative; z-index:1;
   min-height:100svh;
@@ -86,91 +184,329 @@ nav.hide { transform:translateY(-100%); }
   padding:0 5%;
   border-bottom:1px solid var(--line);
 }
-.hero-main { display:flex; flex-direction:column; justify-content:flex-end; padding-top:100px; padding-bottom:4rem; }
-.hero-kicker { display:flex; align-items:center; gap:0.75rem; font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; color:var(--fg-3); margin-bottom:2rem; opacity:0; animation:rise 1s var(--ease) forwards 0.1s; }
-.hero-kicker::before { content:''; display:block; width:20px; height:1px; background:var(--accent); }
-.hero-title { font-family:var(--mono); font-size:clamp(3rem,8vw,8rem); font-weight:400; line-height:1.0; letter-spacing:-0.03em; color:var(--fg); margin-bottom:2rem; opacity:0; animation:rise 1s var(--ease) forwards 0.22s; }
-.hero-title .hl { color:var(--accent); }
-.hero-desc { font-size:1rem; line-height:1.75; color:var(--fg-2); max-width:44ch; font-weight:300; margin-bottom:2.5rem; opacity:0; animation:rise 1s var(--ease) forwards 0.34s; }
-.hero-badges { display:flex; gap:0.875rem; flex-wrap:wrap; opacity:0; animation:rise 1s var(--ease) forwards 0.46s; }
-.hero-badges img { height:40px; opacity:0.55; filter:grayscale(1) brightness(1.6); transition:opacity 0.25s, filter 0.25s, transform 0.25s; }
-[data-theme="light"] .hero-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
-.hero-badges img:hover { opacity:1; filter:none; transform:translateY(-2px); }
-@keyframes rise { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+.hero-main {
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding-top:100px; padding-bottom:4rem;
+}
+.hero-kicker {
+  display:flex; align-items:center; gap:0.75rem;
+  font-family:var(--mono); font-size:0.68rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--fg-3);
+  margin-bottom:2rem;
+  opacity:0; animation:rise 1s var(--ease) forwards 0.1s;
+}
+.hero-kicker::before {
+  content:''; display:block; width:20px; height:1px; background:var(--accent);
+}
+.hero-headline {
+  font-family: var(--mono);
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  max-width: 14ch;
+  color: var(--fg);
+  opacity:0; animation:rise 1s var(--ease) forwards 0.22s;
+}
+.hero-headline .hl { color: var(--accent); }
+.hero-sub-row {
+  display:flex; align-items:flex-end; justify-content:space-between; gap:2rem;
+  margin-top:3rem;
+  opacity:0; animation:rise 1s var(--ease) forwards 0.38s;
+}
+.hero-desc {
+  font-size:1rem; line-height:1.75; color:var(--fg-2);
+  max-width:38ch; font-weight:300;
+}
+.hero-scroll {
+  font-family:var(--mono); font-size:0.65rem;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--fg-3);
+  display:flex; align-items:center; gap:0.5rem; white-space:nowrap;
+}
+.hero-scroll::after {
+  content:''; display:block; width:1px; height:40px;
+  background:var(--line-hi);
+  animation:breathe 2.2s ease-in-out infinite;
+}
+@keyframes breathe { 0%,100%{opacity:1;height:40px} 50%{opacity:0.3;height:20px} }
 
-/* FEATURES */
-.section { position:relative; z-index:1; padding:8rem 5%; border-bottom:1px solid var(--line); }
+.hero-meta {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+  opacity:0; animation:rise 1s var(--ease) forwards 0.5s;
+}
+.hero-stat {
+  padding:1.75rem 0;
+  border-right:1px solid var(--line);
+  text-align:center;
+}
+.hero-stat:last-child { border-right:none; }
+.hero-stat-n {
+  font-family:var(--mono); font-size:1.8rem; font-weight:400;
+  color:var(--accent); line-height:1; margin-bottom:0.35rem;
+}
+.hero-stat-l {
+  font-family:var(--mono); font-size:0.65rem;
+  letter-spacing:0.12em; text-transform:uppercase; color:var(--fg-3);
+}
+
+/* ─────────────────────────────────────────
+   SECTION
+───────────────────────────────────────── */
+.section {
+  position:relative; z-index:1;
+  padding:8rem 5%;
+  border-bottom:1px solid var(--line);
+}
 .container { max-width:1280px; margin:0 auto; }
-.sec-kicker { font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); display:flex; align-items:center; gap:0.6rem; margin-bottom:3rem; }
+
+.sec-header {
+  display:flex; justify-content:space-between; align-items:flex-start; gap:3rem;
+  margin-bottom:5rem;
+}
+.sec-kicker {
+  font-family:var(--mono); font-size:0.68rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:0.6rem;
+  white-space:nowrap; margin-top:0.35rem;
+}
 .sec-kicker::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
-.sec-title { font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem); font-weight:400; line-height:1.1; letter-spacing:-0.03em; color:var(--fg); margin-bottom:4rem; }
+.sec-title {
+  font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:400; line-height:1.1; letter-spacing:-0.03em;
+  max-width:22ch; color:var(--fg);
+}
 .sec-title .hl { color:var(--accent); }
 
-.feat-list { list-style:none; }
-.feat-item {
+/* ─────────────────────────────────────────
+   CAPABILITIES
+───────────────────────────────────────── */
+.cap-list { list-style:none; }
+.cap-item {
   display:grid; grid-template-columns:3.5rem 1fr 1fr;
   gap:2rem; align-items:start;
-  padding:2rem 0; border-top:1px solid var(--line);
-  transition:border-color 0.3s; cursor:default;
-}
-.feat-item:last-child { border-bottom:1px solid var(--line); }
-.feat-item:hover { border-color:var(--line-hi); }
-.feat-item:hover .feat-name { color:var(--fg); }
-.feat-item:hover .feat-num { color:var(--accent); }
-.feat-num { font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.1em; color:var(--fg-3); padding-top:0.25rem; transition:color 0.3s; }
-.feat-name { font-family:var(--mono); font-size:clamp(1.1rem,1.8vw,1.5rem); font-weight:400; letter-spacing:-0.02em; line-height:1.15; color:var(--fg-2); transition:color 0.3s; }
-.feat-desc { font-size:0.88rem; line-height:1.75; color:var(--fg-2); font-weight:300; max-width:42ch; padding-top:0.25rem; }
-
-/* SCREENSHOTS */
-.screenshots-section { position:relative; z-index:1; padding:8rem 5%; border-bottom:1px solid var(--line); }
-.screenshots-inner { max-width:1280px; margin:0 auto; }
-.screenshots-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1.5rem;
-  margin-top:4rem;
-}
-.screenshot {
-  border:1px solid var(--line);
-  border-radius:4px;
-  overflow:hidden;
-  background:var(--bg-2);
+  padding:2rem 0;
+  border-top:1px solid var(--line);
   transition:border-color 0.3s;
+  cursor:default;
 }
-.screenshot:hover { border-color:var(--line-hi); }
-.screenshot img { width:100%; height:auto; display:block; }
-.screenshot-empty {
-  aspect-ratio:9/16;
-  display:flex; align-items:center; justify-content:center;
-  font-family:var(--mono); font-size:0.65rem;
-  letter-spacing:0.15em; text-transform:uppercase; color:var(--fg-3);
+.cap-item:last-child { border-bottom:1px solid var(--line); }
+.cap-item:hover { border-color:var(--line-hi); }
+.cap-item:hover .cap-name { color:var(--fg); }
+.cap-item:hover .cap-num  { color:var(--accent); }
+.cap-num {
+  font-family:var(--mono); font-size:0.68rem; font-weight:400;
+  letter-spacing:0.1em; color:var(--fg-3);
+  padding-top:0.25rem; transition:color 0.3s;
+}
+.cap-name {
+  font-family:var(--mono); font-size:clamp(1.2rem,2vw,1.7rem);
+  font-weight:400; letter-spacing:-0.02em; line-height:1.15;
+  color:var(--fg-2); transition:color 0.3s;
+}
+.cap-desc {
+  font-size:0.88rem; line-height:1.75; color:var(--fg-2);
+  font-weight:300; max-width:42ch; padding-top:0.25rem;
 }
 
-/* FOOTER */
-footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid var(--line); }
-.footer-inner { max-width:1280px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
-.footer-brand { font-family:var(--mono); font-size:0.72rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-2); }
-.footer-links { list-style:none; display:flex; gap:2rem; }
-.footer-links a { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--fg-3); transition:color 0.2s; }
+/* ─────────────────────────────────────────
+   SHOWCASE
+───────────────────────────────────────── */
+.showcase {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:6rem; align-items:center;
+}
+.app-label {
+  font-family:var(--mono); font-size:0.68rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:1.25rem;
+}
+.app-name {
+  font-family:var(--mono); font-size:clamp(2.5rem,5vw,4.5rem);
+  font-weight:400; letter-spacing:-0.03em; line-height:1.0;
+  color:var(--fg); margin-bottom:1.75rem;
+}
+.app-name .hl { color:var(--accent); }
+.app-desc {
+  font-size:0.95rem; line-height:1.8; color:var(--fg-2);
+  font-weight:300; max-width:40ch; margin-bottom:2.5rem;
+}
+.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; }
+.app-badges img {
+  height:40px; opacity:0.55;
+  filter:grayscale(1) brightness(1.6);
+  transition:opacity 0.25s, filter 0.25s, transform 0.25s;
+}
+[data-theme="light"] .app-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
+.app-badges img:hover { opacity:1; filter:none; transform:translateY(-2px); }
+
+/* phone */
+.phone-outer { display:flex; justify-content:center; align-items:center; }
+.phone-frame {
+  width:248px; height:518px;
+  border:1.5px solid var(--line-hi);
+  border-radius:38px; background:var(--bg-3);
+  position:relative; overflow:hidden;
+  box-shadow: 0 0 0 6px var(--line), 0 60px 100px rgba(0,0,0,0.35);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.phone-notch {
+  position:absolute; top:16px; left:50%; transform:translateX(-50%);
+  width:56px; height:16px;
+  background:var(--bg); border-radius:8px; z-index:10;
+}
+.phone-frame img { width:100%; height:100%; object-fit:cover; }
+.phone-fallback {
+  width:100%; height:100%; display:none;
+  flex-direction:column; align-items:center; justify-content:center; gap:1.5rem;
+  padding:2.5rem;
+}
+.phone-fallback-name {
+  font-family:var(--mono); font-size:0.68rem;
+  letter-spacing:0.25em; text-transform:uppercase; color:var(--fg-3);
+}
+.waveform { display:flex; align-items:center; gap:3px; height:36px; }
+.waveform span {
+  display:block; width:3px; border-radius:2px;
+  background:var(--accent); opacity:0.55;
+  animation:wv 1.4s ease-in-out infinite;
+}
+.waveform span:nth-child(2){animation-delay:0.1s}
+.waveform span:nth-child(3){animation-delay:0.22s}
+.waveform span:nth-child(4){animation-delay:0.32s}
+.waveform span:nth-child(5){animation-delay:0.22s}
+.waveform span:nth-child(6){animation-delay:0.1s}
+.waveform span:nth-child(7){animation-delay:0.16s}
+@keyframes wv { 0%,100%{height:4px} 50%{height:30px} }
+
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+.contact-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:8rem; align-items:start;
+}
+.contact-tag {
+  font-family:var(--mono); font-size:0.68rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:1.25rem;
+}
+.contact-title {
+  font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:400; line-height:1.1; letter-spacing:-0.03em;
+  color:var(--fg); margin-bottom:2rem;
+}
+.contact-info {
+  font-size:0.88rem; color:var(--fg-2); line-height:2; font-weight:300;
+}
+.contact-info a {
+  border-bottom:1px solid var(--line-hi); padding-bottom:1px;
+  transition:border-color 0.2s, color 0.2s;
+}
+.contact-info a:hover { color:var(--fg); border-color:var(--fg); }
+
+.f-field { margin-bottom:1.1rem; }
+.f-field label {
+  display:block; font-family:var(--mono);
+  font-size:0.65rem; font-weight:400;
+  letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--fg-3); margin-bottom:0.5rem;
+}
+.f-field input, .f-field textarea {
+  width:100%;
+  background:var(--bg-2); border:1px solid var(--line);
+  border-radius:3px; color:var(--fg);
+  font-family:var(--sans); font-size:0.9rem; font-weight:300;
+  padding:0.85rem 1rem;
+  transition:border-color 0.2s, background 0.3s; resize:none;
+}
+.f-field input::placeholder, .f-field textarea::placeholder { color:var(--fg-3); }
+.f-field input:focus, .f-field textarea:focus {
+  outline:none; border-color:var(--line-hi);
+}
+.f-submit { margin-top:0.75rem; display:flex; align-items:center; gap:1rem; }
+.btn-send {
+  font-family:var(--mono); font-size:0.72rem; font-weight:600;
+  letter-spacing:0.1em; text-transform:uppercase;
+  padding:0.85rem 2rem; border-radius:2px; border:none; cursor:pointer;
+  background:var(--accent); color:var(--bg);
+  transition:opacity 0.2s, transform 0.2s;
+}
+.btn-send:hover { opacity:0.85; transform:translateY(-1px); }
+.btn-send:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
+.f-note { font-size:0.75rem; color:var(--fg-3); }
+.f-status {
+  margin-top:0.875rem; font-size:0.8rem; font-weight:400;
+  padding:0.75rem 1rem; border-radius:3px; display:none;
+  font-family:var(--mono); letter-spacing:0.02em;
+}
+.f-status.ok  { background:rgba(200,241,53,0.07); border:1px solid rgba(200,241,53,0.18); color:var(--accent); }
+.f-status.err { background:rgba(255,80,80,0.06);  border:1px solid rgba(255,80,80,0.18);  color:#ff7070; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  position:relative; z-index:1;
+  padding:2.5rem 5%;
+  border-top:1px solid var(--line);
+}
+.footer-inner {
+  max-width:1280px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:2rem; flex-wrap:wrap;
+}
+.footer-brand {
+  font-family:var(--mono); font-size:0.72rem;
+  font-weight:600; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--fg-2);
+}
+.footer-links {
+  list-style:none; display:flex; gap:2rem;
+}
+.footer-links a {
+  font-family:var(--mono); font-size:0.68rem;
+  letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--fg-3); transition:color 0.2s;
+}
 .footer-links a:hover { color:var(--fg); }
-.footer-copy { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.05em; color:var(--fg-3); }
+.footer-copy {
+  font-family:var(--mono); font-size:0.65rem;
+  letter-spacing:0.05em; color:var(--fg-3);
+}
 
-/* REVEAL */
-.r { opacity:0; transform:translateY(16px); transition:opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+/* ─────────────────────────────────────────
+   REVEAL
+───────────────────────────────────────── */
+@keyframes rise {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:none; }
+}
+.r {
+  opacity:0; transform:translateY(18px);
+  transition:opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
 .r.on { opacity:1; transform:none; }
-.r-d1 { transition-delay:0.07s; }
-.r-d2 { transition-delay:0.14s; }
+.r-d1 { transition-delay:0.08s; }
+.r-d2 { transition-delay:0.16s; }
 
-/* RESPONSIVE */
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
 @media(max-width:960px){
-  .feat-item { grid-template-columns:3rem 1fr; }
-  .feat-desc { display:none; }
-  .screenshots-grid { grid-template-columns:1fr 1fr; }
+  .showcase { grid-template-columns:1fr; }
+  .phone-outer { order:-1; }
+  .contact-grid { grid-template-columns:1fr; gap:4rem; }
+  .sec-header { flex-direction:column; gap:1.25rem; }
+  .hero-sub-row { flex-direction:column; align-items:flex-start; gap:1.25rem; }
+  .cap-item { grid-template-columns:3rem 1fr; }
+  .cap-desc { display:none; }
 }
 @media(max-width:640px){
   .nav-links, .nav-cta { display:none; }
   .mob-btn { display:flex; }
-  .screenshots-grid { grid-template-columns:1fr; }
+  .hero-meta { grid-template-columns:1fr 1fr; }
+  .hero-stat:last-child { display:none; }
   .footer-inner { flex-direction:column; gap:1.25rem; text-align:center; }
   .footer-links { justify-content:center; }
 }
@@ -178,106 +514,162 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="images/logo3transparent.png" alt="Innovation Hub Studio" style="height:40px;width:auto;display:block;"></a>
+    <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;"><img src="images/logo3transparent.png" alt="Innovation Hub Studio" style="height:52px;width:auto;display:block;">INNOVATION HUB STUDIO</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="radio-app.html" class="active">Radio App</a></li>
+      <li><a href="radio-app.html">Radio App</a></li>
       <li><a href="privacy.html">Privacy</a></li>
       <li><a href="terms.html">Terms</a></li>
       <li><a href="eula.html">EULA</a></li>
     </ul>
     <div class="nav-right">
+      <!-- Theme toggle -->
       <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+        <!-- sun icon shown in dark mode; moon shown in light mode -->
         <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="index.html#contact" class="nav-cta">Contact</a>
-      <button class="mob-btn" id="mobBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <a href="#contact" class="nav-cta">Contact</a>
+      <button class="mob-btn" id="mobBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
+<!-- Mobile overlay -->
 <div class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
-  <a href="index.html"     onclick="closeMob()">Home</a>
   <a href="radio-app.html" onclick="closeMob()">Radio App</a>
   <a href="privacy.html"   onclick="closeMob()">Privacy</a>
   <a href="terms.html"     onclick="closeMob()">Terms</a>
   <a href="eula.html"      onclick="closeMob()">EULA</a>
-  <a href="index.html#contact" onclick="closeMob()" class="m-cta">Contact</a>
+  <a href="#contact"       onclick="closeMob()" class="m-cta">Contact</a>
 </div>
 
 <main>
 
 <!-- HERO -->
-<section class="hero" aria-label="RadioLive App introduction">
+<section class="hero" aria-label="Introduction">
   <div class="hero-main">
-    <div class="hero-kicker">Featured project</div>
-    <h1 class="hero-title">Radio<br><span class="hl">Live App</span></h1>
-    <p class="hero-desc">Over 2000 radio stations from across the globe, streamed through one refined application. Native on Android and iOS.</p>
-    <div class="hero-badges">
-      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
-      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+    <div class="hero-kicker">Studio · UK</div>
+    <h1 class="hero-headline">
+      We build apps<br>that <span class="hl">matter.</span>
+    </h1>
+    <div class="hero-sub-row">
+      <p class="hero-desc">
+        Innovation Hub Studio crafts premium native mobile applications —
+        precise engineering, considered design, zero compromise.
+      </p>
+      <span class="hero-scroll" aria-hidden="true">Scroll</span>
+    </div>
+  </div>
+  <div class="hero-meta" aria-label="Key statistics">
+    <div class="hero-stat">
+      <div class="hero-stat-n">1000+</div>
+      <div class="hero-stat-l">Radio stations</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-n">2</div>
+      <div class="hero-stat-l">Native platforms</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-n">UK</div>
+      <div class="hero-stat-l">Registered studio</div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section" id="features" aria-label="App features">
+<!-- CAPABILITIES -->
+<section class="section" id="features" aria-label="Our capabilities">
   <div class="container">
-    <div class="sec-kicker r">What it does</div>
-    <h2 class="sec-title r">Built for <span class="hl">listeners.</span></h2>
-    <ul class="feat-list">
-      <li class="feat-item r">
-        <span class="feat-num">01</span>
-        <span class="feat-name">2000+ Stations</span>
-        <span class="feat-desc">Music, news, talk, sport — every genre, from every corner of the world.</span>
+    <div class="sec-header r">
+      <span class="sec-kicker">What we build on</span>
+      <h2 class="sec-title">Principles that<br>don't <span class="hl">age.</span></h2>
+    </div>
+    <ul class="cap-list">
+      <li class="cap-item r">
+        <span class="cap-num">01</span>
+        <span class="cap-name">Speed First</span>
+        <span class="cap-desc">Native performance from day one. No hybrid compromises — every millisecond is deliberate.</span>
       </li>
-      <li class="feat-item r r-d1">
-        <span class="feat-num">02</span>
-        <span class="feat-name">High Quality Audio</span>
-        <span class="feat-desc">Adaptive streaming that matches your connection without interruption.</span>
+      <li class="cap-item r r-d1">
+        <span class="cap-num">02</span>
+        <span class="cap-name">Modern UI</span>
+        <span class="cap-desc">Interfaces that respect platform conventions and push them exactly as far as they should go.</span>
       </li>
-      <li class="feat-item r r-d2">
-        <span class="feat-num">03</span>
-        <span class="feat-name">Fast & Lightweight</span>
-        <span class="feat-desc">Optimised for minimal battery and data use — always running in the background.</span>
-      </li>
-      <li class="feat-item r">
-        <span class="feat-num">04</span>
-        <span class="feat-name">Native Design</span>
-        <span class="feat-desc">A clean interface that feels at home on both Android and iOS.</span>
-      </li>
-      <li class="feat-item r r-d1">
-        <span class="feat-num">05</span>
-        <span class="feat-name">Privacy First</span>
-        <span class="feat-desc">No unnecessary data collection. No tracking. Just radio.</span>
+      <li class="cap-item r r-d2">
+        <span class="cap-num">03</span>
+        <span class="cap-name">Scalability</span>
+        <span class="cap-desc">Architectures built for growth — from zero users to millions without a single rewrite.</span>
       </li>
     </ul>
   </div>
 </section>
 
-<!-- SCREENSHOTS -->
-<section class="screenshots-section" id="screenshots" aria-label="App screenshots">
-  <div class="screenshots-inner">
-    <div class="sec-kicker r">App preview</div>
-    <h2 class="sec-title r">See it in <span class="hl">action.</span></h2>
-    <div class="screenshots-grid">
-      <div class="screenshot r">
-        <img src="images/radio1.png" alt="RadioLive screenshot 1"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="screenshot-empty" style="display:none">Screenshot 1</div>
+<!-- APP SHOWCASE -->
+<section class="section" id="app" aria-label="RadioLive App">
+  <div class="container">
+    <div class="showcase">
+      <div class="r">
+        <p class="app-label">Featured project</p>
+        <h2 class="app-name">Radio<br><span class="hl">Live App</span></h2>
+        <p class="app-desc">
+          Over 1000 radio stations from across the globe, streamed through
+          one refined application. Native on Android and iOS.
+        </p>
+        <div class="app-badges">
+          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
+          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+        </div>
       </div>
-      <div class="screenshot r r-d1">
-        <img src="images/radio2.png" alt="RadioLive screenshot 2"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="screenshot-empty" style="display:none">Screenshot 2</div>
+      <div class="phone-outer r r-d1">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-fallback" style="display:flex;">
+            <span class="phone-fallback-name">Radio Live</span>
+            <div class="waveform">
+              <span style="height:6px"></span><span style="height:18px"></span>
+              <span style="height:10px"></span><span style="height:28px"></span>
+              <span style="height:14px"></span><span style="height:20px"></span>
+              <span style="height:8px"></span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="screenshot r r-d2">
-        <img src="images/radio3.png" alt="RadioLive screenshot 3"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="screenshot-empty" style="display:none">Screenshot 3</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" aria-label="Contact us">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="r">
+        <p class="contact-tag">Get in touch</p>
+        <h2 class="contact-title">Let's build<br>something<br><span class="hl" style="color:var(--accent)">real.</span></h2>
+        <div class="contact-info">
+          <p>Innovation Hub Studio Ltd<br>United Kingdom</p><br>
+          <p><a href="mailto:contact@innovationhubstudio.co.uk">contact@innovationhubstudio.co.uk</a></p>
+        </div>
+      </div>
+      <div class="r r-d1">
+        <form id="contactForm">
+          <div class="f-field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="f-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us what you're working on." required></textarea>
+          </div>
+          <div class="f-submit">
+            <button type="submit" class="btn-send" id="submitBtn">Send message</button>
+            <span class="f-note">We reply within 48h.</span>
+          </div>
+          <div id="fStatus" class="f-status"></div>
+        </form>
       </div>
     </div>
   </div>
@@ -285,6 +677,7 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <span class="footer-brand">Innovation Hub Studio Ltd</span>
@@ -300,31 +693,74 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
 </footer>
 
 <script>
+/* NAV SCROLL */
 (function(){
-  const nav=document.getElementById('nav'); let last=0;
-  window.addEventListener('scroll',()=>{
-    const y=window.scrollY;
-    nav.classList.toggle('scrolled',y>40);
-    nav.classList.toggle('hide',y>last&&y>100);
-    last=y;
-  },{passive:true});
+  const nav = document.getElementById('nav');
+  let last = 0;
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 40);
+    nav.classList.toggle('hide', y > last && y > 100);
+    last = y;
+  }, {passive:true});
 })();
 
+/* MOBILE MENU */
 function closeMob(){ document.getElementById('navMobile').classList.remove('open'); }
-document.getElementById('mobBtn').addEventListener('click',()=>{ document.getElementById('navMobile').classList.toggle('open'); });
+document.getElementById('mobBtn').addEventListener('click', ()=>{
+  document.getElementById('navMobile').classList.toggle('open');
+});
 
+/* THEME TOGGLE */
 (function(){
-  const html=document.documentElement;
-  const btn=document.getElementById('themeBtn');
-  const sun=document.getElementById('icon-sun');
-  const moon=document.getElementById('icon-moon');
-  function apply(t){ html.setAttribute('data-theme',t); sun.style.display=t==='dark'?'block':'none'; moon.style.display=t==='light'?'block':'none'; localStorage.setItem('theme',t); }
-  apply(localStorage.getItem('theme')||'dark');
-  btn.addEventListener('click',()=>apply(html.getAttribute('data-theme')==='dark'?'light':'dark'));
+  const html   = document.documentElement;
+  const btn    = document.getElementById('themeBtn');
+  const sun    = document.getElementById('icon-sun');
+  const moon   = document.getElementById('icon-moon');
+  const saved  = localStorage.getItem('theme') || 'dark';
+
+  function apply(theme){
+    html.setAttribute('data-theme', theme);
+    sun.style.display  = theme === 'dark'  ? 'block' : 'none';
+    moon.style.display = theme === 'light' ? 'block' : 'none';
+    localStorage.setItem('theme', theme);
+  }
+
+  apply(saved);
+  btn.addEventListener('click', ()=>{
+    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
 })();
 
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:0.1});
+/* REVEAL */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+}, {threshold:0.1});
 document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+/* FORM */
+document.getElementById('contactForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const st  = document.getElementById('fStatus');
+  btn.disabled = true; btn.textContent = 'Sending…'; st.style.display = 'none';
+  try {
+    const res = await fetch('https://formspree.io/f/mjgavyqr',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        email:   document.getElementById('email').value,
+        message: document.getElementById('message').value
+      })
+    });
+    if(!res.ok) throw 0;
+    st.className='f-status ok'; st.textContent="Message sent. We'll be in touch.";
+    e.target.reset();
+  } catch {
+    st.className='f-status err'; st.textContent='Something went wrong. Please email us directly.';
+  } finally {
+    st.style.display='block'; btn.disabled=false; btn.textContent='Send message';
+  }
+});
 </script>
 </body>
 </html>
