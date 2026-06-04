@@ -59,7 +59,7 @@ nav {
 nav.scrolled { background:var(--nav-bg); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-color:var(--line); }
 nav.hide { transform:translateY(-100%); }
 .nav-inner { max-width:1280px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
-.nav-logo { font-family:var(--mono); font-weight:800; font-size:0.9rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--fg); white-space:nowrap; }
+.nav-logo { font-family:var(--mono); font-weight:400; font-size:0.9rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--fg); white-space:nowrap; }
 .nav-logo .dot { color:var(--accent); }
 .nav-links { list-style:none; display:flex; align-items:center; gap:2rem; }
 .nav-links a { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--fg-2); transition:color 0.2s; }
@@ -89,7 +89,7 @@ nav.hide { transform:translateY(-100%); }
 .hero-main { display:flex; flex-direction:column; justify-content:flex-end; padding-top:100px; padding-bottom:4rem; }
 .hero-kicker { display:flex; align-items:center; gap:0.75rem; font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; color:var(--fg-3); margin-bottom:2rem; opacity:0; animation:rise 1s var(--ease) forwards 0.1s; }
 .hero-kicker::before { content:''; display:block; width:20px; height:1px; background:var(--accent); }
-.hero-title { font-family:var(--mono); font-size:clamp(3rem,8vw,8rem); font-weight:800; line-height:1.0; letter-spacing:-0.03em; color:var(--fg); margin-bottom:2rem; opacity:0; animation:rise 1s var(--ease) forwards 0.22s; }
+.hero-title { font-family:var(--mono); font-size:clamp(3rem,8vw,8rem); font-weight:400; line-height:1.0; letter-spacing:-0.03em; color:var(--fg); margin-bottom:2rem; opacity:0; animation:rise 1s var(--ease) forwards 0.22s; }
 .hero-title .hl { color:var(--accent); }
 .hero-desc { font-size:1rem; line-height:1.75; color:var(--fg-2); max-width:44ch; font-weight:300; margin-bottom:2.5rem; opacity:0; animation:rise 1s var(--ease) forwards 0.34s; }
 .hero-badges { display:flex; gap:0.875rem; flex-wrap:wrap; opacity:0; animation:rise 1s var(--ease) forwards 0.46s; }
@@ -103,7 +103,7 @@ nav.hide { transform:translateY(-100%); }
 .container { max-width:1280px; margin:0 auto; }
 .sec-kicker { font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); display:flex; align-items:center; gap:0.6rem; margin-bottom:3rem; }
 .sec-kicker::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
-.sec-title { font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; color:var(--fg); margin-bottom:4rem; }
+.sec-title { font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem); font-weight:400; line-height:1.1; letter-spacing:-0.03em; color:var(--fg); margin-bottom:4rem; }
 .sec-title .hl { color:var(--accent); }
 
 .feat-list { list-style:none; }
@@ -118,7 +118,7 @@ nav.hide { transform:translateY(-100%); }
 .feat-item:hover .feat-name { color:var(--fg); }
 .feat-item:hover .feat-num { color:var(--accent); }
 .feat-num { font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.1em; color:var(--fg-3); padding-top:0.25rem; transition:color 0.3s; }
-.feat-name { font-family:var(--mono); font-size:clamp(1.1rem,1.8vw,1.5rem); font-weight:800; letter-spacing:-0.02em; line-height:1.15; color:var(--fg-2); transition:color 0.3s; }
+.feat-name { font-family:var(--mono); font-size:clamp(1.1rem,1.8vw,1.5rem); font-weight:400; letter-spacing:-0.02em; line-height:1.15; color:var(--fg-2); transition:color 0.3s; }
 .feat-desc { font-size:0.88rem; line-height:1.75; color:var(--fg-2); font-weight:300; max-width:42ch; padding-top:0.25rem; }
 
 /* SCREENSHOTS */
@@ -180,7 +180,7 @@ footer { position:relative; z-index:1; padding:2.5rem 5%; border-top:1px solid v
 
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="logo3.png" alt="Innovation Hub Studio" style="height:36px;width:auto;display:inline-block;vertical-align:middle;margin-right:0.5rem;">Innovation Hub<span class="dot">.</span></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo3transparent.png" alt="Innovation Hub Studio" style="height:40px;width:auto;display:block;"></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="radio-app.html" class="active">Radio App</a></li>
