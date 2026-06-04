@@ -90,7 +90,7 @@ nav.hide { transform:translateY(-100%); }
 /* logo */
 .nav-logo {
   font-family: var(--mono);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 0.9rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -98,6 +98,7 @@ nav.hide { transform:translateY(-100%); }
   white-space: nowrap;
 }
 .nav-logo .dot { color: var(--accent); }
+.nav-logo img { display:block; height:40px; width:auto; }
 
 /* links — single set, no duplication */
 .nav-links {
@@ -241,7 +242,7 @@ nav.hide { transform:translateY(-100%); }
 }
 .hero-stat:last-child { border-right:none; }
 .hero-stat-n {
-  font-family:var(--mono); font-size:1.8rem; font-weight:800;
+  font-family:var(--mono); font-size:1.8rem; font-weight:400;
   color:var(--accent); line-height:1; margin-bottom:0.35rem;
 }
 .hero-stat-l {
@@ -272,7 +273,7 @@ nav.hide { transform:translateY(-100%); }
 .sec-kicker::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
 .sec-title {
   font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem);
-  font-weight:800; line-height:1.1; letter-spacing:-0.03em;
+  font-weight:400; line-height:1.1; letter-spacing:-0.03em;
   max-width:22ch; color:var(--fg);
 }
 .sec-title .hl { color:var(--accent); }
@@ -300,7 +301,7 @@ nav.hide { transform:translateY(-100%); }
 }
 .cap-name {
   font-family:var(--mono); font-size:clamp(1.2rem,2vw,1.7rem);
-  font-weight:800; letter-spacing:-0.02em; line-height:1.15;
+  font-weight:400; letter-spacing:-0.02em; line-height:1.15;
   color:var(--fg-2); transition:color 0.3s;
 }
 .cap-desc {
@@ -322,7 +323,7 @@ nav.hide { transform:translateY(-100%); }
 }
 .app-name {
   font-family:var(--mono); font-size:clamp(2.5rem,5vw,4.5rem);
-  font-weight:800; letter-spacing:-0.03em; line-height:1.0;
+  font-weight:400; letter-spacing:-0.03em; line-height:1.0;
   color:var(--fg); margin-bottom:1.75rem;
 }
 .app-name .hl { color:var(--accent); }
@@ -392,7 +393,7 @@ nav.hide { transform:translateY(-100%); }
 }
 .contact-title {
   font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem);
-  font-weight:800; line-height:1.1; letter-spacing:-0.03em;
+  font-weight:400; line-height:1.1; letter-spacing:-0.03em;
   color:var(--fg); margin-bottom:2rem;
 }
 .contact-info {
@@ -516,7 +517,7 @@ footer {
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="logo3.png" alt="Innovation Hub Studio" style="height:36px;width:auto;display:inline-block;vertical-align:middle;margin-right:0.5rem;">Innovation Hub<span class="dot">.</span></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo3transparent.png" alt="Innovation Hub Studio" style="height:40px;width:auto;display:block;"></a>
     <ul class="nav-links">
       <li><a href="radio-app.html">Radio App</a></li>
       <li><a href="privacy.html">Privacy</a></li>
