@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collision Radar - Innovation Hub Studio</title>
+<meta name="description" content="Collision Radar - check which similar apps already exist before you submit to the App Store or Google Play.">
+<style>
+:root {
+  --accent: #c8f135;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+  --mono:   Arial, Helvetica, sans-serif;
+  --sans:   Arial, Helvetica, sans-serif;
+}
+[data-theme="dark"] {
+  --bg: #0a0a0a; --bg-2: #111111; --bg-3: #1a1a1a;
+  --line: rgba(255,255,255,0.07); --line-hi: rgba(255,255,255,0.16);
+  --fg: #f0f0eb; --fg-2: #b8b8b8; --fg-3: #767676;
+  --nav-bg: rgba(10,10,10,0.92);
+}
+[data-theme="light"] {
+  --bg: #f4f4f0; --bg-2: #ebebeb; --bg-3: #e0e0e0;
+  --line: rgba(0,0,0,0.09); --line-hi: rgba(0,0,0,0.2);
+  --fg: #111111; --fg-2: #444444; --fg-3: #626262;
+  --nav-bg: rgba(244,244,240,0.92);
+  --accent: #111111;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--fg);
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+a { color:inherit; text-decoration:none; }
+img { display:block; max-width:100%; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:900; height:64px;
+  display:flex; align-items:center; padding:0 5%;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner {
+  max-width:1280px; margin:0 auto; width:100%;
+  display:flex; align-items:center; justify-content:space-between; gap:2rem;
+}
+.nav-logo {
+  font-family:var(--mono); font-size:0.9rem; letter-spacing:0.04em;
+  text-transform:uppercase; color:var(--fg); white-space:nowrap;
+}
+.nav-links { list-style:none; display:flex; align-items:center; gap:2rem; }
+.nav-links a {
+  font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--fg-2); transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--fg); }
+.theme-toggle {
+  width:34px; height:34px; border:1px solid var(--line-hi); border-radius:3px;
+  background:transparent; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.theme-toggle svg { width:16px; height:16px; stroke:var(--fg-2); fill:none; stroke-width:1.5; }
+
+.section { position:relative; padding:8rem 5% 6rem 5%; border-bottom:1px solid var(--line); }
+.container { max-width:1280px; margin:0 auto; }
+
+.hero-inner { padding-top:64px; }
+.app-label {
+  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:1.25rem;
+  display:flex; align-items:center; gap:0.6rem;
+}
+.app-label::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
+h1 {
+  font-family:var(--mono); font-size:clamp(2.5rem,6vw,5.5rem); font-weight:400;
+  letter-spacing:-0.03em; line-height:1.0; margin-bottom:1.75rem;
+}
+h1 .hl { color:var(--accent); }
+.lead {
+  font-size:1rem; line-height:1.8; color:var(--fg-2);
+  font-weight:300; max-width:52ch; margin-bottom:2.5rem;
+}
+.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; }
+.app-badges img {
+  height:40px; opacity:0.55; filter:grayscale(1) brightness(1.6);
+  transition:opacity 0.25s, filter 0.25s;
+}
+[data-theme="light"] .app-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
+.app-badges a:hover img { opacity:1; filter:none; }
+
+.feature-list { list-style:none; }
+.feature-item {
+  display:grid; grid-template-columns:3.5rem 1fr 1fr; gap:2rem; align-items:start;
+  padding:2rem 0; border-top:1px solid var(--line);
+}
+.feature-item:last-child { border-bottom:1px solid var(--line); }
+.f-num {
+  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em;
+  color:var(--fg-3); padding-top:0.25rem;
+}
+.f-name {
+  font-family:var(--mono); font-size:clamp(1.2rem,2vw,1.7rem);
+  letter-spacing:-0.02em; line-height:1.15; color:var(--fg);
+}
+.f-desc {
+  font-size:0.88rem; line-height:1.75; color:var(--fg-2);
+  font-weight:300; max-width:42ch; padding-top:0.25rem;
+}
+
+.legal-links {
+  font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--fg-3);
+}
+.legal-links a {
+  color:var(--fg-2); border-bottom:1px solid var(--line-hi);
+  padding-bottom:1px; transition:color 0.2s, border-color 0.2s;
+}
+.legal-links a:hover { color:var(--fg); border-color:var(--fg); }
+
+footer { padding:2.5rem 5%; border-top:1px solid var(--line); }
+.footer-inner {
+  max-width:1280px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:2rem; flex-wrap:wrap;
+}
+.footer-brand {
+  font-family:var(--mono); font-size:0.72rem; font-weight:600;
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-2);
+}
+.footer-links { list-style:none; display:flex; gap:2rem; }
+.footer-links a {
+  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--fg-3); transition:color 0.2s;
+}
+.footer-links a:hover { color:var(--fg); }
+.footer-copy { font-family:var(--mono); font-size:0.65rem; color:var(--fg-3); }
+
+@media(max-width:960px){
+  .feature-item { grid-template-columns:3rem 1fr; }
+  .f-desc { grid-column:2; }
+}
+@media(max-width:640px){
+  .nav-links { display:none; }
+  .footer-inner { flex-direction:column; gap:1.25rem; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">INNOVATION HUB STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="collision-radar-privacy.html">Privacy</a></li>
+      <li><a href="collision-radar-terms.html">Terms</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+      <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<section class="section">
+  <div class="container hero-inner">
+    <p class="app-label">Featured project</p>
+    <h1>Collision<br><span class="hl">Radar</span></h1>
+    <p class="lead">
+      Describe your app idea. Collision Radar searches the App Store and
+      Google Play for the most similar apps already published, ranked by
+      semantic similarity, so you know the landscape before you build.
+      Raw comparison data, not verdicts. Your ideas are never stored.
+    </p>
+    <div class="app-badges">
+      <a href="#" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <ul class="feature-list">
+      <li class="feature-item">
+        <span class="f-num">01</span>
+        <span class="f-name">Semantic search</span>
+        <span class="f-desc">Goes beyond keywords. Multilingual language analysis compares the meaning of app descriptions, finding functional overlap even when the wording differs.</span>
+      </li>
+      <li class="feature-item">
+        <span class="f-num">02</span>
+        <span class="f-name">Both stores</span>
+        <span class="f-desc">One scan covers the App Store or Google Play, your choice, with the top 30 most similar apps and a minimum estimate of the market's size.</span>
+      </li>
+      <li class="feature-item">
+        <span class="f-num">03</span>
+        <span class="f-name">Private by design</span>
+        <span class="f-desc">Ideas are processed in memory and discarded. No accounts, no tracking, no ads. An anonymous identifier is the only thing the app knows about you.</span>
+      </li>
+      <li class="feature-item">
+        <span class="f-num">04</span>
+        <span class="f-name">Simple pricing</span>
+        <span class="f-desc">4 free scans on every device, then straightforward credit packs. No subscriptions, no accounts to manage.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="legal-links">
+      <a href="collision-radar-privacy.html">Privacy Policy</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="collision-radar-terms.html">Terms of Service</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Innovation Hub Studio Ltd</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="collision-radar.html">Collision Radar</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const html = document.documentElement;
+  const btn  = document.getElementById('themeBtn');
+  const sun  = document.getElementById('icon-sun');
+  const moon = document.getElementById('icon-moon');
+  const saved = localStorage.getItem('theme') || 'dark';
+  function apply(theme){
+    html.setAttribute('data-theme', theme);
+    sun.style.display  = theme === 'dark'  ? 'block' : 'none';
+    moon.style.display = theme === 'light' ? 'block' : 'none';
+    localStorage.setItem('theme', theme);
+  }
+  apply(saved);
+  btn.addEventListener('click', ()=>{
+    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
+</body>
+</html>

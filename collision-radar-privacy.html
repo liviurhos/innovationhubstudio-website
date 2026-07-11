@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Collision Radar - Innovation Hub Studio</title>
+<meta name="description" content="Collision Radar - check which similar apps already exist before you submit to the App Store or Google Play.">
+<style>
+:root {
+  --accent: #c8f135;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+  --mono:   Arial, Helvetica, sans-serif;
+  --sans:   Arial, Helvetica, sans-serif;
+}
+[data-theme="dark"] {
+  --bg: #0a0a0a; --bg-2: #111111; --bg-3: #1a1a1a;
+  --line: rgba(255,255,255,0.07); --line-hi: rgba(255,255,255,0.16);
+  --fg: #f0f0eb; --fg-2: #b8b8b8; --fg-3: #767676;
+  --nav-bg: rgba(10,10,10,0.92);
+}
+[data-theme="light"] {
+  --bg: #f4f4f0; --bg-2: #ebebeb; --bg-3: #e0e0e0;
+  --line: rgba(0,0,0,0.09); --line-hi: rgba(0,0,0,0.2);
+  --fg: #111111; --fg-2: #444444; --fg-3: #626262;
+  --nav-bg: rgba(244,244,240,0.92);
+  --accent: #111111;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--fg);
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+a { color:inherit; text-decoration:none; }
+img { display:block; max-width:100%; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:900; height:64px;
+  display:flex; align-items:center; padding:0 5%;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner {
+  max-width:1280px; margin:0 auto; width:100%;
+  display:flex; align-items:center; justify-content:space-between; gap:2rem;
+}
+.nav-logo {
+  font-family:var(--mono); font-size:0.9rem; letter-spacing:0.04em;
+  text-transform:uppercase; color:var(--fg); white-space:nowrap;
+}
+.nav-links { list-style:none; display:flex; align-items:center; gap:2rem; }
+.nav-links a {
+  font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--fg-2); transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--fg); }
+.theme-toggle {
+  width:34px; height:34px; border:1px solid var(--line-hi); border-radius:3px;
+  background:transparent; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.theme-toggle svg { width:16px; height:16px; stroke:var(--fg-2); fill:none; stroke-width:1.5; }
+
+.section { position:relative; padding:8rem 5% 6rem 5%; border-bottom:1px solid var(--line); }
+.container { max-width:1280px; margin:0 auto; }
+
+.hero-inner { padding-top:64px; }
+.app-label {
+  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:1.25rem;
+  display:flex; align-items:center; gap:0.6rem;
+}
+.app-label::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
+h1 {
+  font-family:var(--mono); font-size:clamp(2.5rem,6vw,5.5rem); font-weight:400;
+  letter-spacing:-0.03em; line-height:1.0; margin-bottom:1.75rem;
+}
+h1 .hl { color:var(--accent); }
+.lead {
+  font-size:1rem; line-height:1.8; color:var(--fg-2);
+  font-weight:300; max-width:52ch; margin-bottom:2.5rem;
+}
+.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; }
+.app-badges img {
+  height:40px; opacity:0.55; filter:grayscale(1) brightness(1.6);
+  transition:opacity 0.25s, filter 0.25s;
+}
+[data-theme="light"] .app-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
+.app-badges a:hover img { opacity:1; filter:none; }
+
+.feature-list { list-style:none; }
+.feature-item {
+  display:grid; grid-template-columns:3.5rem 1fr 1fr; gap:2rem; align-items:start;
+  padding:2rem 0; border-top:1px solid var(--line);
+}
+.feature-item:last-child { border-bottom:1px solid var(--line); }
+.f-num {
+  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em;
+  color:var(--fg-3); padding-top:0.25rem;
+}
+.f-name {
+  font-family:var(--mono); font-size:clamp(1.2rem,2vw,1.7rem);
+  letter-spacing:-0.02em; line-height:1.15; color:var(--fg);
+}
+.f-desc {
+  font-size:0.88rem; line-height:1.75; color:var(--fg-2);
+  font-weight:300; max-width:42ch; padding-top:0.25rem;
+}
+
+.legal-links {
+  font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--fg-3);
+}
+.legal-links a {
+  color:var(--fg-2); border-bottom:1px solid var(--line-hi);
+  padding-bottom:1px; transition:color 0.2s, border-color 0.2s;
+}
+.legal-links a:hover { color:var(--fg); border-color:var(--fg); }
+
+footer { padding:2.5rem 5%; border-top:1px solid var(--line); }
+.footer-inner {
+  max-width:1280px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:2rem; flex-wrap:wrap;
+}
+.footer-brand {
+  font-family:var(--mono); font-size:0.72rem; font-weight:600;
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-2);
+}
+.footer-links { list-style:none; display:flex; gap:2rem; }
+.footer-links a {
+  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--fg-3); transition:color 0.2s;
+}
+.footer-links a:hover { color:var(--fg); }
+.footer-copy { font-family:var(--mono); font-size:0.65rem; color:var(--fg-3); }
+
+@media(max-width:960px){
+  .feature-item { grid-template-columns:3rem 1fr; }
+  .f-desc { grid-column:2; }
+}
+@media(max-width:640px){
+  .nav-links { display:none; }
+  .footer-inner { flex-direction:column; gap:1.25rem; text-align:center; }
+}
+
+.legal-container { max-width:720px; margin:0 auto; padding-top:64px; }
+.legal-container h1 { font-size:clamp(2rem,4vw,3rem); margin-bottom:0.5rem; }
+.updated { font-family:var(--mono); color:var(--fg-3); font-size:0.8rem; margin-bottom:2.5rem; }
+.legal-container h2 {
+  font-family:var(--mono); font-size:1.1rem; font-weight:400;
+  color:var(--accent); margin-top:2.75rem; margin-bottom:0.75rem;
+}
+.legal-container p, .legal-container li {
+  font-size:0.92rem; line-height:1.8; color:var(--fg-2); font-weight:300;
+}
+.legal-container p { margin-bottom:1rem; }
+.legal-container ul { padding-left:20px; margin-bottom:1rem; }
+.legal-container li { margin-bottom:0.6rem; }
+.legal-container strong { color:var(--fg); font-weight:600; }
+.legal-container a { color:var(--accent); }
+.highlight { border:1px solid var(--accent); padding:16px 20px; margin:2rem 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">INNOVATION HUB STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="collision-radar-privacy.html">Privacy</a></li>
+      <li><a href="collision-radar-terms.html">Terms</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+      <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+<section class="section">
+  <div class="legal-container">
+
+<h1>Privacy Policy</h1>
+<p class="updated">Collision Radar. Last updated: 12 July 2026.</p>
+
+<p>Collision Radar is operated by Innovation Hub Studio Ltd, a company
+registered in the United Kingdom ("we", "us"). This policy explains what
+data the Collision Radar app processes, and, just as importantly, what it
+does not.</p>
+
+<div class="highlight">
+<strong>Your app ideas are never stored.</strong> The description you type
+into Collision Radar is processed in memory to run your scan and is then
+discarded. It is not written to any database, not saved in any log file,
+and not shared with anyone. We could not read your ideas later even if we
+wanted to.
+</div>
+
+<h2>What we process</h2>
+<ul>
+<li><strong>An anonymous device identifier.</strong> When you first open the
+app, it generates a random identifier (a UUID) on your device. This
+identifier is not derived from your name, email, phone number, hardware
+serial numbers, or advertising identifiers. It exists only so we can count
+how many scans your device has remaining. We cannot connect it to you as a
+person.</li>
+<li><strong>Your credit balance.</strong> The number of scans remaining for
+your device identifier, stored on our server hosted in the EU.</li>
+<li><strong>Purchase events.</strong> When you buy a credit pack, the
+purchase is handled entirely by Apple or Google. We never see your payment
+details. Our payment infrastructure provider, RevenueCat, notifies our
+server that a purchase succeeded so we can add credits to your device
+identifier. The notification contains the purchase event, the product
+purchased, and your anonymous device identifier.</li>
+<li><strong>Short-lived search terms.</strong> To run a scan, the app
+derives a few generic keywords from your description (for example "mileage
+tracker"). Public search results for these keywords are cached on our
+server for up to 24 hours to reduce load on the app store search services.
+These cached entries are generic and are not linked to your device
+identifier.</li>
+<li><strong>Standard server logs.</strong> Like almost every internet
+service, our web server records the IP address and time of incoming
+requests for security and abuse prevention. These logs are retained for a
+short period and then deleted. The content of your scans is not in these
+logs.</li>
+</ul>
+
+<h2>What we do not do</h2>
+<ul>
+<li>No accounts. You never give us your name, email, or password.</li>
+<li>No analytics or tracking SDKs inside the app.</li>
+<li>No advertising, and no sharing of data with advertisers.</li>
+<li>No selling of data to anyone, in any form.</li>
+</ul>
+
+<h2>Legal bases</h2>
+<p>Under UK GDPR, we process the anonymous device identifier and credit
+balance because they are necessary to provide the service you request
+(performance of a contract). We process server logs on the basis of our
+legitimate interest in keeping the service secure and preventing abuse.</p>
+
+<h2>Third parties</h2>
+<p>Payments are processed by Apple (App Store) or Google (Google Play)
+under their own terms and privacy policies. Purchase notifications are
+processed by RevenueCat, whose privacy policy is available at
+<a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>.
+Scan queries are sent to Apple's public iTunes Search API and to publicly
+available Google Play search, containing only the derived generic
+keywords, never your full description and never your device
+identifier.</p>
+
+<h2>Your rights</h2>
+<p>Under UK GDPR you have rights of access, rectification, erasure,
+restriction, and objection. A practical note: because we hold no identity
+data, the only way we can locate data connected to you is through the
+device identifier stored in your app. If you contact us with that
+identifier, we can delete the associated credit balance. Deleting the app
+from your device removes the identifier from your device permanently.</p>
+
+<h2>Children</h2>
+<p>Collision Radar is a tool for app developers and is not directed at
+children under 13. We do not knowingly process data relating to
+children.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the updated version will be published at this
+address with a new date. Material changes will be noted in the app's
+release notes.</p>
+
+<h2>Contact</h2>
+<p>Innovation Hub Studio Ltd, United Kingdom.<br>
+Email: <a href="mailto:contact@innovationhubstudio.co.uk">contact@innovationhubstudio.co.uk</a></p>
+
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Innovation Hub Studio Ltd</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="collision-radar.html">Collision Radar</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const html = document.documentElement;
+  const btn  = document.getElementById('themeBtn');
+  const sun  = document.getElementById('icon-sun');
+  const moon = document.getElementById('icon-moon');
+  const saved = localStorage.getItem('theme') || 'dark';
+  function apply(theme){
+    html.setAttribute('data-theme', theme);
+    sun.style.display  = theme === 'dark'  ? 'block' : 'none';
+    moon.style.display = theme === 'light' ? 'block' : 'none';
+    localStorage.setItem('theme', theme);
+  }
+  apply(saved);
+  btn.addEventListener('click', ()=>{
+    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
+</body>
+</html>
