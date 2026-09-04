@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just 90's — Live 90s Radio | Innovation Hub Studio</title>
+<meta name="description" content="Just 90's is a live internet radio app dedicated exclusively to 90s music stations from around the world.">
+<style>
+:root {
+  --accent: #c8f135;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+  --mono:   Arial, Helvetica, sans-serif;
+  --sans:   Arial, Helvetica, sans-serif;
+}
+[data-theme="dark"] {
+  --bg:       #0a0a0a;
+  --bg-2:     #111111;
+  --bg-3:     #1a1a1a;
+  --line:     rgba(255,255,255,0.07);
+  --line-hi:  rgba(255,255,255,0.16);
+  --fg:       #f0f0eb;
+  --fg-2:     #b8b8b8;
+  --fg-3:     #767676;
+  --nav-bg:   rgba(10,10,10,0.92);
+}
+[data-theme="light"] {
+  --bg:       #f4f4f0;
+  --bg-2:     #ebebeb;
+  --bg-3:     #e0e0e0;
+  --line:     rgba(0,0,0,0.09);
+  --line-hi:  rgba(0,0,0,0.2);
+  --fg:       #111111;
+  --fg-2:     #444444;
+  --fg-3:     #626262;
+  --nav-bg:   rgba(244,244,240,0.92);
+  --accent:   #111111;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+a { color:inherit; text-decoration:none; }
+img { display:block; max-width:100%; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:900;
+  height:64px; display:flex; align-items:center; padding:0 5%;
+  border-bottom:1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-color: var(--line);
+}
+.nav-inner {
+  max-width:1280px; margin:0 auto; width:100%;
+  display:flex; align-items:center; justify-content:space-between; gap:2rem;
+}
+.nav-logo {
+  font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--fg);
+  display:flex; align-items:center; gap:0.6rem; white-space:nowrap;
+}
+.nav-logo img { display:block; height:40px; width:auto; }
+.nav-links { list-style:none; display:flex; align-items:center; gap:2rem; }
+.nav-links a {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--fg-2); transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--fg); }
+.nav-right { display:flex; align-items:center; gap:1rem; }
+.theme-toggle {
+  width:34px; height:34px; border:1px solid var(--line-hi); border-radius:3px;
+  background: transparent; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition: border-color 0.2s;
+}
+.theme-toggle:hover { border-color: var(--fg-2); }
+.theme-toggle svg { width:16px; height:16px; stroke:var(--fg-2); fill:none; stroke-width:1.5; }
+.mob-btn { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+.mob-btn span { display:block; width:20px; height:1.5px; background:var(--fg); }
+.nav-mobile {
+  display:none; position:fixed; inset:0; z-index:800; background:var(--bg);
+  flex-direction:column; align-items:center; justify-content:center; gap:2rem;
+}
+.nav-mobile.open { display:flex; }
+.nav-mobile a { font-family:var(--mono); font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--fg-2); }
+.nav-mobile .m-cta { color:var(--bg); background:var(--accent); padding:0.6rem 1.5rem; border-radius:2px; }
+
+.hero {
+  position:relative;
+  min-height:80svh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:120px 5% 4rem;
+  border-bottom:1px solid var(--line);
+}
+.hero-inner { max-width:1280px; margin:0 auto; width:100%; }
+.hero-kicker {
+  display:flex; align-items:center; gap:0.75rem;
+  font-family:var(--mono); font-size:0.68rem;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--fg-3);
+  margin-bottom:2rem;
+}
+.hero-kicker::before { content:''; display:block; width:20px; height:1px; background:var(--accent); }
+.hero-headline {
+  font-family: var(--mono);
+  font-size: clamp(2.75rem, 7vw, 6rem);
+  font-weight: 400; line-height: 1.0; letter-spacing: -0.03em;
+  max-width: 16ch; color: var(--fg); margin-bottom:1.75rem;
+}
+.hero-headline .hl { color: var(--accent); }
+.hero-desc {
+  font-size:1rem; line-height:1.75; color:var(--fg-2);
+  max-width:42ch; font-weight:300; margin-bottom:2.5rem;
+}
+.hero-badges { display:flex; gap:0.875rem; flex-wrap:wrap; align-items:center; }
+.hero-badges img { height:44px; opacity:0.55; filter:grayscale(1) brightness(1.6); transition:opacity 0.25s, filter 0.25s, transform 0.25s; }
+[data-theme="light"] .hero-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
+.hero-badges img:hover { opacity:1; filter:none; transform:translateY(-2px); }
+.badge-soon {
+  font-family:var(--mono); font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--fg-3); border:1px solid var(--line-hi); padding:0.7rem 1.2rem; border-radius:2px;
+}
+
+.section { padding:6rem 5%; border-bottom:1px solid var(--line); }
+.container { max-width:1280px; margin:0 auto; }
+.sec-header { margin-bottom:3.5rem; }
+.sec-kicker {
+  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem;
+}
+.sec-kicker::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
+.sec-title {
+  font-family:var(--mono); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:400;
+  line-height:1.15; letter-spacing:-0.02em; max-width:26ch; color:var(--fg);
+}
+.sec-title .hl { color:var(--accent); }
+
+.feature-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.feature-cell { background:var(--bg); padding:2rem 1.75rem; }
+.feature-name {
+  font-family:var(--mono); font-size:0.95rem; font-weight:600; letter-spacing:0.02em;
+  color:var(--fg); margin-bottom:0.6rem;
+}
+.feature-desc { font-size:0.85rem; line-height:1.7; color:var(--fg-2); font-weight:300; }
+
+.pricing-box {
+  display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;
+  background:var(--bg-2); border:1px solid var(--line); padding:2.5rem;
+}
+.price-label { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--fg-3); margin-bottom:0.5rem; }
+.price-value { font-family:var(--mono); font-size:2.5rem; font-weight:400; color:var(--accent); }
+.price-note { font-size:0.85rem; color:var(--fg-2); max-width:32ch; font-weight:300; line-height:1.6; }
+
+footer { padding:2.5rem 5%; border-top:1px solid var(--line); }
+.footer-inner {
+  max-width:1280px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:2rem; flex-wrap:wrap;
+}
+.footer-brand { font-family:var(--mono); font-size:0.72rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-2); }
+.footer-links { list-style:none; display:flex; gap:2rem; flex-wrap:wrap; }
+.footer-links a { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--fg-3); }
+.footer-links a:hover { color:var(--fg); }
+.footer-copy { font-family:var(--mono); font-size:0.65rem; color:var(--fg-3); }
+
+@media(max-width:960px){
+  .feature-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:640px){
+  .nav-links { display:none; }
+  .mob-btn { display:flex; }
+  .feature-grid { grid-template-columns:1fr; }
+  .footer-inner { flex-direction:column; gap:1.25rem; text-align:center; }
+  .footer-links { justify-content:center; }
+  .pricing-box { flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo3transparent.png" alt="Innovation Hub Studio">INNOVATION HUB STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="just90s.html" class="active">Just 90's</a></li>
+      <li><a href="collision-radar.html">Collision Radar</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+        <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="mob-btn" id="mobBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="radio-app.html" onclick="closeMob()">Radio App</a>
+  <a href="just90s.html" onclick="closeMob()">Just 90's</a>
+  <a href="collision-radar.html" onclick="closeMob()">Collision Radar</a>
+</div>
+
+<main>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">App · iOS</div>
+    <h1 class="hero-headline">Just <span class="hl">90's.</span></h1>
+    <p class="hero-desc">
+      Live internet radio, dedicated exclusively to 90s music stations from
+      around the world. No filler decades, no genre soup — just the 90s, 24/7,
+      in a Classic Media Player interface built to match.
+    </p>
+    <div class="hero-badges">
+      <span class="badge-soon">Coming soon to the App Store</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Features">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-kicker">What's inside</span>
+      <h2 class="sec-title">Built like the decade<br>it <span class="hl">celebrates.</span></h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-cell">
+        <div class="feature-name">100% Nineties</div>
+        <div class="feature-desc">Every station is filtered for genuine 90s music — nothing else sneaks in.</div>
+      </div>
+      <div class="feature-cell">
+        <div class="feature-name">Classic Player UI</div>
+        <div class="feature-desc">A Winamp-inspired interface with a live LED equalizer and VU meters, driven by real audio analysis.</div>
+      </div>
+      <div class="feature-cell">
+        <div class="feature-name">Record Live</div>
+        <div class="feature-desc">Save a recording of the station you're listening to, for personal use.</div>
+      </div>
+      <div class="feature-cell">
+        <div class="feature-name">Grid or Playlist</div>
+        <div class="feature-desc">Browse stations as cards, or switch to a compact, Winamp-style playlist view.</div>
+      </div>
+      <div class="feature-cell">
+        <div class="feature-name">Favorites, Your Order</div>
+        <div class="feature-desc">Save your go-to stations and drag them into exactly the order you want.</div>
+      </div>
+      <div class="feature-cell">
+        <div class="feature-name">Background Playback</div>
+        <div class="feature-desc">Keeps streaming when your screen is off or you're in another app.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Pricing">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-kicker">Pricing</span>
+      <h2 class="sec-title">One payment.<br>No <span class="hl">subscription.</span></h2>
+    </div>
+    <div class="pricing-box">
+      <div>
+        <div class="price-label">Lifetime access</div>
+        <div class="price-value">£0.99</div>
+      </div>
+      <p class="price-note">Free to try for 21 days. After that, a single one-time purchase unlocks the app for good — no recurring charges, ever.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Innovation Hub Studio Ltd</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="just90s-privacy.html">Privacy</a></li>
+      <li><a href="just90s-terms.html">Terms</a></li>
+      <li><a href="just90s-eula.html">EULA</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
+  </div>
+</footer>
+
+<script>
+function closeMob(){ document.getElementById('navMobile').classList.remove('open'); }
+document.getElementById('mobBtn').addEventListener('click', ()=>{
+  document.getElementById('navMobile').classList.toggle('open');
+});
+(function(){
+  const html=document.documentElement, btn=document.getElementById('themeBtn');
+  const sun=document.getElementById('icon-sun'), moon=document.getElementById('icon-moon');
+  const saved=localStorage.getItem('theme')||'dark';
+  function apply(t){ html.setAttribute('data-theme',t); sun.style.display=t==='dark'?'block':'none'; moon.style.display=t==='light'?'block':'none'; localStorage.setItem('theme',t); }
+  apply(saved);
+  btn.addEventListener('click', ()=> apply(html.getAttribute('data-theme')==='dark'?'light':'dark'));
+})();
+</script>
+</body>
+</html>
