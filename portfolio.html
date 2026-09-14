@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Innovation Hub Studio</title>
-<meta name="description" content="Innovation Hub Studio — premium mobile applications for Android and iOS.">
+<title>Portfolio — Innovation Hub Studio</title>
+<meta name="description" content="Everything Innovation Hub Studio has built: mobile apps, browser extensions, and tools shipped to real users.">
 <style>
 /* ─────────────────────────────────────────
    TOKENS — dark (default)
@@ -57,7 +57,6 @@ body {
 a { color:inherit; text-decoration:none; }
 img { display:block; max-width:100%; }
 
-/* noise */
 body::before {
   content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
@@ -87,7 +86,6 @@ nav.hide { transform:translateY(-100%); }
   display:flex; align-items:center; justify-content:space-between; gap:2rem;
 }
 
-/* logo */
 .nav-logo {
   font-family: var(--mono);
   font-weight: 400;
@@ -97,10 +95,8 @@ nav.hide { transform:translateY(-100%); }
   color: var(--fg);
   white-space: nowrap;
 }
-.nav-logo .dot { color: var(--accent); }
 .nav-logo img { display:block; height:40px; width:auto; }
 
-/* links — single set, no duplication */
 .nav-links {
   list-style:none;
   display:flex; align-items:center; gap:2rem;
@@ -115,8 +111,8 @@ nav.hide { transform:translateY(-100%); }
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--fg); }
+.nav-links a.active { color: var(--accent); }
 
-/* right side: theme toggle + cta */
 .nav-right {
   display:flex; align-items:center; gap:1rem;
 }
@@ -149,7 +145,6 @@ nav.hide { transform:translateY(-100%); }
 }
 .nav-cta:hover { opacity:0.85; }
 
-/* mobile */
 .mob-btn {
   display:none; flex-direction:column; gap:5px;
   background:none; border:none; cursor:pointer; padding:4px;
@@ -175,70 +170,50 @@ nav.hide { transform:translateY(-100%); }
 }
 
 /* ─────────────────────────────────────────
-   HERO
+   PAGE HERO (shorter than homepage — no full viewport)
 ───────────────────────────────────────── */
-.hero {
+.pagehero {
   position:relative; z-index:1;
-  min-height:100svh;
-  display:grid; grid-template-rows:1fr auto;
-  padding:0 5%;
+  padding:11rem 5% 4rem;
   border-bottom:1px solid var(--line);
 }
-.hero-main {
-  display:flex; flex-direction:column; justify-content:flex-end;
-  padding-top:100px; padding-bottom:4rem;
-}
+.pagehero-inner { max-width:1280px; margin:0 auto; }
 .hero-kicker {
   display:flex; align-items:center; gap:0.75rem;
   font-family:var(--mono); font-size:0.68rem; font-weight:400;
   letter-spacing:0.2em; text-transform:uppercase; color:var(--fg-3);
   margin-bottom:2rem;
-  opacity:0; animation:rise 1s var(--ease) forwards 0.1s;
 }
 .hero-kicker::before {
   content:''; display:block; width:20px; height:1px; background:var(--accent);
 }
-.hero-headline {
+.pagehero h1 {
   font-family: var(--mono);
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
   font-weight: 400;
-  line-height: 1.0;
+  line-height: 1.02;
   letter-spacing: -0.03em;
-  max-width: 14ch;
+  max-width: 16ch;
   color: var(--fg);
-  opacity:0; animation:rise 1s var(--ease) forwards 0.22s;
 }
-.hero-headline .hl { color: var(--accent); }
-.hero-sub-row {
-  display:flex; align-items:flex-end; justify-content:space-between; gap:2rem;
-  margin-top:3rem;
-  opacity:0; animation:rise 1s var(--ease) forwards 0.38s;
+.pagehero p {
+  margin-top: 1.75rem;
+  max-width: 48ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--fg-2);
+  font-weight: 300;
 }
-.hero-desc {
-  font-size:1rem; line-height:1.75; color:var(--fg-2);
-  max-width:38ch; font-weight:300;
-}
-.hero-scroll {
-  font-family:var(--mono); font-size:0.65rem;
-  letter-spacing:0.18em; text-transform:uppercase; color:var(--fg-3);
-  display:flex; align-items:center; gap:0.5rem; white-space:nowrap;
-}
-.hero-scroll::after {
-  content:''; display:block; width:1px; height:40px;
-  background:var(--line-hi);
-  animation:breathe 2.2s ease-in-out infinite;
-}
-@keyframes breathe { 0%,100%{opacity:1;height:40px} 50%{opacity:0.3;height:20px} }
 
 .hero-meta {
   display:grid; grid-template-columns:repeat(3,1fr);
   border-top:1px solid var(--line);
-  opacity:0; animation:rise 1s var(--ease) forwards 0.5s;
+  margin-top: 3.5rem;
 }
 .hero-stat {
   padding:1.75rem 0;
   border-right:1px solid var(--line);
-  text-align:center;
+  text-align:left;
 }
 .hero-stat:last-child { border-right:none; }
 .hero-stat-n {
@@ -255,62 +230,13 @@ nav.hide { transform:translateY(-100%); }
 ───────────────────────────────────────── */
 .section {
   position:relative; z-index:1;
-  padding:8rem 5%;
+  padding:6rem 5%;
   border-bottom:1px solid var(--line);
 }
 .container { max-width:1280px; margin:0 auto; }
 
-.sec-header {
-  display:flex; justify-content:space-between; align-items:flex-start; gap:3rem;
-  margin-bottom:5rem;
-}
-.sec-kicker {
-  font-family:var(--mono); font-size:0.68rem; font-weight:400;
-  letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
-  display:flex; align-items:center; gap:0.6rem;
-  white-space:nowrap; margin-top:0.35rem;
-}
-.sec-kicker::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
-.sec-title {
-  font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem);
-  font-weight:400; line-height:1.1; letter-spacing:-0.03em;
-  max-width:22ch; color:var(--fg);
-}
-.sec-title .hl { color:var(--accent); }
-
 /* ─────────────────────────────────────────
-   CAPABILITIES
-───────────────────────────────────────── */
-.cap-list { list-style:none; }
-.cap-item {
-  display:grid; grid-template-columns:3.5rem 1fr 1fr;
-  gap:2rem; align-items:start;
-  padding:2rem 0;
-  border-top:1px solid var(--line);
-  transition:border-color 0.3s;
-  cursor:default;
-}
-.cap-item:last-child { border-bottom:1px solid var(--line); }
-.cap-item:hover { border-color:var(--line-hi); }
-.cap-item:hover .cap-name { color:var(--fg); }
-.cap-item:hover .cap-num  { color:var(--accent); }
-.cap-num {
-  font-family:var(--mono); font-size:0.68rem; font-weight:400;
-  letter-spacing:0.1em; color:var(--fg-3);
-  padding-top:0.25rem; transition:color 0.3s;
-}
-.cap-name {
-  font-family:var(--mono); font-size:clamp(1.2rem,2vw,1.7rem);
-  font-weight:400; letter-spacing:-0.02em; line-height:1.15;
-  color:var(--fg-2); transition:color 0.3s;
-}
-.cap-desc {
-  font-size:0.88rem; line-height:1.75; color:var(--fg-2);
-  font-weight:300; max-width:42ch; padding-top:0.25rem;
-}
-
-/* ─────────────────────────────────────────
-   SHOWCASE
+   SHOWCASE (per project)
 ───────────────────────────────────────── */
 .showcase {
   display:grid; grid-template-columns:1fr 1fr;
@@ -320,18 +246,22 @@ nav.hide { transform:translateY(-100%); }
   font-family:var(--mono); font-size:0.68rem; font-weight:400;
   letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
   margin-bottom:1.25rem;
+  display:flex; align-items:center; gap:0.6rem;
 }
+.app-label::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
+.app-label.muted { color: var(--fg-3); }
+.app-label.muted::before { background: var(--fg-3); }
+
 .app-name {
-  font-family:var(--mono); font-size:clamp(2.5rem,5vw,4.5rem);
-  font-weight:400; letter-spacing:-0.03em; line-height:1.0;
-  color:var(--fg); margin-bottom:1.75rem;
+  font-family:var(--mono); font-size:clamp(2.2rem,4.5vw,3.8rem);
+  font-weight:400; letter-spacing:-0.03em; line-height:1.02;
+  color:var(--fg); margin-bottom:1.5rem;
 }
-.app-name .hl { color:var(--accent); }
 .app-desc {
   font-size:0.95rem; line-height:1.8; color:var(--fg-2);
-  font-weight:300; max-width:40ch; margin-bottom:2.5rem;
+  font-weight:300; max-width:40ch; margin-bottom:2rem;
 }
-.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; }
+.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; align-items:center; }
 .app-badges img {
   height:40px; opacity:0.55;
   filter:grayscale(1) brightness(1.6);
@@ -339,6 +269,25 @@ nav.hide { transform:translateY(-100%); }
 }
 [data-theme="light"] .app-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
 .app-badges img:hover { opacity:1; filter:none; transform:translateY(-2px); }
+
+.text-badge {
+  font-family:var(--mono); font-size:0.72rem; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase;
+  padding:0.7rem 1.25rem; border-radius:2px;
+  border:1px solid var(--line-hi);
+  color: var(--fg-2);
+  transition: border-color 0.2s, color 0.2s;
+}
+.text-badge:hover { border-color:var(--accent); color:var(--fg); }
+.text-badge.primary {
+  background:var(--accent); color:var(--bg); border-color:var(--accent);
+}
+.text-badge.primary:hover { opacity:0.85; color:var(--bg); }
+
+.app-note {
+  font-family:var(--mono); font-size:0.72rem;
+  letter-spacing:0.06em; color:var(--fg-3);
+}
 
 /* phone */
 .phone-outer { display:flex; justify-content:center; align-items:center; }
@@ -364,6 +313,7 @@ nav.hide { transform:translateY(-100%); }
 .phone-fallback-name {
   font-family:var(--mono); font-size:0.68rem;
   letter-spacing:0.25em; text-transform:uppercase; color:var(--fg-3);
+  text-align:center;
 }
 .waveform { display:flex; align-items:center; gap:3px; height:36px; }
 .waveform span {
@@ -371,6 +321,7 @@ nav.hide { transform:translateY(-100%); }
   background:var(--accent); opacity:0.55;
   animation:wv 1.4s ease-in-out infinite;
 }
+.waveform.still span { animation:none; opacity:0.3; }
 .waveform span:nth-child(2){animation-delay:0.1s}
 .waveform span:nth-child(3){animation-delay:0.22s}
 .waveform span:nth-child(4){animation-delay:0.32s}
@@ -378,70 +329,6 @@ nav.hide { transform:translateY(-100%); }
 .waveform span:nth-child(6){animation-delay:0.1s}
 .waveform span:nth-child(7){animation-delay:0.16s}
 @keyframes wv { 0%,100%{height:4px} 50%{height:30px} }
-
-/* ─────────────────────────────────────────
-   CONTACT
-───────────────────────────────────────── */
-.contact-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:8rem; align-items:start;
-}
-.contact-tag {
-  font-family:var(--mono); font-size:0.68rem; font-weight:400;
-  letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
-  margin-bottom:1.25rem;
-}
-.contact-title {
-  font-family:var(--mono); font-size:clamp(1.8rem,3.5vw,3rem);
-  font-weight:400; line-height:1.1; letter-spacing:-0.03em;
-  color:var(--fg); margin-bottom:2rem;
-}
-.contact-info {
-  font-size:0.88rem; color:var(--fg-2); line-height:2; font-weight:300;
-}
-.contact-info a {
-  border-bottom:1px solid var(--line-hi); padding-bottom:1px;
-  transition:border-color 0.2s, color 0.2s;
-}
-.contact-info a:hover { color:var(--fg); border-color:var(--fg); }
-
-.f-field { margin-bottom:1.1rem; }
-.f-field label {
-  display:block; font-family:var(--mono);
-  font-size:0.65rem; font-weight:400;
-  letter-spacing:0.14em; text-transform:uppercase;
-  color:var(--fg-3); margin-bottom:0.5rem;
-}
-.f-field input, .f-field textarea {
-  width:100%;
-  background:var(--bg-2); border:1px solid var(--line);
-  border-radius:3px; color:var(--fg);
-  font-family:var(--sans); font-size:0.9rem; font-weight:300;
-  padding:0.85rem 1rem;
-  transition:border-color 0.2s, background 0.3s; resize:none;
-}
-.f-field input::placeholder, .f-field textarea::placeholder { color:var(--fg-3); }
-.f-field input:focus, .f-field textarea:focus {
-  outline:none; border-color:var(--line-hi);
-}
-.f-submit { margin-top:0.75rem; display:flex; align-items:center; gap:1rem; }
-.btn-send {
-  font-family:var(--mono); font-size:0.72rem; font-weight:600;
-  letter-spacing:0.1em; text-transform:uppercase;
-  padding:0.85rem 2rem; border-radius:2px; border:none; cursor:pointer;
-  background:var(--accent); color:var(--bg);
-  transition:opacity 0.2s, transform 0.2s;
-}
-.btn-send:hover { opacity:0.85; transform:translateY(-1px); }
-.btn-send:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
-.f-note { font-size:0.75rem; color:var(--fg-3); }
-.f-status {
-  margin-top:0.875rem; font-size:0.8rem; font-weight:400;
-  padding:0.75rem 1rem; border-radius:3px; display:none;
-  font-family:var(--mono); letter-spacing:0.02em;
-}
-.f-status.ok  { background:rgba(200,241,53,0.07); border:1px solid rgba(200,241,53,0.18); color:var(--accent); }
-.f-status.err { background:rgba(255,80,80,0.06);  border:1px solid rgba(255,80,80,0.18);  color:#ff7070; }
 
 /* ─────────────────────────────────────────
    FOOTER
@@ -478,17 +365,12 @@ footer {
 /* ─────────────────────────────────────────
    REVEAL
 ───────────────────────────────────────── */
-@keyframes rise {
-  from { opacity:0; transform:translateY(18px); }
-  to   { opacity:1; transform:none; }
-}
 .r {
   opacity:0; transform:translateY(18px);
   transition:opacity 0.75s var(--ease), transform 0.75s var(--ease);
 }
 .r.on { opacity:1; transform:none; }
 .r-d1 { transition-delay:0.08s; }
-.r-d2 { transition-delay:0.16s; }
 
 /* ─────────────────────────────────────────
    RESPONSIVE
@@ -496,11 +378,6 @@ footer {
 @media(max-width:960px){
   .showcase { grid-template-columns:1fr; }
   .phone-outer { order:-1; }
-  .contact-grid { grid-template-columns:1fr; gap:4rem; }
-  .sec-header { flex-direction:column; gap:1.25rem; }
-  .hero-sub-row { flex-direction:column; align-items:flex-start; gap:1.25rem; }
-  .cap-item { grid-template-columns:3rem 1fr; }
-  .cap-desc { display:none; }
 }
 @media(max-width:640px){
   .nav-links, .nav-cta { display:none; }
@@ -509,12 +386,12 @@ footer {
   .hero-stat:last-child { display:none; }
   .footer-inner { flex-direction:column; gap:1.25rem; text-align:center; }
   .footer-links { justify-content:center; }
+  .section { padding: 3.5rem 5%; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;"><img src="images/logo3transparent.png" alt="Innovation Hub Studio" style="height:52px;width:auto;display:block;">INNOVATION HUB STUDIO</a>
@@ -522,19 +399,17 @@ footer {
       <li><a href="radio-app.html">Radio App</a></li>
       <li><a href="just90s.html">Just 90's</a></li>
       <li><a href="collision-radar.html">Collision Radar</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
       <li><a href="privacy.html">Privacy</a></li>
       <li><a href="terms.html">Terms</a></li>
       <li><a href="eula.html">EULA</a></li>
     </ul>
     <div class="nav-right">
-      <!-- Theme toggle -->
       <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
-        <!-- sun icon shown in dark mode; moon shown in light mode -->
         <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="#contact" class="nav-cta">Contact</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
       <button class="mob-btn" id="mobBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -542,7 +417,6 @@ footer {
   </div>
 </nav>
 
-<!-- Mobile overlay -->
 <div class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
   <a href="radio-app.html" onclick="closeMob()">Radio App</a>
   <a href="just90s.html"   onclick="closeMob()">Just 90's</a>
@@ -550,91 +424,53 @@ footer {
   <a href="privacy.html"   onclick="closeMob()">Privacy</a>
   <a href="terms.html"     onclick="closeMob()">Terms</a>
   <a href="eula.html"      onclick="closeMob()">EULA</a>
-  <a href="#contact"       onclick="closeMob()" class="m-cta">Contact</a>
+  <a href="index.html#contact" onclick="closeMob()" class="m-cta">Contact</a>
 </div>
 
 <main>
 
-<!-- HERO -->
-<section class="hero" aria-label="Introduction">
-  <div class="hero-main">
+<section class="pagehero" aria-label="Portfolio introduction">
+  <div class="pagehero-inner">
     <div class="hero-kicker">Studio · UK</div>
-    <h1 class="hero-headline">
-      We build apps<br>that <span class="hl">matter.</span>
-    </h1>
-    <div class="hero-sub-row">
-      <p class="hero-desc">
-        Innovation Hub Studio crafts premium native mobile applications —
-        precise engineering, considered design, zero compromise.
-      </p>
-      <span class="hero-scroll" aria-hidden="true">Scroll</span>
-    </div>
-  </div>
-  <div class="hero-meta" aria-label="Key statistics">
-    <div class="hero-stat">
-      <div class="hero-stat-n">1000+</div>
-      <div class="hero-stat-l">Radio stations</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-n">2</div>
-      <div class="hero-stat-l">Native platforms</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-n">UK</div>
-      <div class="hero-stat-l">Registered studio</div>
+    <h1>Everything<br>we've shipped.</h1>
+    <p>Eight products across mobile, web, and the browser. Some serve thousands of listeners, some serve a handful of freelancers who needed one specific thing done properly.</p>
+
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <div class="hero-stat-n">8</div>
+        <div class="hero-stat-l">Products built</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">5</div>
+        <div class="hero-stat-l">Live today</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">4</div>
+        <div class="hero-stat-l">Platforms</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CAPABILITIES -->
-<section class="section" id="features" aria-label="Our capabilities">
-  <div class="container">
-    <div class="sec-header r">
-      <span class="sec-kicker">What we build on</span>
-      <h2 class="sec-title">Principles that<br>don't <span class="hl">age.</span></h2>
-    </div>
-    <ul class="cap-list">
-      <li class="cap-item r">
-        <span class="cap-num">01</span>
-        <span class="cap-name">Speed First</span>
-        <span class="cap-desc">Native performance from day one. No hybrid compromises — every millisecond is deliberate.</span>
-      </li>
-      <li class="cap-item r r-d1">
-        <span class="cap-num">02</span>
-        <span class="cap-name">Modern UI</span>
-        <span class="cap-desc">Interfaces that respect platform conventions and push them exactly as far as they should go.</span>
-      </li>
-      <li class="cap-item r r-d2">
-        <span class="cap-num">03</span>
-        <span class="cap-name">Scalability</span>
-        <span class="cap-desc">Architectures built for growth — from zero users to millions without a single rewrite.</span>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- APP SHOWCASE -->
+<!-- RADIOLIVE -->
 <section class="section" id="app-radiolive" aria-label="RadioLive App">
   <div class="container">
     <div class="showcase">
       <div class="r">
-        <p class="app-label">Featured project</p>
-        <h2 class="app-name">Radio<br><span class="hl">Live App</span></h2>
-        <p class="app-desc">
-          Over 1000 radio stations from across the globe, streamed through
-          one refined application. Native on Android and iOS.
-        </p>
+        <p class="app-label">Live</p>
+        <h2 class="app-name">RadioLive</h2>
+        <p class="app-desc">Over 1000 radio stations from across the globe, streamed through one refined application. The studio's flagship product.</p>
         <div class="app-badges">
-          <a href="https://apps.apple.com/us/app/radiolive-app/id6781333086"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" target="_blank"></a>
-          <a href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.radiolive"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" target="_blank"></a>
+          <a href="https://apps.apple.com/us/app/radiolive-app/id6781333086"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.radiolive"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
         </div>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-           <img src="images/radio4.jpeg" alt="RadioLive App screenshot"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="phone-fallback" style="display:none;">
+          <img src="images/radio4.jpeg" alt="RadioLive App screenshot"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="phone-fallback">
             <span class="phone-fallback-name">Radio Live</span>
             <div class="waveform">
               <span style="height:6px"></span><span style="height:18px"></span>
@@ -649,27 +485,25 @@ footer {
   </div>
 </section>
 
-<!-- APP SHOWCASE Collision Radar-->
+<!-- COLLISION RADAR -->
 <section class="section" id="app-collision" aria-label="Collision Radar">
   <div class="container">
     <div class="showcase">
       <div class="r">
-        <p class="app-label">Featured project</p>
-        <h2 class="app-name">Collision Radar<br><span class="hl">App</span></h2>
-        <p class="app-desc">
-          Before you spend weeks building your app, find out what already exists.
-        </p>
+        <p class="app-label">Live</p>
+        <h2 class="app-name">Collision Radar</h2>
+        <p class="app-desc">Before you spend weeks building your app, find out what already exists. A niche-saturation checker for the app stores.</p>
         <div class="app-badges">
-          <a href="https://apps.apple.com/us/app/collision-radar/id6790017069"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" target="_blank"></a>
-          <a href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.collisionradar"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" target="_blank"></a>
+          <a href="https://apps.apple.com/us/app/collision-radar/id6790017069"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.collisionradar"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
         </div>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-           <img src="images/IMG_2870.PNG" alt="Collision Radar App screenshot"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="phone-fallback" style="display:flex;">
+          <img src="images/IMG_2870.PNG" alt="Collision Radar App screenshot"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="phone-fallback">
             <span class="phone-fallback-name">Collision Radar</span>
             <div class="waveform">
               <span style="height:6px"></span><span style="height:18px"></span>
@@ -684,17 +518,135 @@ footer {
   </div>
 </section>
 
-<!--APP SHOWCASE JUST 90'S-->
+<!-- STOCKAT -->
+<section class="section" id="app-stockat" aria-label="Stockat">
+  <div class="container">
+    <div class="showcase">
+      <div class="r">
+        <p class="app-label">Live</p>
+        <h2 class="app-name">Stockat</h2>
+        <p class="app-desc">Inventory management built for people who sell through social media, not for people who live in spreadsheets.</p>
+        <div class="app-badges">
+          <span class="app-note">Store link coming soon</span>
+        </div>
+      </div>
+      <div class="phone-outer r r-d1">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-fallback" style="display:flex;">
+            <span class="phone-fallback-name">Stockat</span>
+            <div class="waveform still">
+              <span style="height:14px"></span><span style="height:22px"></span>
+              <span style="height:10px"></span><span style="height:26px"></span>
+              <span style="height:14px"></span><span style="height:20px"></span>
+              <span style="height:12px"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKER BLOCKER -->
+<section class="section" id="app-trackerblocker" aria-label="Tracker Blocker">
+  <div class="container">
+    <div class="showcase">
+      <div class="r">
+        <p class="app-label">Live · Open source</p>
+        <h2 class="app-name">Tracker Blocker</h2>
+        <p class="app-desc">Blocks tracking pixels, strips URL trackers, detects cloaked trackers, and resists fingerprinting. Runs entirely on your device.</p>
+        <div class="app-badges">
+          <a class="text-badge primary" href="https://chromewebstore.google.com/detail/tracker-blocker/bkehmkekkpijaflkififhgnpjmmcgfcj">Chrome Web Store</a>
+          <a class="text-badge" href="https://github.com/liviurhos/tracker-blocker">GitHub</a>
+        </div>
+      </div>
+      <div class="phone-outer r r-d1">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-fallback" style="display:flex;">
+            <span class="phone-fallback-name">Tracker Blocker</span>
+            <div class="waveform">
+              <span style="height:6px"></span><span style="height:18px"></span>
+              <span style="height:10px"></span><span style="height:28px"></span>
+              <span style="height:14px"></span><span style="height:20px"></span>
+              <span style="height:8px"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SILENTSHIELD -->
+<section class="section" id="app-silentshield" aria-label="SilentShield">
+  <div class="container">
+    <div class="showcase">
+      <div class="r">
+        <p class="app-label">Live</p>
+        <h2 class="app-name">SilentShield</h2>
+        <p class="app-desc">Silently removes cookie banners, consent overlays, and full-screen popup takeovers as you browse. Runs entirely locally.</p>
+        <div class="app-badges">
+          <a class="text-badge primary" href="https://chromewebstore.google.com/detail/silentshield/lobggbmnoohgmmioabjeljfhecdpbjmg">Chrome Web Store</a>
+        </div>
+      </div>
+      <div class="phone-outer r r-d1">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-fallback" style="display:flex;">
+            <span class="phone-fallback-name">SilentShield</span>
+            <div class="waveform">
+              <span style="height:6px"></span><span style="height:18px"></span>
+              <span style="height:10px"></span><span style="height:28px"></span>
+              <span style="height:14px"></span><span style="height:20px"></span>
+              <span style="height:8px"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECLAROPFA -->
+<section class="section" id="app-declaropfa" aria-label="DeclaRoPFA">
+  <div class="container">
+    <div class="showcase">
+      <div class="r">
+        <p class="app-label muted">In beta</p>
+        <h2 class="app-name">DeclaRoPFA</h2>
+        <p class="app-desc">Tax and bookkeeping for Romanian PFA freelancers, in testing with real users on iOS and Android.</p>
+        <div class="app-badges">
+          <span class="app-note">Testing on TestFlight and Google Play internal testing</span>
+        </div>
+      </div>
+      <div class="phone-outer r r-d1">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-fallback" style="display:flex;">
+            <span class="phone-fallback-name">DeclaRoPFA</span>
+            <div class="waveform still">
+              <span style="height:10px"></span><span style="height:16px"></span>
+              <span style="height:8px"></span><span style="height:22px"></span>
+              <span style="height:12px"></span><span style="height:16px"></span>
+              <span style="height:10px"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JUST 90'S -->
 <section class="section" id="app-just90s" aria-label="Just 90's">
   <div class="container">
     <div class="showcase">
       <div class="r">
-        <p class="app-label">Featured project</p>
-        <h2 class="app-name">Just <span class="hl">90's</span></h2>
-        <p class="app-desc">
-          Live internet radio, dedicated exclusively to 90s music stations
-          from around the world. Coming soon to the App Store.
-        </p>
+        <p class="app-label muted">In development</p>
+        <h2 class="app-name">Just 90's</h2>
+        <p class="app-desc">Live internet radio, dedicated exclusively to 90s music stations from around the world. Coming soon to the App Store.</p>
         <div class="app-badges">
           <a href="just90s.html"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Coming soon to App Store"></a>
         </div>
@@ -704,10 +656,10 @@ footer {
           <div class="phone-notch"></div>
           <div class="phone-fallback" style="display:flex;">
             <span class="phone-fallback-name">Just 90's</span>
-            <div class="waveform">
-              <span style="height:6px"></span><span style="height:18px"></span>
-              <span style="height:10px"></span><span style="height:28px"></span>
-              <span style="height:14px"></span><span style="height:20px"></span>
+            <div class="waveform still">
+              <span style="height:8px"></span><span style="height:20px"></span>
+              <span style="height:12px"></span><span style="height:24px"></span>
+              <span style="height:10px"></span><span style="height:18px"></span>
               <span style="height:8px"></span>
             </div>
           </div>
@@ -717,67 +669,28 @@ footer {
   </div>
 </section>
 
-<!-- APP SHOWCASE Tax*******D-->
-<section class="section" id="app-tax" aria-label="Tax******D">
+<!-- TAX*******D -->
+<section class="section" id="app-tax" aria-label="Tax App">
   <div class="container">
     <div class="showcase">
       <div class="r">
-        <p class="app-label">Featured project</p>
-        <h2 class="app-name">TAX*******D<br><span class="hl">App</span></h2>
-        <p class="app-desc">
-          Coming soon...
-        </p>
-        <div class="app-badges">
-          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" target="_blank"></a>
-          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" target="_blank"></a>
-        </div>
+        <p class="app-label muted">In development</p>
+        <h2 class="app-name">TAX*******D</h2>
+        <p class="app-desc">Making Tax Digital for UK sole traders, built for the phone in your pocket.</p>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-fallback" style="display:flex;">
             <span class="phone-fallback-name">TAX*******D</span>
-            <div class="waveform">
-              <span style="height:6px"></span><span style="height:18px"></span>
-              <span style="height:10px"></span><span style="height:28px"></span>
-              <span style="height:14px"></span><span style="height:20px"></span>
-              <span style="height:8px"></span>
+            <div class="waveform still">
+              <span style="height:8px"></span><span style="height:14px"></span>
+              <span style="height:10px"></span><span style="height:18px"></span>
+              <span style="height:8px"></span><span style="height:14px"></span>
+              <span style="height:6px"></span>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section" id="contact" aria-label="Contact us">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="r">
-        <p class="contact-tag">Get in touch</p>
-        <h2 class="contact-title">Let's build<br>something<br><span class="hl" style="color:var(--accent)">real.</span></h2>
-        <div class="contact-info">
-          <p>Innovation Hub Studio Ltd<br>United Kingdom</p><br>
-          <p><a href="mailto:contact@innovationhubstudio.co.uk">contact@innovationhubstudio.co.uk</a></p>
-        </div>
-      </div>
-      <div class="r r-d1">
-        <form id="contactForm">
-          <div class="f-field">
-            <label for="email">Email address</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="f-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us what you're working on." required></textarea>
-          </div>
-          <div class="f-submit">
-            <button type="submit" class="btn-send" id="submitBtn">Send message</button>
-            <span class="f-note">We reply within 48h.</span>
-          </div>
-          <div id="fStatus" class="f-status"></div>
-        </form>
       </div>
     </div>
   </div>
@@ -785,7 +698,6 @@ footer {
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <span class="footer-brand">Innovation Hub Studio Ltd</span>
@@ -803,7 +715,6 @@ footer {
 </footer>
 
 <script>
-/* NAV SCROLL */
 (function(){
   const nav = document.getElementById('nav');
   let last = 0;
@@ -815,13 +726,11 @@ footer {
   }, {passive:true});
 })();
 
-/* MOBILE MENU */
 function closeMob(){ document.getElementById('navMobile').classList.remove('open'); }
 document.getElementById('mobBtn').addEventListener('click', ()=>{
   document.getElementById('navMobile').classList.toggle('open');
 });
 
-/* THEME TOGGLE */
 (function(){
   const html   = document.documentElement;
   const btn    = document.getElementById('themeBtn');
@@ -842,35 +751,10 @@ document.getElementById('mobBtn').addEventListener('click', ()=>{
   });
 })();
 
-/* REVEAL */
 const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
 }, {threshold:0.1});
 document.querySelectorAll('.r').forEach(el=>io.observe(el));
-
-/* FORM */
-document.getElementById('contactForm').addEventListener('submit', async e=>{
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  const st  = document.getElementById('fStatus');
-  btn.disabled = true; btn.textContent = 'Sending…'; st.style.display = 'none';
-  try {
-    const res = await fetch('https://formspree.io/f/mjgavyqr',{
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        email:   document.getElementById('email').value,
-        message: document.getElementById('message').value
-      })
-    });
-    if(!res.ok) throw 0;
-    st.className='f-status ok'; st.textContent="Message sent. We'll be in touch.";
-    e.target.reset();
-  } catch {
-    st.className='f-status err'; st.textContent='Something went wrong. Please email us directly.';
-  } finally {
-    st.style.display='block'; btn.disabled=false; btn.textContent='Send message';
-  }
-});
 </script>
 </body>
 </html>
