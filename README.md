@@ -13,9 +13,8 @@ innovationhubstudio.co.uk.
   behaviour shared by every page
 - `assets/home.css`, `portfolio.css`, `product.css`, `just90s.css`, `legal.css`:
   page-specific styles
-- `images/web/`: right-sized copies of the images used on the pages
-- `images/badges/`: the official store badges, `app-store.svg` and
-  `google-play.svg`, used unmodified
+- `images/`: logo and app screenshots. The store badges are the official
+  artwork, loaded unmodified from Wikimedia Commons.
 
 Do not rename the legal pages: their URLs are registered in the app stores.
 
