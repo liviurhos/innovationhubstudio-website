@@ -3,431 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Innovation Hub Studio</title>
-<meta name="description" content="Everything Innovation Hub Studio has built: mobile apps, browser extensions, and tools shipped to real users.">
-<style>
-/* ─────────────────────────────────────────
-   TOKENS — dark (default)
-───────────────────────────────────────── */
-:root {
-  --accent: #c8f135;
-  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
-  --mono:   Arial, Helvetica, sans-serif;
-  --sans:   Arial, Helvetica, sans-serif;
-}
-
-[data-theme="dark"] {
-  --bg:       #0a0a0a;
-  --bg-2:     #111111;
-  --bg-3:     #1a1a1a;
-  --line:     rgba(255,255,255,0.07);
-  --line-hi:  rgba(255,255,255,0.16);
-  --fg:       #f0f0eb;
-  --fg-2:     #b8b8b8;
-  --fg-3:     #767676;
-  --nav-bg:   rgba(10,10,10,0.92);
-}
-
-[data-theme="light"] {
-  --bg:       #f4f4f0;
-  --bg-2:     #ebebeb;
-  --bg-3:     #e0e0e0;
-  --line:     rgba(0,0,0,0.09);
-  --line-hi:  rgba(0,0,0,0.2);
-  --fg:       #111111;
-  --fg-2:     #444444;
-  --fg-3:     #626262;
-  --nav-bg:   rgba(244,244,240,0.92);
-  --accent:   #111111;
-}
-
-/* ─────────────────────────────────────────
-   RESET & BASE
-───────────────────────────────────────── */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--fg);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  transition: background 0.3s, color 0.3s;
-}
-a { color:inherit; text-decoration:none; }
-img { display:block; max-width:100%; }
-
-body::before {
-  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
-}
-
-/* ─────────────────────────────────────────
-   NAV
-───────────────────────────────────────── */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:900;
-  height:64px;
-  display:flex; align-items:center;
-  padding:0 5%;
-  border-bottom:1px solid transparent;
-  transition: transform 0.38s var(--ease), border-color 0.3s, background 0.3s;
-}
-nav.scrolled {
-  background: var(--nav-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-color: var(--line);
-}
-nav.hide { transform:translateY(-100%); }
-
-.nav-inner {
-  max-width:1280px; margin:0 auto; width:100%;
-  display:flex; align-items:center; justify-content:space-between; gap:2rem;
-}
-
-.nav-logo {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--fg);
-  white-space: nowrap;
-}
-.nav-logo img { display:block; height:40px; width:auto; }
-
-.nav-links {
-  list-style:none;
-  display:flex; align-items:center; gap:2rem;
-}
-.nav-links a {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg-2);
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--fg); }
-.nav-links a.active { color: var(--accent); }
-
-.nav-right {
-  display:flex; align-items:center; gap:1rem;
-}
-
-.theme-toggle {
-  width:34px; height:34px;
-  border:1px solid var(--line-hi);
-  border-radius:3px;
-  background: transparent;
-  cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition: border-color 0.2s, background 0.2s;
-  flex-shrink:0;
-}
-.theme-toggle:hover { border-color: var(--fg-2); }
-.theme-toggle svg { width:16px; height:16px; stroke:var(--fg-2); fill:none; stroke-width:1.5; }
-
-.nav-cta {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--bg);
-  background: var(--accent);
-  padding: 0.5rem 1.1rem;
-  border-radius: 2px;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-}
-.nav-cta:hover { opacity:0.85; }
-
-.mob-btn {
-  display:none; flex-direction:column; gap:5px;
-  background:none; border:none; cursor:pointer; padding:4px;
-}
-.mob-btn span { display:block; width:20px; height:1.5px; background:var(--fg); transition:0.3s; }
-
-.nav-mobile {
-  display:none;
-  position:fixed; inset:0; z-index:800;
-  background:var(--bg);
-  flex-direction:column; align-items:center; justify-content:center; gap:2rem;
-}
-.nav-mobile.open { display:flex; }
-.nav-mobile a {
-  font-family:var(--mono); font-size:0.85rem;
-  letter-spacing:0.15em; text-transform:uppercase;
-  color:var(--fg-2); transition:color 0.2s;
-}
-.nav-mobile a:hover { color:var(--fg); }
-.nav-mobile .m-cta {
-  color:var(--bg); background:var(--accent);
-  padding:0.6rem 1.5rem; border-radius:2px;
-}
-
-/* ─────────────────────────────────────────
-   PAGE HERO (shorter than homepage — no full viewport)
-───────────────────────────────────────── */
-.pagehero {
-  position:relative; z-index:1;
-  padding:11rem 5% 4rem;
-  border-bottom:1px solid var(--line);
-}
-.pagehero-inner { max-width:1280px; margin:0 auto; }
-.hero-kicker {
-  display:flex; align-items:center; gap:0.75rem;
-  font-family:var(--mono); font-size:0.68rem; font-weight:400;
-  letter-spacing:0.2em; text-transform:uppercase; color:var(--fg-3);
-  margin-bottom:2rem;
-}
-.hero-kicker::before {
-  content:''; display:block; width:20px; height:1px; background:var(--accent);
-}
-.pagehero h1 {
-  font-family: var(--mono);
-  font-size: clamp(2.6rem, 6vw, 5.5rem);
-  font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  max-width: 16ch;
-  color: var(--fg);
-}
-.pagehero p {
-  margin-top: 1.75rem;
-  max-width: 48ch;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--fg-2);
-  font-weight: 300;
-}
-
-.hero-meta {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--line);
-  margin-top: 3.5rem;
-}
-.hero-stat {
-  padding:1.75rem 0;
-  border-right:1px solid var(--line);
-  text-align:left;
-}
-.hero-stat:last-child { border-right:none; }
-.hero-stat-n {
-  font-family:var(--mono); font-size:1.8rem; font-weight:400;
-  color:var(--accent); line-height:1; margin-bottom:0.35rem;
-}
-.hero-stat-l {
-  font-family:var(--mono); font-size:0.65rem;
-  letter-spacing:0.12em; text-transform:uppercase; color:var(--fg-3);
-}
-
-/* ─────────────────────────────────────────
-   SECTION
-───────────────────────────────────────── */
-.section {
-  position:relative; z-index:1;
-  padding:6rem 5%;
-  border-bottom:1px solid var(--line);
-}
-.container { max-width:1280px; margin:0 auto; }
-
-/* ─────────────────────────────────────────
-   SHOWCASE (per project)
-───────────────────────────────────────── */
-.showcase {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:6rem; align-items:center;
-}
-.app-label {
-  font-family:var(--mono); font-size:0.68rem; font-weight:400;
-  letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);
-  margin-bottom:1.25rem;
-  display:flex; align-items:center; gap:0.6rem;
-}
-.app-label::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
-.app-label.muted { color: var(--fg-3); }
-.app-label.muted::before { background: var(--fg-3); }
-
-.app-name {
-  font-family:var(--mono); font-size:clamp(2.2rem,4.5vw,3.8rem);
-  font-weight:400; letter-spacing:-0.03em; line-height:1.02;
-  color:var(--fg); margin-bottom:1.5rem;
-}
-.app-desc {
-  font-size:0.95rem; line-height:1.8; color:var(--fg-2);
-  font-weight:300; max-width:40ch; margin-bottom:2rem;
-}
-.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; align-items:center; }
-.app-badges img {
-  height:40px; opacity:0.55;
-  filter:grayscale(1) brightness(1.6);
-  transition:opacity 0.25s, filter 0.25s, transform 0.25s;
-}
-[data-theme="light"] .app-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
-.app-badges img:hover { opacity:1; filter:none; transform:translateY(-2px); }
-
-.text-badge {
-  font-family:var(--mono); font-size:0.72rem; font-weight:600;
-  letter-spacing:0.08em; text-transform:uppercase;
-  padding:0.7rem 1.25rem; border-radius:2px;
-  border:1px solid var(--line-hi);
-  color: var(--fg-2);
-  transition: border-color 0.2s, color 0.2s;
-}
-.text-badge:hover { border-color:var(--accent); color:var(--fg); }
-.text-badge.primary {
-  background:var(--accent); color:var(--bg); border-color:var(--accent);
-}
-.text-badge.primary:hover { opacity:0.85; color:var(--bg); }
-
-.app-note {
-  font-family:var(--mono); font-size:0.72rem;
-  letter-spacing:0.06em; color:var(--fg-3);
-}
-
-/* phone */
-.phone-outer { display:flex; justify-content:center; align-items:center; }
-.phone-frame {
-  width:248px; height:518px;
-  border:1.5px solid var(--line-hi);
-  border-radius:38px; background:var(--bg-3);
-  position:relative; overflow:hidden;
-  box-shadow: 0 0 0 6px var(--line), 0 60px 100px rgba(0,0,0,0.35);
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-.phone-notch {
-  position:absolute; top:16px; left:50%; transform:translateX(-50%);
-  width:56px; height:16px;
-  background:var(--bg); border-radius:8px; z-index:10;
-}
-.phone-frame img { width:100%; height:100%; object-fit:cover; }
-.phone-fallback {
-  width:100%; height:100%; display:none;
-  flex-direction:column; align-items:center; justify-content:center; gap:1.5rem;
-  padding:2.5rem;
-}
-.phone-fallback-name {
-  font-family:var(--mono); font-size:0.68rem;
-  letter-spacing:0.25em; text-transform:uppercase; color:var(--fg-3);
-  text-align:center;
-}
-.waveform { display:flex; align-items:center; gap:3px; height:36px; }
-.waveform span {
-  display:block; width:3px; border-radius:2px;
-  background:var(--accent); opacity:0.55;
-  animation:wv 1.4s ease-in-out infinite;
-}
-.waveform.still span { animation:none; opacity:0.3; }
-.waveform span:nth-child(2){animation-delay:0.1s}
-.waveform span:nth-child(3){animation-delay:0.22s}
-.waveform span:nth-child(4){animation-delay:0.32s}
-.waveform span:nth-child(5){animation-delay:0.22s}
-.waveform span:nth-child(6){animation-delay:0.1s}
-.waveform span:nth-child(7){animation-delay:0.16s}
-@keyframes wv { 0%,100%{height:4px} 50%{height:30px} }
-
-/* ─────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────── */
-footer {
-  position:relative; z-index:1;
-  padding:2.5rem 5%;
-  border-top:1px solid var(--line);
-}
-.footer-inner {
-  max-width:1280px; margin:0 auto;
-  display:flex; align-items:center; justify-content:space-between;
-  gap:2rem; flex-wrap:wrap;
-}
-.footer-brand {
-  font-family:var(--mono); font-size:0.72rem;
-  font-weight:600; letter-spacing:0.06em;
-  text-transform:uppercase; color:var(--fg-2);
-}
-.footer-links {
-  list-style:none; display:flex; gap:2rem;
-}
-.footer-links a {
-  font-family:var(--mono); font-size:0.68rem;
-  letter-spacing:0.1em; text-transform:uppercase;
-  color:var(--fg-3); transition:color 0.2s;
-}
-.footer-links a:hover { color:var(--fg); }
-.footer-copy {
-  font-family:var(--mono); font-size:0.65rem;
-  letter-spacing:0.05em; color:var(--fg-3);
-}
-
-/* ─────────────────────────────────────────
-   REVEAL
-───────────────────────────────────────── */
-.r {
-  opacity:0; transform:translateY(18px);
-  transition:opacity 0.75s var(--ease), transform 0.75s var(--ease);
-}
-.r.on { opacity:1; transform:none; }
-.r-d1 { transition-delay:0.08s; }
-
-/* ─────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────── */
-@media(max-width:960px){
-  .showcase { grid-template-columns:1fr; }
-  .phone-outer { order:-1; }
-}
-@media(max-width:640px){
-  .nav-links, .nav-cta { display:none; }
-  .mob-btn { display:flex; }
-  .hero-meta { grid-template-columns:1fr 1fr; }
-  .hero-stat:last-child { display:none; }
-  .footer-inner { flex-direction:column; gap:1.25rem; text-align:center; }
-  .footer-links { justify-content:center; }
-  .section { padding: 3.5rem 5%; }
-}
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Portfolio | Innovation Hub Studio</title>
+<meta name="description" content="Every product Innovation Hub Studio has shipped across mobile, web and the browser.">
+<link rel="canonical" href="https://innovationhubstudio.co.uk/portfolio.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innovation Hub Studio">
+<meta property="og:title" content="Portfolio | Innovation Hub Studio">
+<meta property="og:description" content="Every product Innovation Hub Studio has shipped across mobile, web and the browser.">
+<meta property="og:url" content="https://innovationhubstudio.co.uk/portfolio.html">
+<meta property="og:image" content="https://innovationhubstudio.co.uk/images/web/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" href="images/web/favicon-48.png">
+<link rel="apple-touch-icon" href="images/web/icon-180.png">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/portfolio.css">
+<script src="assets/site.js"></script>
 </head>
 <body>
 
-<nav id="nav">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav" id="nav" aria-label="Main">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;"><img src="images/logo3transparent.png" alt="Innovation Hub Studio" style="height:52px;width:auto;display:block;">INNOVATION HUB STUDIO</a>
+    <a href="index.html" class="nav-logo"><img src="images/web/logo-128.png" alt="" width="52" height="52"><span>Innovation Hub Studio</span></a>
     <ul class="nav-links">
-      <li><a href="radio-app.html">Radio App</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="radio-app.html">RadioLive</a></li>
       <li><a href="just90s.html">Just 90's</a></li>
       <li><a href="collision-radar.html">Collision Radar</a></li>
-      <li><a href="portfolio.html" class="active">Portfolio</a></li>
-      <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="terms.html">Terms</a></li>
-      <li><a href="eula.html">EULA</a></li>
+      <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
     </ul>
     <div class="nav-right">
-      <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
-        <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <button class="theme-toggle" id="themeBtn" type="button" aria-label="Switch colour theme"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
       <a href="index.html#contact" class="nav-cta">Contact</a>
-      <button class="mob-btn" id="mobBtn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="mob-btn" id="mobBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
-<div class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
-  <a href="radio-app.html" onclick="closeMob()">Radio App</a>
-  <a href="just90s.html"   onclick="closeMob()">Just 90's</a>
-  <a href="portfolio.html" onclick="closeMob()">Portfolio</a>
-  <a href="privacy.html"   onclick="closeMob()">Privacy</a>
-  <a href="terms.html"     onclick="closeMob()">Terms</a>
-  <a href="eula.html"      onclick="closeMob()">EULA</a>
-  <a href="index.html#contact" onclick="closeMob()" class="m-cta">Contact</a>
+<div class="nav-mobile" id="navMobile" hidden>
+  <a href="index.html">Home</a>
+  <a href="radio-app.html">RadioLive</a>
+  <a href="just90s.html">Just 90's</a>
+  <a href="collision-radar.html">Collision Radar</a>
+  <a href="portfolio.html" aria-current="page">Portfolio</a>
+  <a href="index.html#contact" class="m-cta">Contact</a>
 </div>
 
-<main>
+<main id="main">
 
 <section class="pagehero" aria-label="Portfolio introduction">
   <div class="pagehero-inner">
@@ -461,22 +87,22 @@ footer {
         <h2 class="app-name">RadioLive</h2>
         <p class="app-desc">Over 1000 radio stations from across the globe, streamed through one refined application. The studio's flagship product.</p>
         <div class="app-badges">
-          <a href="https://apps.apple.com/us/app/radiolive-app/id6781333086"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
-          <a href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.radiolive"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+          <a class="store-badge" href="https://apps.apple.com/us/app/radiolive-app/id6781333086" rel="noopener"><img src="images/badges/app-store.svg" alt="Download on the App Store" height="40"></a>
+          <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.radiolive" rel="noopener"><img src="images/badges/google-play.svg" alt="Get it on Google Play" height="40"></a>
+          <a class="text-badge" href="radio-app.html">View app page</a>
         </div>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <img src="images/radio4.jpeg" alt="RadioLive App screenshot"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img class="phone-shot" src="images/web/radiolive-phone.jpg" alt="RadioLive App screenshot" width="496" height="1113" loading="lazy" decoding="async">
           <div class="phone-fallback">
             <span class="phone-fallback-name">Radio Live</span>
             <div class="waveform">
-              <span style="height:6px"></span><span style="height:18px"></span>
-              <span style="height:10px"></span><span style="height:28px"></span>
-              <span style="height:14px"></span><span style="height:20px"></span>
-              <span style="height:8px"></span>
+              <span class="w6"></span><span class="w18"></span>
+              <span class="w10"></span><span class="w28"></span>
+              <span class="w14"></span><span class="w20"></span>
+              <span class="w8"></span>
             </div>
           </div>
         </div>
@@ -494,22 +120,22 @@ footer {
         <h2 class="app-name">Collision Radar</h2>
         <p class="app-desc">Before you spend weeks building your app, find out what already exists. A niche-saturation checker for the app stores.</p>
         <div class="app-badges">
-          <a href="https://apps.apple.com/us/app/collision-radar/id6790017069"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
-          <a href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.collisionradar"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+          <a class="store-badge" href="https://apps.apple.com/us/app/collision-radar/id6790017069" rel="noopener"><img src="images/badges/app-store.svg" alt="Download on the App Store" height="40"></a>
+          <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.innovationhubstudio.collisionradar" rel="noopener"><img src="images/badges/google-play.svg" alt="Get it on Google Play" height="40"></a>
+          <a class="text-badge" href="collision-radar.html">View app page</a>
         </div>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <img src="images/IMG_2870.PNG" alt="Collision Radar App screenshot"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img class="phone-shot" src="images/web/collision-radar-phone.jpg" alt="Collision Radar App screenshot" width="496" height="1078" loading="lazy" decoding="async">
           <div class="phone-fallback">
             <span class="phone-fallback-name">Collision Radar</span>
             <div class="waveform">
-              <span style="height:6px"></span><span style="height:18px"></span>
-              <span style="height:10px"></span><span style="height:28px"></span>
-              <span style="height:14px"></span><span style="height:20px"></span>
-              <span style="height:8px"></span>
+              <span class="w6"></span><span class="w18"></span>
+              <span class="w10"></span><span class="w28"></span>
+              <span class="w14"></span><span class="w20"></span>
+              <span class="w8"></span>
             </div>
           </div>
         </div>
@@ -533,13 +159,13 @@ footer {
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <div class="phone-fallback" style="display:flex;">
+          <div class="phone-fallback show">
             <span class="phone-fallback-name">Stockat</span>
             <div class="waveform still">
-              <span style="height:14px"></span><span style="height:22px"></span>
-              <span style="height:10px"></span><span style="height:26px"></span>
-              <span style="height:14px"></span><span style="height:20px"></span>
-              <span style="height:12px"></span>
+              <span class="w14"></span><span class="w22"></span>
+              <span class="w10"></span><span class="w26"></span>
+              <span class="w14"></span><span class="w20"></span>
+              <span class="w12"></span>
             </div>
           </div>
         </div>
@@ -557,22 +183,21 @@ footer {
         <h2 class="app-name">Tracker Blocker</h2>
         <p class="app-desc">Blocks tracking pixels, strips URL trackers, detects cloaked trackers, and resists fingerprinting. Runs entirely on your device.</p>
         <div class="app-badges">
-          <a class="text-badge primary" href="https://chromewebstore.google.com/detail/tracker-blocker/bkehmkekkpijaflkififhgnpjmmcgfcj">Chrome Web Store</a>
-          <a class="text-badge" href="https://github.com/liviurhos/tracker-blocker">GitHub</a>
+          <a class="text-badge primary" rel="noopener" href="https://chromewebstore.google.com/detail/tracker-blocker/bkehmkekkpijaflkififhgnpjmmcgfcj">Chrome Web Store</a>
+          <a class="text-badge" rel="noopener" href="https://github.com/liviurhos/tracker-blocker">GitHub</a>
         </div>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-           <img src="images/trackerBlocker.jpeg" alt="Tracker Blocker browser extension screenshot"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="phone-fallback" style="display:flex;">
+           <img class="phone-shot" src="images/web/tracker-blocker-phone.jpg" alt="Tracker Blocker browser extension screenshot" width="496" height="1078" loading="lazy" decoding="async">
+          <div class="phone-fallback">
             <span class="phone-fallback-name">Tracker Blocker</span>
             <div class="waveform">
-              <span style="height:6px"></span><span style="height:18px"></span>
-              <span style="height:10px"></span><span style="height:28px"></span>
-              <span style="height:14px"></span><span style="height:20px"></span>
-              <span style="height:8px"></span>
+              <span class="w6"></span><span class="w18"></span>
+              <span class="w10"></span><span class="w28"></span>
+              <span class="w14"></span><span class="w20"></span>
+              <span class="w8"></span>
             </div>
           </div>
         </div>
@@ -590,21 +215,20 @@ footer {
         <h2 class="app-name">SilentShield</h2>
         <p class="app-desc">Silently removes cookie banners, consent overlays, and full-screen popup takeovers as you browse. Runs entirely locally.</p>
         <div class="app-badges">
-          <a class="text-badge primary" href="https://chromewebstore.google.com/detail/silentshield/lobggbmnoohgmmioabjeljfhecdpbjmg">Chrome Web Store</a>
+          <a class="text-badge primary" rel="noopener" href="https://chromewebstore.google.com/detail/silentshield/lobggbmnoohgmmioabjeljfhecdpbjmg">Chrome Web Store</a>
         </div>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-           <img src="images/SilentShield.jpeg" alt="Silent Shield browser extension screenshot"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="phone-fallback" style="display:flex;">
+           <img class="phone-shot" src="images/web/silentshield-phone.jpg" alt="Silent Shield browser extension screenshot" width="496" height="1078" loading="lazy" decoding="async">
+          <div class="phone-fallback">
             <span class="phone-fallback-name">SilentShield</span>
             <div class="waveform">
-              <span style="height:6px"></span><span style="height:18px"></span>
-              <span style="height:10px"></span><span style="height:28px"></span>
-              <span style="height:14px"></span><span style="height:20px"></span>
-              <span style="height:8px"></span>
+              <span class="w6"></span><span class="w18"></span>
+              <span class="w10"></span><span class="w28"></span>
+              <span class="w14"></span><span class="w20"></span>
+              <span class="w8"></span>
             </div>
           </div>
         </div>
@@ -628,13 +252,13 @@ footer {
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <div class="phone-fallback" style="display:flex;">
+          <div class="phone-fallback show">
             <span class="phone-fallback-name">DeclaRoPFA</span>
             <div class="waveform still">
-              <span style="height:10px"></span><span style="height:16px"></span>
-              <span style="height:8px"></span><span style="height:22px"></span>
-              <span style="height:12px"></span><span style="height:16px"></span>
-              <span style="height:10px"></span>
+              <span class="w10"></span><span class="w16"></span>
+              <span class="w8"></span><span class="w22"></span>
+              <span class="w12"></span><span class="w16"></span>
+              <span class="w10"></span>
             </div>
           </div>
         </div>
@@ -652,19 +276,19 @@ footer {
         <h2 class="app-name">Just 90's</h2>
         <p class="app-desc">Live internet radio, dedicated exclusively to 90s music stations from around the world. Coming soon to the App Store.</p>
         <div class="app-badges">
-          <a href="just90s.html"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Coming soon to App Store"></a>
+          <a class="text-badge" href="just90s.html">View app page</a>
         </div>
       </div>
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <div class="phone-fallback" style="display:flex;">
+          <div class="phone-fallback show">
             <span class="phone-fallback-name">Just 90's</span>
             <div class="waveform still">
-              <span style="height:8px"></span><span style="height:20px"></span>
-              <span style="height:12px"></span><span style="height:24px"></span>
-              <span style="height:10px"></span><span style="height:18px"></span>
-              <span style="height:8px"></span>
+              <span class="w8"></span><span class="w20"></span>
+              <span class="w12"></span><span class="w24"></span>
+              <span class="w10"></span><span class="w18"></span>
+              <span class="w8"></span>
             </div>
           </div>
         </div>
@@ -685,13 +309,13 @@ footer {
       <div class="phone-outer r r-d1">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <div class="phone-fallback" style="display:flex;">
+          <div class="phone-fallback show">
             <span class="phone-fallback-name">TAX*******D</span>
             <div class="waveform still">
-              <span style="height:8px"></span><span style="height:14px"></span>
-              <span style="height:10px"></span><span style="height:18px"></span>
-              <span style="height:8px"></span><span style="height:14px"></span>
-              <span style="height:6px"></span>
+              <span class="w8"></span><span class="w14"></span>
+              <span class="w10"></span><span class="w18"></span>
+              <span class="w8"></span><span class="w14"></span>
+              <span class="w6"></span>
             </div>
           </div>
         </div>
@@ -702,63 +326,48 @@ footer {
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <span class="footer-brand">Innovation Hub Studio Ltd</span>
-    <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="radio-app.html">Radio App</a></li>
-      <li><a href="just90s.html">Just 90's</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="terms.html">Terms</a></li>
-      <li><a href="eula.html">EULA</a></li>
-    </ul>
-    <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
+<footer class="site-footer">
+  <nav class="footer-cols" aria-label="Footer">
+    <div class="footer-col">
+      <h2>Studio</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>RadioLive</h2>
+      <ul>
+        <li><a href="radio-app.html">App</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="eula.html">EULA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>Just 90's</h2>
+      <ul>
+        <li><a href="just90s.html">App</a></li>
+        <li><a href="just90s-privacy.html">Privacy Policy</a></li>
+        <li><a href="just90s-terms.html">Terms</a></li>
+        <li><a href="just90s-eula.html">EULA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>Collision Radar</h2>
+      <ul>
+        <li><a href="collision-radar.html">App</a></li>
+        <li><a href="collision-radar-privacy.html">Privacy Policy</a></li>
+        <li><a href="collision-radar-terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="footer-base">
+    <span>Innovation Hub Studio Ltd. Registered in England and Wales.</span>
+    <span>&copy; 2026 Innovation Hub Studio Ltd.</span>
   </div>
 </footer>
 
-<script>
-(function(){
-  const nav = document.getElementById('nav');
-  let last = 0;
-  window.addEventListener('scroll', ()=>{
-    const y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 40);
-    nav.classList.toggle('hide', y > last && y > 100);
-    last = y;
-  }, {passive:true});
-})();
-
-function closeMob(){ document.getElementById('navMobile').classList.remove('open'); }
-document.getElementById('mobBtn').addEventListener('click', ()=>{
-  document.getElementById('navMobile').classList.toggle('open');
-});
-
-(function(){
-  const html   = document.documentElement;
-  const btn    = document.getElementById('themeBtn');
-  const sun    = document.getElementById('icon-sun');
-  const moon   = document.getElementById('icon-moon');
-  const saved  = localStorage.getItem('theme') || 'dark';
-
-  function apply(theme){
-    html.setAttribute('data-theme', theme);
-    sun.style.display  = theme === 'dark'  ? 'block' : 'none';
-    moon.style.display = theme === 'light' ? 'block' : 'none';
-    localStorage.setItem('theme', theme);
-  }
-
-  apply(saved);
-  btn.addEventListener('click', ()=>{
-    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-  });
-})();
-
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
-}, {threshold:0.1});
-document.querySelectorAll('.r').forEach(el=>io.observe(el));
-</script>
 </body>
 </html>

@@ -3,194 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy - Collision Radar - Innovation Hub Studio</title>
-<meta name="description" content="Collision Radar - check which similar apps already exist before you submit to the App Store or Google Play.">
-<style>
-:root {
-  --accent: #c8f135;
-  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
-  --mono:   Arial, Helvetica, sans-serif;
-  --sans:   Arial, Helvetica, sans-serif;
-}
-[data-theme="dark"] {
-  --bg: #0a0a0a; --bg-2: #111111; --bg-3: #1a1a1a;
-  --line: rgba(255,255,255,0.07); --line-hi: rgba(255,255,255,0.16);
-  --fg: #f0f0eb; --fg-2: #b8b8b8; --fg-3: #767676;
-  --nav-bg: rgba(10,10,10,0.92);
-}
-[data-theme="light"] {
-  --bg: #f4f4f0; --bg-2: #ebebeb; --bg-3: #e0e0e0;
-  --line: rgba(0,0,0,0.09); --line-hi: rgba(0,0,0,0.2);
-  --fg: #111111; --fg-2: #444444; --fg-3: #626262;
-  --nav-bg: rgba(244,244,240,0.92);
-  --accent: #111111;
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  font-family: var(--sans); background: var(--bg); color: var(--fg);
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
-  transition: background 0.3s, color 0.3s;
-}
-a { color:inherit; text-decoration:none; }
-img { display:block; max-width:100%; }
-
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:900; height:64px;
-  display:flex; align-items:center; padding:0 5%;
-  background: var(--nav-bg);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  border-bottom:1px solid var(--line);
-}
-.nav-inner {
-  max-width:1280px; margin:0 auto; width:100%;
-  display:flex; align-items:center; justify-content:space-between; gap:2rem;
-}
-.nav-logo {
-  font-family:var(--mono); font-size:0.9rem; letter-spacing:0.04em;
-  text-transform:uppercase; color:var(--fg); white-space:nowrap;
-}
-.nav-links { list-style:none; display:flex; align-items:center; gap:2rem; }
-.nav-links a {
-  font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em;
-  text-transform:uppercase; color:var(--fg-2); transition:color 0.2s;
-}
-.nav-links a:hover { color:var(--fg); }
-.theme-toggle {
-  width:34px; height:34px; border:1px solid var(--line-hi); border-radius:3px;
-  background:transparent; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-}
-.theme-toggle svg { width:16px; height:16px; stroke:var(--fg-2); fill:none; stroke-width:1.5; }
-
-.section { position:relative; padding:8rem 5% 6rem 5%; border-bottom:1px solid var(--line); }
-.container { max-width:1280px; margin:0 auto; }
-
-.hero-inner { padding-top:64px; }
-.app-label {
-  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.2em;
-  text-transform:uppercase; color:var(--accent); margin-bottom:1.25rem;
-  display:flex; align-items:center; gap:0.6rem;
-}
-.app-label::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
-h1 {
-  font-family:var(--mono); font-size:clamp(2.5rem,6vw,5.5rem); font-weight:400;
-  letter-spacing:-0.03em; line-height:1.0; margin-bottom:1.75rem;
-}
-h1 .hl { color:var(--accent); }
-.lead {
-  font-size:1rem; line-height:1.8; color:var(--fg-2);
-  font-weight:300; max-width:52ch; margin-bottom:2.5rem;
-}
-.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; }
-.app-badges img {
-  height:40px; opacity:0.55; filter:grayscale(1) brightness(1.6);
-  transition:opacity 0.25s, filter 0.25s;
-}
-[data-theme="light"] .app-badges img { filter:grayscale(1) brightness(0.4); opacity:0.7; }
-.app-badges a:hover img { opacity:1; filter:none; }
-
-.feature-list { list-style:none; }
-.feature-item {
-  display:grid; grid-template-columns:3.5rem 1fr 1fr; gap:2rem; align-items:start;
-  padding:2rem 0; border-top:1px solid var(--line);
-}
-.feature-item:last-child { border-bottom:1px solid var(--line); }
-.f-num {
-  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em;
-  color:var(--fg-3); padding-top:0.25rem;
-}
-.f-name {
-  font-family:var(--mono); font-size:clamp(1.2rem,2vw,1.7rem);
-  letter-spacing:-0.02em; line-height:1.15; color:var(--fg);
-}
-.f-desc {
-  font-size:0.88rem; line-height:1.75; color:var(--fg-2);
-  font-weight:300; max-width:42ch; padding-top:0.25rem;
-}
-
-.legal-links {
-  font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em;
-  text-transform:uppercase; color:var(--fg-3);
-}
-.legal-links a {
-  color:var(--fg-2); border-bottom:1px solid var(--line-hi);
-  padding-bottom:1px; transition:color 0.2s, border-color 0.2s;
-}
-.legal-links a:hover { color:var(--fg); border-color:var(--fg); }
-
-footer { padding:2.5rem 5%; border-top:1px solid var(--line); }
-.footer-inner {
-  max-width:1280px; margin:0 auto;
-  display:flex; align-items:center; justify-content:space-between;
-  gap:2rem; flex-wrap:wrap;
-}
-.footer-brand {
-  font-family:var(--mono); font-size:0.72rem; font-weight:600;
-  letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-2);
-}
-.footer-links { list-style:none; display:flex; gap:2rem; }
-.footer-links a {
-  font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em;
-  text-transform:uppercase; color:var(--fg-3); transition:color 0.2s;
-}
-.footer-links a:hover { color:var(--fg); }
-.footer-copy { font-family:var(--mono); font-size:0.65rem; color:var(--fg-3); }
-
-@media(max-width:960px){
-  .feature-item { grid-template-columns:3rem 1fr; }
-  .f-desc { grid-column:2; }
-}
-@media(max-width:640px){
-  .nav-links { display:none; }
-  .footer-inner { flex-direction:column; gap:1.25rem; text-align:center; }
-}
-
-.legal-container { max-width:720px; margin:0 auto; padding-top:64px; }
-.legal-container h1 { font-size:clamp(2rem,4vw,3rem); margin-bottom:0.5rem; }
-.updated { font-family:var(--mono); color:var(--fg-3); font-size:0.8rem; margin-bottom:2.5rem; }
-.legal-container h2 {
-  font-family:var(--mono); font-size:1.1rem; font-weight:400;
-  color:var(--accent); margin-top:2.75rem; margin-bottom:0.75rem;
-}
-.legal-container p, .legal-container li {
-  font-size:0.92rem; line-height:1.8; color:var(--fg-2); font-weight:300;
-}
-.legal-container p { margin-bottom:1rem; }
-.legal-container ul { padding-left:20px; margin-bottom:1rem; }
-.legal-container li { margin-bottom:0.6rem; }
-.legal-container strong { color:var(--fg); font-weight:600; }
-.legal-container a { color:var(--accent); }
-.highlight { border:1px solid var(--accent); padding:16px 20px; margin:2rem 0; }
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Collision Radar Privacy Policy | Innovation Hub Studio</title>
+<meta name="description" content="Privacy Policy for the Collision Radar app by Innovation Hub Studio Ltd.">
+<link rel="canonical" href="https://innovationhubstudio.co.uk/collision-radar-privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innovation Hub Studio">
+<meta property="og:title" content="Collision Radar Privacy Policy | Innovation Hub Studio">
+<meta property="og:description" content="Privacy Policy for the Collision Radar app by Innovation Hub Studio Ltd.">
+<meta property="og:url" content="https://innovationhubstudio.co.uk/collision-radar-privacy.html">
+<meta property="og:image" content="https://innovationhubstudio.co.uk/images/web/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" href="images/web/favicon-48.png">
+<link rel="apple-touch-icon" href="images/web/icon-180.png">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/product.css">
+<script src="assets/site.js"></script>
 </head>
 <body>
 
-<nav>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav" id="nav" aria-label="Main">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">INNOVATION HUB STUDIO</a>
+    <a href="index.html" class="nav-logo"><img src="images/web/logo-128.png" alt="" width="52" height="52"><span>Innovation Hub Studio</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="radio-app.html">Radio App</a></li>
-      <li><a href="collision-radar-privacy.html">Privacy</a></li>
-      <li><a href="collision-radar-terms.html">Terms</a></li>
+      <li><a href="radio-app.html">RadioLive</a></li>
+      <li><a href="just90s.html">Just 90's</a></li>
+      <li><a href="collision-radar.html" class="active">Collision Radar</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
     </ul>
-    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
-      <svg id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg id="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeBtn" type="button" aria-label="Switch colour theme"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+      <button class="mob-btn" id="mobBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
-<main>
+<div class="nav-mobile" id="navMobile" hidden>
+  <a href="index.html">Home</a>
+  <a href="radio-app.html">RadioLive</a>
+  <a href="just90s.html">Just 90's</a>
+  <a href="collision-radar.html" class="active">Collision Radar</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="index.html#contact" class="m-cta">Contact</a>
+</div>
+
+<main id="main">
 <section class="section">
   <div class="legal-container">
 
 <h1>Privacy Policy</h1>
-<p class="updated">Collision Radar. Last updated: 12 July 2026.</p>
+<p class="updated"><a href="collision-radar.html">Collision Radar</a>. Last updated: 12 July 2026.</p>
 
 <p>Collision Radar is operated by Innovation Hub Studio Ltd, a company
-registered in the United Kingdom ("we", "us"). This policy explains what
+registered in England and Wales ("we", "us"). This policy explains what
 data the Collision Radar app processes, and, just as importantly, what it
 does not.</p>
 
@@ -263,10 +134,10 @@ remove, and how.</p>
 <strong>To request deletion:</strong> email
 <a href="mailto:contact@innovationhubstudio.co.uk?subject=Delete my Collision Radar data">contact@innovationhubstudio.co.uk</a>
 from any address, with the subject "Delete my Collision Radar data", and
-include the anonymous device identifier shown in the app (open the app,
-the identifier is not currently surfaced in the UI, so if you cannot find
-it, tell us the approximate date of your last purchase or scan and we will
-locate the record). We will delete the associated credit balance and any
+include your anonymous device identifier if you have it. The identifier is
+not currently shown in the app, so if you cannot provide it, tell us the
+approximate date of your last purchase or scan and we will locate the
+record. We will delete the associated credit balance and any
 cached data linked to that identifier within 30 days and confirm by email.
 </div>
 <p><strong>What gets deleted:</strong> the anonymous device identifier and
@@ -305,36 +176,48 @@ Email: <a href="mailto:contact@innovationhubstudio.co.uk">contact@innovationhubs
 </section>
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <span class="footer-brand">Innovation Hub Studio Ltd</span>
-    <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="collision-radar-privacy.html">Privacy Policy</a></li>
-      <li><a href="collision-radar-terms.html">Terms of Service</a></li>
-    </ul>
-    <span class="footer-copy">© 2026 Innovation Hub Studio Ltd.</span>
+<footer class="site-footer">
+  <nav class="footer-cols" aria-label="Footer">
+    <div class="footer-col">
+      <h2>Studio</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>RadioLive</h2>
+      <ul>
+        <li><a href="radio-app.html">App</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="eula.html">EULA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>Just 90's</h2>
+      <ul>
+        <li><a href="just90s.html">App</a></li>
+        <li><a href="just90s-privacy.html">Privacy Policy</a></li>
+        <li><a href="just90s-terms.html">Terms</a></li>
+        <li><a href="just90s-eula.html">EULA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>Collision Radar</h2>
+      <ul>
+        <li><a href="collision-radar.html">App</a></li>
+        <li><a href="collision-radar-privacy.html" aria-current="page">Privacy Policy</a></li>
+        <li><a href="collision-radar-terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="footer-base">
+    <span>Innovation Hub Studio Ltd. Registered in England and Wales.</span>
+    <span>&copy; 2026 Innovation Hub Studio Ltd.</span>
   </div>
 </footer>
 
-<script>
-(function(){
-  const html = document.documentElement;
-  const btn  = document.getElementById('themeBtn');
-  const sun  = document.getElementById('icon-sun');
-  const moon = document.getElementById('icon-moon');
-  const saved = localStorage.getItem('theme') || 'dark';
-  function apply(theme){
-    html.setAttribute('data-theme', theme);
-    sun.style.display  = theme === 'dark'  ? 'block' : 'none';
-    moon.style.display = theme === 'light' ? 'block' : 'none';
-    localStorage.setItem('theme', theme);
-  }
-  apply(saved);
-  btn.addEventListener('click', ()=>{
-    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-  });
-})();
-</script>
 </body>
 </html>
