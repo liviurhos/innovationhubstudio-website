@@ -1,0 +1,47 @@
+/* portfolio.css: styles for portfolio.html. Shared chrome lives in site.css. */
+.pagehero { position:relative; z-index:1; padding:11rem 5% 4rem; border-bottom:1px solid var(--line); }
+.pagehero-inner { max-width:1280px; margin:0 auto; }
+.hero-kicker { display:flex; align-items:center; gap:0.75rem; font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; color:var(--fg-3); margin-bottom:2rem; }
+.hero-kicker::before { content:''; display:block; width:20px; height:1px; background:var(--accent); }
+.pagehero h1 { font-family: var(--mono); font-size: clamp(2.6rem, 6vw, 5.5rem); font-weight: 400; line-height: 1.02; letter-spacing: -0.03em; max-width: 16ch; color: var(--fg); }
+.pagehero p { margin-top: 1.75rem; max-width: 48ch; font-size: 1rem; line-height: 1.75; color: var(--fg-2); font-weight: 300; }
+.hero-meta { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); margin-top: 3.5rem; }
+.hero-stat { padding:1.75rem 0; border-right:1px solid var(--line); text-align:left; }
+.hero-stat:last-child { border-right:none; }
+.hero-stat-n { font-family:var(--mono); font-size:1.8rem; font-weight:400; color:var(--accent); line-height:1; margin-bottom:0.35rem; }
+.hero-stat-l { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--fg-3); }
+.section { position:relative; z-index:1; padding:6rem 5%; border-bottom:1px solid var(--line); }
+.container { max-width:1280px; margin:0 auto; }
+.showcase { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+.app-label { font-family:var(--mono); font-size:0.68rem; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.6rem; }
+.app-label::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
+.app-label.muted { color: var(--fg-3); }
+.app-label.muted::before { background: var(--fg-3); }
+.app-name { font-family:var(--mono); font-size:clamp(2.2rem,4.5vw,3.8rem); font-weight:400; letter-spacing:-0.03em; line-height:1.02; color:var(--fg); margin-bottom:1.5rem; }
+.app-desc { font-size:0.95rem; line-height:1.8; color:var(--fg-2); font-weight:300; max-width:40ch; margin-bottom:2rem; }
+.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; align-items:center; }
+.phone-outer { display:flex; justify-content:center; align-items:center; }
+.phone-frame { width:248px; height:518px; border:1.5px solid var(--line-hi); background:var(--bg-3); position:relative; overflow:hidden; box-shadow: 0 0 0 6px var(--line), 0 60px 100px rgba(0,0,0,0.35); transition: border-color 0.3s, box-shadow 0.3s; }
+.phone-notch { position:absolute; top:16px; left:50%; transform:translateX(-50%); width:56px; height:16px; background:var(--bg); z-index:10; }
+.phone-frame img { width:100%; height:100%; object-fit:cover; }
+.phone-fallback { width:100%; height:100%; display:none; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; padding:2.5rem; }
+.phone-fallback-name { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--fg-3); text-align:center; }
+.waveform { display:flex; align-items:center; gap:3px; height:36px; }
+.waveform span { display:block; width:3px; background:var(--accent); opacity:0.55; animation:wv 1.4s ease-in-out infinite; }
+.waveform.still span { animation:none; opacity:0.3; }
+.waveform span:nth-child(2) { animation-delay:0.1s }
+.waveform span:nth-child(3) { animation-delay:0.22s }
+.waveform span:nth-child(4) { animation-delay:0.32s }
+.waveform span:nth-child(5) { animation-delay:0.22s }
+.waveform span:nth-child(6) { animation-delay:0.1s }
+.waveform span:nth-child(7) { animation-delay:0.16s }
+@keyframes wv { 0%,100%{height:4px} 50%{height:30px} }
+@media(max-width:960px) {
+  .showcase { grid-template-columns:1fr; }
+  .phone-outer { order:-1; }
+}
+@media(max-width:640px) {
+  .hero-meta { grid-template-columns:1fr 1fr; }
+  .hero-stat:last-child { display:none; }
+  .section { padding: 3.5rem 5%; }
+}

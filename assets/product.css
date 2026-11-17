@@ -1,0 +1,31 @@
+/* product.css: styles for collision-radar.html, collision-radar-privacy.html, collision-radar-terms.html. Shared chrome lives in site.css. */
+.section { position:relative; padding:8rem 5% 6rem 5%; border-bottom:1px solid var(--line); }
+.container { max-width:1280px; margin:0 auto; }
+.hero-inner { padding-top:64px; }
+.app-label { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.6rem; }
+.app-label::before { content:''; display:block; width:18px; height:1px; background:var(--accent); }
+h1 { font-family:var(--mono); font-size:clamp(2.5rem,6vw,5.5rem); font-weight:400; letter-spacing:-0.03em; line-height:1.0; margin-bottom:1.75rem; }
+h1 .hl { color:var(--accent); }
+.lead { font-size:1rem; line-height:1.8; color:var(--fg-2); font-weight:300; max-width:52ch; margin-bottom:2.5rem; }
+.app-badges { display:flex; gap:0.875rem; flex-wrap:wrap; }
+.feature-list { list-style:none; }
+.feature-item { display:grid; grid-template-columns:3.5rem 1fr 1fr; gap:2rem; align-items:start; padding:2rem 0; border-top:1px solid var(--line); }
+.feature-item:last-child { border-bottom:1px solid var(--line); }
+.f-num { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em; color:var(--fg-3); padding-top:0.25rem; }
+.f-name { font-family:var(--mono); font-size:clamp(1.2rem,2vw,1.7rem); letter-spacing:-0.02em; line-height:1.15; color:var(--fg); }
+.f-desc { font-size:0.88rem; line-height:1.75; color:var(--fg-2); font-weight:300; max-width:42ch; padding-top:0.25rem; }
+.legal-container { max-width:720px; margin:0 auto; padding-top:64px; }
+.legal-container h1 { font-size:clamp(2rem,4vw,3rem); margin-bottom:0.5rem; }
+.updated { font-family:var(--mono); color:var(--fg-3); font-size:0.8rem; margin-bottom:2.5rem; }
+.legal-container h2 { font-family:var(--mono); font-size:1.1rem; font-weight:400; color:var(--accent); margin-top:2.75rem; margin-bottom:0.75rem; }
+.legal-container p, .legal-container li { font-size:0.92rem; line-height:1.8; color:var(--fg-2); font-weight:300; }
+.legal-container p { margin-bottom:1rem; }
+.legal-container ul { padding-left:20px; margin-bottom:1rem; }
+.legal-container li { margin-bottom:0.6rem; }
+.legal-container strong { color:var(--fg); font-weight:600; }
+.legal-container a { color:var(--accent); }
+.highlight { border:1px solid var(--accent); padding:16px 20px; margin:2rem 0; }
+@media(max-width:960px) {
+  .feature-item { grid-template-columns:3rem 1fr; }
+  .f-desc { grid-column:2; }
+}

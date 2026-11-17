@@ -1,0 +1,29 @@
+/* legal.css: styles for privacy.html, terms.html, eula.html. Shared chrome lives in site.css. */
+.page-header { position:relative;z-index:1;padding:120px 5% 5rem;border-bottom:1px solid var(--line); }
+.page-header-inner { max-width:1280px;margin:0 auto; }
+.page-kicker { display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:0.68rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--fg-3);margin-bottom:1.5rem; }
+.page-kicker::before { content:'';display:block;width:20px;height:1px;background:var(--accent); }
+.page-title { font-family:var(--mono);font-size:clamp(2.5rem,6vw,6rem);font-weight:400;line-height:1.0;letter-spacing:-0.03em;color:var(--fg); }
+.page-title .hl { color:var(--accent); }
+.page-meta { margin-top:1.5rem;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-3); }
+.content { position:relative;z-index:1;max-width:860px;margin:0 auto;padding:5rem 5%; }
+.policy-block { padding:2.5rem 0;border-bottom:1px solid var(--line); }
+.policy-block:first-child { padding-top:0; }
+.policy-block:last-child { border-bottom:none; }
+.policy-num { font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem; }
+.policy-block h2 { font-family:var(--mono);font-size:1.1rem;font-weight:400;letter-spacing:-0.02em;color:var(--fg);margin-bottom:1.25rem; }
+.policy-block p { font-size:0.92rem;line-height:1.85;color:var(--fg-2);font-weight:300;margin-bottom:0.875rem; }
+.policy-block p:last-child { margin-bottom:0; }
+.policy-block ul { list-style:none;margin:0.5rem 0 0.875rem; }
+.policy-block ul li { font-size:0.92rem;line-height:1.85;color:var(--fg-2);font-weight:300;padding:0.3rem 0;display:flex;align-items:flex-start;gap:0.75rem; }
+.policy-block ul li::before { content:'-';color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:0.8rem;margin-top:0.05rem; }
+.policy-block strong { color:var(--fg);font-weight:600; }
+.contact-box { margin-top:4rem;padding:3rem;border:1px solid var(--line-hi);background:var(--bg-2); }
+.contact-box-label { font-family:var(--mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem; }
+.contact-box h2 { font-family:var(--mono);font-size:1.5rem;font-weight:400;letter-spacing:-0.02em;color:var(--fg);margin-bottom:1rem; }
+.contact-box p { font-size:0.92rem;line-height:1.85;color:var(--fg-2);font-weight:300; }
+.contact-box a { color:var(--fg);border-bottom:1px solid var(--line-hi);padding-bottom:1px;transition:border-color 0.2s; }
+.contact-box a:hover { border-color:var(--fg); }
+/* list items: marker sits in the padding so bold lead-ins and text flow as one paragraph */
+.policy-block ul li { display: block; position: relative; padding-left: 1.4rem; }
+.policy-block ul li::before { position: absolute; left: 0; top: 0.3rem; margin-top: 0; }
